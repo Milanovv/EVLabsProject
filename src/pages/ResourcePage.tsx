@@ -86,7 +86,9 @@ export default function ResourcePage() {
               )}
             </div>
             
-            <h1 className="text-3xl font-bold text-text-primary mb-4">{resource.title}</h1>
+            <h1 className={`text-3xl font-bold text-text-primary mb-4 ${isLocked ? 'blur-title' : ''}`}>
+              {resource.title}
+            </h1>
             <p className="text-lg text-text-secondary mb-6">{resource.description}</p>
 
             {/* Stats */}
