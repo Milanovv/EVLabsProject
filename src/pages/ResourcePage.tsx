@@ -14,6 +14,11 @@ export default function ResourcePage() {
   const [saved, setSaved] = useState(false)
   const [voted, setVoted] = useState(false)
 
+  // Scroll to top when the resource ID changes
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [id])
+
   if (!resource) {
     return (
       <div className="min-h-screen flex flex-col">

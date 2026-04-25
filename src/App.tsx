@@ -6,6 +6,7 @@ import ResourcePage from '@/pages/ResourcePage'
 import PricingPage from '@/pages/PricingPage'
 import DashboardPage from '@/pages/DashboardPage'
 import SubmitPage from '@/pages/SubmitPage'
+import UpgradePage from '@/pages/UpgradePage'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/submit" element={<SubmitPage />} />
+      <Route path="/upgrade" element={<UpgradePage />} />
     </Routes>
   )
 }
