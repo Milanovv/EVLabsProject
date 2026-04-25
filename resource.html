@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource - SkillPath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .resource-detail {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--space-xl) 0;
+        }
+        .resource-header {
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .resource-category-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+        .resource-category-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+        .resource-title-lg {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+        .resource-description-lg {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+        }
+        .resource-stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .resource-stat {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: 14px;
+        }
+        .resource-stat-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+        }
+        .resource-stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .resource-stat-label {
+            color: var(--text-muted);
+        }
+        .resource-actions {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+        .resource-content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        .resource-section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+        }
+        .resource-tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+        .resource-tag-item {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .resource-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .resource-table th,
+        .resource-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .resource-table th {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .similar-resources {
+            margin-top: var(--space-xl);
+        }
+        .similar-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+        .feedback-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-top: var(--space-xl);
+        }
+        .feedback-buttons {
+            display: flex;
+            gap: var(--space-md);
+        }
+        .feedback-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-lg);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all var(--transition-fast);
+        }
+        .feedback-btn:hover {
+            border-color: var(--border-default);
+            color: var(--text-primary);
+        }
+        .save-btn.saved {
+            background: var(--accent-indigo);
+            border-color: var(--accent-indigo);
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .resource-title-lg {
+                font-size: 1.75rem;
+            }
+            .similar-grid {
+                grid-template-columns: 1fr;
+            }
+            .resource-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="index.html" class="navbar-logo">
+                    <span class="navbar-logo-icon">◈</span>
+                    <span class="navbar-logo-text">SkillPath</span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <a href="index.html" class="navbar-link">Начало</a>
+                <a href="category.html" class="navbar-link">Категории</a>
+                <a href="search.html" class="navbar-link">Търси</a>
+                <a href="pricing.html" class="navbar-link">Цени</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-ghost" id="loginBtn">Вход</button>
+                <button class="btn btn-primary" id="signupBtn">Регистрация</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="index.html" class="breadcrumb-item">Начало</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="category.html" class="breadcrumb-item" id="breadcrumbCat">Категория</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current" id="breadcrumbTitle">Resource</span>
+        </nav>
+
+        <article class="resource-detail">
+            <header class="resource-header">
+                <div class="resource-category-badge">
+                    <span id="resourceCategoryIcon"></span>
+                    <span id="resourceCategoryName">Category</span>
+                </div>
+                <h1 class="resource-title-lg" id="resourceTitle">Resource Title</h1>
+                <p class="resource-description-lg" id="resourceDescription">Description</p>
+                
+                <div class="resource-stats-row">
+                    <div class="resource-stat">
+                        <div class="resource-stat-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="resource-stat-value" id="resourceRating">4.5</div>
+                            <div class="resource-stat-label">Rating</div>
+                        </div>
+                    </div>
+                    <div class="resource-stat">
+                        <div class="resource-stat-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="resource-stat-value" id="resourceVotes">100</div>
+                            <div class="resource-stat-label">Votes</div>
+                        </div>
+                    </div>
+                    <div class="resource-stat">
+                        <div class="resource-stat-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="resource-stat-value">-</div>
+                            <div class="resource-stat-label">Est. Time</div>
+                        </div>
+                    </div>
+                    <div class="resource-stat">
+                        <div class="resource-stat-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="resource-stat-value" id="resourceDifficulty">Intermediate</div>
+                            <div class="resource-stat-label">Difficulty</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-actions">
+                    <a href="#" class="btn btn-primary btn-lg" id="visitBtn" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                        </svg>
+                        Visit Resource
+                    </a>
+                    <button class="btn btn-secondary btn-lg" id="saveBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/>
+                        </svg>
+                        Save
+                    </button>
+                    <button class="btn btn-ghost btn-lg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+                        </svg>
+                        Share
+                    </button>
+                </div>
+            </header>
+
+            <section class="resource-content-card">
+                <h2 class="resource-section-title">Details</h2>
+                <table class="resource-table">
+                    <tr>
+                        <th>Category</th>
+                        <td id="detailCategory">Programming</td>
+                    </tr>
+                    <tr>
+                        <th>Subcategory</th>
+                        <td id="detailSubcategory">Guides & Tutorials</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td id="detailType">Tutorial</td>
+                    </tr>
+                    <tr>
+                        <th>Difficulty</th>
+                        <td id="detailDifficulty">Beginner</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td id="detailPrice">Free</td>
+                    </tr>
+                    <tr>
+                        <th>Website</th>
+                        <td><a href="#" id="detailUrl" target="_blank">Visit Website →</a></td>
+                    </tr>
+                </table>
+
+                <h2 class="resource-section-title" style="margin-top: var(--space-xl);">Tags</h2>
+                <div class="resource-tags-list" id="resourceTags"></div>
+            </section>
+
+            <section class="feedback-section">
+                <h2 class="resource-section-title">Was this resource helpful?</h2>
+                <div class="feedback-buttons">
+                    <button class="feedback-btn" id="helpfulBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/>
+                        </svg>
+                        Yes, helpful!
+                    </button>
+                    <button class="feedback-btn" id="notHelpfulBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M10 15v4a3 3 0 003 3l4-9V4H7.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3zM20 22v-8a2 2 0 00-2-2h-3"/>
+                        </svg>
+                        Not really
+                    </button>
+                </div>
+            </section>
+
+            <section class="similar-resources">
+                <h2 class="resource-section-title">Similar Resources</h2>
+                <div class="similar-grid" id="similarGrid"></div>
+            </section>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 SkillPath. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get("id")) || 1;
+            const resource = getResourceById(id);
+            
+            if (!resource) {
+                window.location.href = "index.html";
+                return;
+            }
+            
+            const catData = categories.find(c => c.name === resource.category);
+            
+            document.title = resource.title + " - SkillPath";
+            document.getElementById("breadcrumbCat").textContent = resource.category;
+            document.getElementById("breadcrumbCat").href = "category.html?cat=" + encodeURIComponent(resource.category);
+            document.getElementById("breadcrumbTitle").textContent = resource.title;
+            
+            document.getElementById("resourceCategoryIcon").textContent = catData ? catData.icon : "📚";
+            document.getElementById("resourceCategoryName").textContent = resource.category;
+            document.getElementById("resourceTitle").textContent = resource.title;
+            document.getElementById("resourceDescription").textContent = resource.description;
+            document.getElementById("resourceRating").textContent = resource.rating;
+            document.getElementById("resourceVotes").textContent = formatNumber(resource.votes);
+            document.getElementById("resourceDifficulty").textContent = resource.difficulty;
+            
+            document.getElementById("visitBtn").href = resource.url;
+            document.getElementById("detailCategory").textContent = resource.category;
+            document.getElementById("detailSubcategory").textContent = resource.subcategory;
+            document.getElementById("detailType").textContent = resource.type.charAt(0).toUpperCase() + resource.type.slice(1);
+            document.getElementById("detailDifficulty").textContent = resource.difficulty;
+            document.getElementById("detailPrice").textContent = resource.isPremium ? "Premium" : "Free";
+            document.getElementById("detailUrl").href = resource.url;
+            
+            document.getElementById("resourceTags").innerHTML = resource.tags.map(tag => 
+                `<span class="resource-tag-item">${tag}</span>`
+            ).join('');
+            
+            const related = getRelatedResources(resource, 4);
+            document.getElementById("similarGrid").innerHTML = related.map((r, i) => renderResourceCard(r, i)).join('');
+            
+            document.getElementById("saveBtn").addEventListener("click", function() {
+                handleSaveResource(resource.id);
+                this.classList.toggle("saved");
+                this.innerHTML = this.classList.contains("saved") ? 
+                    '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg> Saved' :
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg> Save';
+            });
+        });
+    </script>
+</body>
+</html>

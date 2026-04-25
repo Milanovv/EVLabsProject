@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SkillPath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dashboard-page {
+            padding: var(--space-xl) 0;
+        }
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-xl);
+        }
+        .dashboard-greeting {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--space-xl);
+        }
+        .dashboard-nav {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            height: fit-content;
+        }
+        .dashboard-nav-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all var(--transition-fast);
+        }
+        .dashboard-nav-link:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        .dashboard-nav-link.active {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-indigo);
+        }
+        .dashboard-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+        .dashboard-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+        .dashboard-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-lg);
+        }
+        .dashboard-card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        .dashboard-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .dashboard-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        .dashboard-item:hover {
+            background: var(--bg-elevated);
+        }
+        .dashboard-item-icon {
+            font-size: 24px;
+        }
+        .dashboard-item-content {
+            flex: 1;
+        }
+        .dashboard-item-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .dashboard-item-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .dashboard-progress-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-md);
+        }
+        .progress-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .progress-value {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-indigo), var(--accent-purple));
+            border-radius: var(--radius-full);
+            width: 35%;
+        }
+        .progress-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: var(--space-sm);
+        }
+        .subscription-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+        .subscription-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        .subscription-info p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .subscription-badge {
+            padding: var(--space-sm) var(--space-md);
+            background: var(--accent-gold);
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--bg-primary);
+        }
+        .recommended-card {
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+        .recommended-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        @media (max-width: 768px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="index.html" class="navbar-logo">
+                    <span class="navbar-logo-icon">◈</span>
+                    <span class="navbar-logo-text">SkillPath</span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <a href="index.html" class="navbar-link">Начало</a>
+                <a href="category.html" class="navbar-link">Категории</a>
+                <a href="search.html" class="navbar-link">Търси</a>
+                <a href="pricing.html" class="navbar-link">Цени</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-primary" id="profileBtn">My Profile</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="dashboard-page">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h1 class="dashboard-greeting">Welcome back, User!</h1>
+                <button class="btn btn-primary">Upgrade to Premium</button>
+            </header>
+
+            <div class="dashboard-layout">
+                <!-- Sidebar Navigation -->
+                <nav class="dashboard-nav">
+                    <a href="#" class="dashboard-nav-link active">
+                        <span>📊</span> Dashboard
+                    </a>
+                    <a href="#" class="dashboard-nav-link">
+                        <span>⭐</span> Saved Resources
+                    </a>
+                    <a href="#" class="dashboard-nav-link">
+                        <span>🕐</span> Recently Viewed
+                    </a>
+                    <a href="#" class="dashboard-nav-link">
+                        <span>📈</span> Recommended
+                    </a>
+                    <a href="#" class="dashboard-nav-link">
+                        <span>⚙️</span> Settings
+                    </a>
+                    <a href="index.html" class="dashboard-nav-link">
+                        <span>🚪</span> Logout
+                    </a>
+                </nav>
+
+                <!-- Main Content -->
+                <div class="dashboard-content">
+                    <!-- Subscription Status -->
+                    <div class="subscription-card">
+                        <div class="subscription-info">
+                            <h4>Free Plan</h4>
+                            <p>Access to basic resources and community support</p>
+                        </div>
+                        <span class="subscription-badge">Free</span>
+                    </div>
+
+                    <!-- Progress -->
+                    <div class="dashboard-progress-card">
+                        <div class="progress-header">
+                            <span class="progress-title">Your Learning Path</span>
+                            <span class="progress-value">35%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p class="progress-label">Complete more resources to track your progress</p>
+                    </div>
+
+                    <!-- Saved Resources -->
+                    <div class="dashboard-card">
+                        <div class="dashboard-card-header">
+                            <h3 class="dashboard-card-title">Saved Resources</h3>
+                            <button class="btn btn-ghost btn-sm">View All →</button>
+                        </div>
+                        <div class="dashboard-list" id="savedItems">
+                            <div class="empty-state">
+                                <p class="text-muted">No saved resources yet</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recently Viewed -->
+                    <div class="dashboard-card">
+                        <div class="dashboard-card-header">
+                            <h3 class="dashboard-card-title">Recently Viewed</h3>
+                            <button class="btn btn-ghost btn-sm">View All →</button>
+                        </div>
+                        <div class="dashboard-list">
+                            <div class="dashboard-item">
+                                <span class="dashboard-item-icon">📚</span>
+                                <div class="dashboard-item-content">
+                                    <div class="dashboard-item-title">MDN JavaScript Guide</div>
+                                    <div class="dashboard-item-meta">Programming/Development • 2 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="dashboard-item">
+                                <span class="dashboard-item-icon">🔧</span>
+                                <div class="dashboard-item-content">
+                                    <div class="dashboard-item-title">VS Code</div>
+                                    <div class="dashboard-item-meta">Programming/Development • Yesterday</div>
+                                </div>
+                            </div>
+                            <div class="dashboard-item">
+                                <span class="dashboard-item-icon">🎨</span>
+                                <div class="dashboard-item-content">
+                                    <div class="dashboard-item-title">Figma Tutorial</div>
+                                    <div class="dashboard-item-meta">UI/UX Design • 2 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended -->
+                    <div class="recommended-card">
+                        <h3 class="recommended-title">Recommended for You</h3>
+                        <div class="resource-grid" id="recommendedGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 SkillPath. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderSavedItems();
+            
+            const recommended = filterResources({ filter: "all" }).slice(0, 4);
+            document.getElementById("recommendedGrid").innerHTML = recommended.map((r, i) => renderResourceCard(r, i)).join('');
+        });
+    </script>
+</body>
+</html>

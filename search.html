@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - SkillPath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .search-page {
+            padding: var(--space-xl) 0;
+        }
+        .search-header {
+            margin-bottom: var(--space-xl);
+        }
+        .search-form-wrapper {
+            max-width: 700px;
+            margin-bottom: var(--space-xl);
+        }
+        .search-form-wrapper .search-input {
+            font-size: 18px;
+            padding: var(--space-lg);
+            padding-left: 56px;
+        }
+        .search-filters-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .search-filters-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .search-filters-label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .search-results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-lg);
+        }
+        .search-results-count {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .search-results-count strong {
+            color: var(--text-primary);
+        }
+        .search-sort {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .search-sort-btn {
+            padding: var(--space-sm) var(--space-md);
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        .search-sort-btn:hover,
+        .search-sort-btn.active {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+        .search-highlight {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-indigo);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        @media (max-width: 768px) {
+            .search-filters-bar {
+                flex-direction: column;
+            }
+            .search-filters-group {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="index.html" class="navbar-logo">
+                    <span class="navbar-logo-icon">◈</span>
+                    <span class="navbar-logo-text">SkillPath</span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <a href="index.html" class="navbar-link">Начало</a>
+                <a href="category.html" class="navbar-link">Категории</a>
+                <a href="search.html" class="navbar-link active">Търси</a>
+                <a href="pricing.html" class="navbar-link">Цени</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-ghost" id="loginBtn">Вход</button>
+                <button class="btn btn-primary" id="signupBtn">Регистрация</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="search-page">
+            <!-- Search Header -->
+            <div class="search-header">
+                <h1 class="page-title">Search Resources</h1>
+                <p class="page-description">Find tutorials, tools, FAQs, and error solutions</p>
+            </div>
+
+            <!-- Search Form -->
+            <div class="search-form-wrapper">
+                <div class="search-container">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search tutorials, tools, plugins, errors...">
+                    <span class="search-shortcut">↵</span>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="search-filters-bar">
+                <div class="search-filters-group">
+                    <span class="search-filters-label">Category:</span>
+                    <div class="filter-chips">
+                        <button class="filter-chip active" data-filter="all">All</button>
+                        <button class="filter-chip" data-filter="Programming/Development">Programming</button>
+                        <button class="filter-chip" data-filter="UI/UX Design">Design</button>
+                        <button class="filter-chip" data-filter="Marketing">Marketing</button>
+                    </div>
+                </div>
+                <div class="search-filters-group">
+                    <span class="search-filters-label">Type:</span>
+                    <div class="filter-chips">
+                        <button class="filter-chip type-filter active" data-type="all">All</button>
+                        <button class="filter-chip type-filter" data-type="tutorial">Tutorials</button>
+                        <button class="filter-chip type-filter" data-type="tool">Tools</button>
+                        <button class="filter-chip type-filter" data-type="faq">FAQs</button>
+                        <button class="filter-chip type-filter" data-type="error">Errors</button>
+                    </div>
+                </div>
+                <div class="search-filters-group">
+                    <span class="search-filters-label">Price:</span>
+                    <div class="filter-chips">
+                        <button class="filter-chip price-filter active" data-price="all">All</button>
+                        <button class="filter-chip price-filter" data-price="free">Free</button>
+                        <button class="filter-chip price-filter" data-price="paid">Premium</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Header -->
+            <div class="search-results-header">
+                <div class="search-results-count">
+                    <strong id="resultsCount">0</strong> results found
+                </div>
+                <div class="search-sort">
+                    <span class="text-muted">Sort by:</span>
+                    <button class="search-sort-btn active" data-sort="popular">Most Popular</button>
+                    <button class="search-sort-btn" data-sort="recent">Recently Added</button>
+                    <button class="search-sort-btn" data-sort="rating">Highest Rated</button>
+                </div>
+            </div>
+
+            <!-- Results Grid -->
+            <div class="resource-grid" id="resourcesGrid"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 SkillPath. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get("q") || "";
+            
+            document.getElementById("searchInput").value = query;
+            performSearch(query);
+            
+            document.getElementById("searchInput").addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    const q = document.getElementById("searchInput").value.trim();
+                    if (q) {
+                        window.history.replaceState({}, "", "search.html?q=" + encodeURIComponent(q));
+                        performSearch(q);
+                    }
+                }
+            });
+            
+            function performSearch(q) {
+                if (!q) {
+                    renderResourceCards(resources.slice(0, 20), "resourcesGrid");
+                    document.getElementById("resultsCount").textContent = resources.length;
+                    return;
+                }
+                
+                const filtered = filterResources({ search: q });
+                document.getElementById("resultsCount").textContent = filtered.length;
+                renderResourceCards(filtered, "resourcesGrid");
+            }
+            
+            document.querySelectorAll(".filter-chip[data-filter]").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".filter-chip[data-filter]").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    performSearch(document.getElementById("searchInput").value);
+                });
+            });
+            
+            document.querySelectorAll(".type-filter").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".type-filter").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    performSearch(document.getElementById("searchInput").value);
+                });
+            });
+            
+            document.querySelectorAll(".price-filter").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".price-filter").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    performSearch(document.getElementById("searchInput").value);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category - SkillPath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-xl);
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+        .section-description {
+            color: var(--text-secondary);
+            margin-top: var(--space-sm);
+        }
+        .content-wrapper {
+            display: flex;
+            gap: var(--space-xl);
+            padding: var(--space-xl) 0;
+        }
+        .page-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-3xl);
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border-subtle);
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-indigo);
+        }
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+        }
+        .roadmap-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-base);
+            display: block;
+        }
+        .roadmap-card:hover {
+            border-color: var(--accent-indigo);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .roadmap-icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: var(--space-md);
+        }
+        .roadmap-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        .roadmap-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+        .roadmap-progress {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .cta-section {
+            padding: var(--space-3xl) 0;
+        }
+        .cta-card {
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl);
+            text-align: center;
+        }
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+        }
+        .cta-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+        }
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            animation: scaleIn 0.2s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .modal-content h2 {
+            margin-bottom: var(--space-xl);
+        }
+        .auth-form .btn {
+            margin-top: var(--space-md);
+        }
+        @media (max-width: 1024px) {
+            .roadmap-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .roadmap-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                gap: var(--space-xl);
+            }
+            .cta-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="index.html" class="navbar-logo">
+                    <span class="navbar-logo-icon">◈</span>
+                    <span class="navbar-logo-text">SkillPath</span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <a href="index.html" class="navbar-link">Начало</a>
+                <a href="category.html" class="navbar-link active">Категории</a>
+                <a href="search.html" class="navbar-link">Търси</a>
+                <a href="pricing.html" class="navbar-link">Цени</a>
+            </div>
+            <div class="navbar-actions">
+                <button class="btn btn-ghost" id="loginBtn">Вход</button>
+                <button class="btn btn-primary" id="signupBtn">Регистрация</button>
+                <button class="btn btn-icon" id="profileBtn" style="display: none;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="index.html" class="breadcrumb-item">Начало</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="category.html" class="breadcrumb-item">Категории</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current" id="breadcrumbCategory">Programming/Development</span>
+        </nav>
+
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="category-header">
+                <span class="category-icon-lg" id="categoryIcon"></span>
+                <div>
+                    <h1 class="page-title" id="categoryTitle">Programming/Development</h1>
+                    <p class="page-description" id="categoryDescription">All resources for programming and development</p>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value" id="categoryCount">0</span>
+                    <span class="stat-label">Resources</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">4</span>
+                    <span class="stat-label">Subcategories</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Подкатегории</h3>
+                    <nav class="sidebar-nav">
+                        <button class="sidebar-link active" data-subcategory="all">
+                            <span class="sidebar-link-icon">⊞</span>
+                            <span>Всички</span>
+                            <span class="sidebar-link-count" id="countAll">0</span>
+                        </button>
+                        <button class="sidebar-link" data-subcategory="Guides and Tutorials">
+                            <span class="sidebar-link-icon">📚</span>
+                            <span>Guides & Tutorials</span>
+                            <span class="sidebar-link-count" id="countGuides">0</span>
+                        </button>
+                        <button class="sidebar-link" data-subcategory="Tools and Softwares">
+                            <span class="sidebar-link-icon">🔧</span>
+                            <span>Tools & Softwares</span>
+                            <span class="sidebar-link-count" id="countTools">0</span>
+                        </button>
+                        <button class="sidebar-link" data-subcategory="FAQs and Basics">
+                            <span class="sidebar-link-icon">❓</span>
+                            <span>FAQs & Basics</span>
+                            <span class="sidebar-link-count" id="countFAQs">0</span>
+                        </button>
+                        <button class="sidebar-link" data-subcategory="Common Mistakes/Issues">
+                            <span class="sidebar-link-icon">⚠️</span>
+                            <span>Common Issues</span>
+                            <span class="sidebar-link-count" id="countErrors">0</span>
+                        </button>
+                    </nav>
+                </div>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Филтри</h3>
+                    <div class="filter-chips">
+                        <button class="filter-chip active" data-filter="all">
+                            <span>Всички</span>
+                        </button>
+                        <button class="filter-chip" data-filter="guide">
+                            <span class="filter-chip-dot guide"></span>
+                            <span>Tutorials</span>
+                        </button>
+                        <button class="filter-chip" data-filter="tool">
+                            <span class="filter-chip-dot tool"></span>
+                            <span>Tools</span>
+                        </button>
+                        <button class="filter-chip" data-filter="faq">
+                            <span class="filter-chip-dot faq"></span>
+                            <span>FAQs</span>
+                        </button>
+                        <button class="filter-chip" data-filter="error">
+                            <span class="filter-chip-dot error"></span>
+                            <span>Issues</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="page-content">
+                <div class="results-info">
+                    <span id="resultsCount">0 ресурса</span>
+                    <span class="results-separator">•</span>
+                    <span id="currentCategory">Всички подкатегории</span>
+                </div>
+                <div class="resource-grid" id="resourcesGrid"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4 class="footer-section-title">SkillPath</h4>
+                    <p class="text-muted">Your curated knowledge hub for professional growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Categories</h4>
+                    <nav class="footer-links">
+                        <a href="category.html?cat=Programming/Development" class="footer-link">Programming</a>
+                        <a href="category.html?cat=Marketing" class="footer-link">Marketing</a>
+                        <a href="category.html?cat=Product and Project Management" class="footer-link">Product</a>
+                        <a href="category.html?cat=Business and Finance" class="footer-link">Business</a>
+                    </nav>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Resources</h4>
+                    <nav class="footer-links">
+                        <a href="search.html" class="footer-link">Browse All</a>
+                        <a href="pricing.html" class="footer-link">Pricing</a>
+                        <a href="submit.html" class="footer-link">Submit Resource</a>
+                    </nav>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-section-title">Company</h4>
+                    <nav class="footer-links">
+                        <a href="#" class="footer-link">About</a>
+                        <a href="#" class="footer-link">Contact</a>
+                        <a href="#" class="footer-link">Privacy</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 SkillPath. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const category = params.get("cat") ? decodeURIComponent(params.get("cat")) : "Programming/Development";
+            
+            const catData = categories.find(c => c.name === category) || categories[0];
+            
+            document.getElementById("breadcrumbCategory").textContent = category;
+            document.getElementById("categoryTitle").textContent = category;
+            document.getElementById("categoryDescription").textContent = catData ? catData.description : "";
+            document.getElementById("categoryIcon").textContent = catData ? catData.icon : "📚";
+            
+            const filtered = filterResources({ category: category });
+            document.getElementById("categoryCount").textContent = filtered.length;
+            document.getElementById("countAll").textContent = filtered.length;
+            document.getElementById("countGuides").textContent = filtered.filter(r => r.subcategory === "Guides and Tutorials").length;
+            document.getElementById("countTools").textContent = filtered.filter(r => r.subcategory === "Tools and Softwares").length;
+            document.getElementById("countFAQs").textContent = filtered.filter(r => r.subcategory === "FAQs and Basics").length;
+            document.getElementById("countErrors").textContent = filtered.filter(r => r.subcategory === "Common Mistakes/Issues").length;
+            
+            renderResourceCards(filtered, "resourcesGrid");
+            
+            document.querySelectorAll(".sidebar-link[data-subcategory]").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".sidebar-link[data-subcategory]").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    
+                    const subcategory = btn.dataset.subcategory;
+                    document.getElementById("currentCategory").textContent = subcategory === "all" ? "Всички подкатегории" : subcategory;
+                    
+                    const filtered = filterResources({ 
+                        category: category,
+                        subcategory: subcategory === "all" ? undefined : subcategory
+                    });
+                    renderResourceCards(filtered, "resourcesGrid");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
