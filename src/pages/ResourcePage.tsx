@@ -5,7 +5,8 @@ import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import { getResourceById, getRelatedResources, getCategoryColor, typeLabels, categories } from '@/data/resources'
-import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle } from 'lucide-react'
+import { useUser } from '@/contexts/UserContext'
+import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle, Lock } from 'lucide-react'
 
 export default function ResourcePage() {
   const [searchParams] = useSearchParams()
@@ -13,6 +14,10 @@ export default function ResourcePage() {
   const resource = getResourceById(id)
   const [saved, setSaved] = useState(false)
   const [voted, setVoted] = useState(false)
+  const { isPremium: userIsPremium } = useUser()
+
+  // Check if premium content should be locked
+  const isLocked = resource?.isPremium && !userIsPremium
 
   // Scroll to top when the resource ID changes
   useEffect(() => {
@@ -105,20 +110,36 @@ export default function ResourcePage() {
 
             {/* Actions */}
             <div className="flex flex-wrap gap-3">
-              <Button size="lg" asChild>
-                <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                  Visit Resource
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="secondary" size="lg" onClick={() => setSaved(!saved)}>
-                <Bookmark className={`h-4 w-4 ${saved ? 'fill-current' : ''}`} />
-                {saved ? 'Saved' : 'Save'}
-              </Button>
-              <Button variant="ghost" size="lg">
-                <Share2 className="h-4 w-4" />
-                Share
-              </Button>
+              {isLocked ? (
+                <>
+                  <Button size="lg" className="opacity-50 cursor-not-allowed" disabled>
+                    <Lock className="h-4 w-4 mr-2" />
+                    Premium Content
+                  </Button>
+                  <Link to="/upgrade">
+                    <Button size="lg" className="bg-accent-gold hover:bg-accent-gold/90">
+                      Upgrade to Access
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Button size="lg" asChild>
+                    <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                      Visit Resource
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button variant="secondary" size="lg" onClick={() => setSaved(!saved)}>
+                    <Bookmark className={`h-4 w-4 ${saved ? 'fill-current' : ''}`} />
+                    {saved ? 'Saved' : 'Save'}
+                  </Button>
+                  <Button variant="ghost" size="lg">
+                    <Share2 className="h-4 w-4" />
+                    Share
+                  </Button>
+                </>
+              )}
             </div>
           </div>
 

@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Star, Lock } from 'lucide-react'
+import { ArrowUpRight, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { Resource, getCategoryColor, typeLabels } from '@/data/resources'
-import { useUser } from '@/contexts/UserContext'
 
 interface ResourceCardProps {
   resource: Resource
@@ -12,52 +11,24 @@ interface ResourceCardProps {
 
 export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
   const categoryColor = getCategoryColor(resource.category)
-  const { isPremium: userIsPremium } = useUser()
-  
-  // Show blur only if resource is premium AND user is NOT premium
-  const showBlur = resource.isPremium && !userIsPremium
+  // Always clickable - premium check only happens on detail page
   
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className={cn(
-        "relative rounded-lg border transition-all duration-200",
-        showBlur 
-          ? "border-accent-gold/30 bg-background-tertiary/60" 
-          : "border-border bg-background-tertiary/80 hover:border-accent-indigo/50 hover:shadow-glow hover:-translate-y-1"
-      )}
+      className="relative rounded-lg border border-border bg-background-tertiary/80 transition-all duration-200 hover:border-accent-indigo/50 hover:shadow-glow hover:-translate-y-1"
     >
-      {/* Premium blur overlay */}
-      {showBlur && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-lg bg-background/60 backdrop-blur-sm">
-          <Lock className="mb-2 h-8 w-8 text-accent-gold" />
-          <span className="text-sm font-medium text-accent-gold">Premium Content</span>
-          <span className="mt-1 text-xs text-text-muted">Upgrade to access</span>
-        </div>
-      )}
-      
       {/* Top accent line */}
       <div 
-        className={cn(
-          "absolute left-0 right-0 top-0 h-0.5 rounded-t-lg",
-          showBlur ? "bg-accent-gold/50" : ""
-        )}
-        style={{ backgroundColor: showBlur ? undefined : categoryColor }}
+        className="absolute left-0 right-0 top-0 h-0.5 rounded-t-lg"
+        style={{ backgroundColor: categoryColor }}
       />
       
       <Link
-        to={showBlur ? "/upgrade" : `/resource?id=${resource.id}`}
-        className={cn(
-          "group block p-5",
-          showBlur && "pointer-events-none opacity-50"
-        )}
-        onClick={(e) => {
-          if (showBlur) {
-            e.preventDefault()
-          }
-        }}
+        to={`/resource?id=${resource.id}`}
+        className="group block p-5"
       >
         {/* Meta */}
         <div className="mb-3 flex items-center justify-between">
@@ -104,24 +75,9 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
             {resource.rating}
           </div>
           
-          <div className={cn(
-            "flex items-center gap-2 text-sm transition-opacity",
-            showBlur ? "text-text-muted" : "text-accent-indigo opacity-0 group-hover:opacity-100"
-          )}>
-            {showBlur ? (
-              <Link 
-                to="/upgrade"
-                className="text-xs text-accent-gold hover:underline"
-                onClick={(e) => e.stopPropagation()}
-              >
-                Upgrade to view
-              </Link>
-            ) : (
-              <>
-                View
-                <ArrowUpRight className="h-3 w-3" />
-              </>
-            )}
+          <div className="flex items-center gap-2 text-sm text-accent-indigo opacity-0 transition-opacity group-hover:opacity-100">
+            View
+            <ArrowUpRight className="h-3 w-3" />
           </div>
         </div>
         
