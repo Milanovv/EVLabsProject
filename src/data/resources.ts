@@ -1,4 +1,4 @@
-export type ResourceType = 'tutorial' | 'tool' | 'faq' | 'error' | 'video' | 'plugin'
+export type ResourceType = 'tutorial' | 'tool' | 'faq' | 'issue' | 'video' | 'plugin'
 
 export interface Resource {
   id: number
@@ -106,14 +106,14 @@ export const resources: Resource[] = [
   { id: 40, category: 'Programming/Development', subcategory: 'FAQs and Basics', title: 'What is a framework?', url: 'https://developer.mozilla.org/', description: 'A framework is a pre-built structure that speeds up application development.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 280 },
 
   // Common Mistakes
-  { id: 41, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Most Common Beginner Mistake', url: 'https://developer.mozilla.org/', description: 'Not understanding basic concepts before jumping into frameworks.', tags: ['Error'], type: 'error', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 410 },
-  { id: 42, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Code Not Running', url: 'https://developer.mozilla.org/', description: 'Usually due to syntax errors, missing dependencies, or wrong file.', tags: ['Error', 'Fix'], type: 'error', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 380 },
-  { id: 43, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Fixing CORS Errors', url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS', description: 'Understanding and resolving Cross-Origin Resource Sharing errors.', tags: ['Error', 'Fix'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: true, isNew: false, rating: 4.4, votes: 410 },
-  { id: 44, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'JavaScript Null vs Undefined', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null', description: 'Guide to understanding the difference between null and undefined.', tags: ['Error', 'Fix'], type: 'error', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 280 },
-  { id: 45, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'API Not Working', url: 'https://www.postman.com/', description: 'Common causes: wrong endpoint, missing auth, or incorrect request format.', tags: ['Error', 'Fix'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 220 },
-  { id: 46, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Git Merge Conflict', url: 'https://git-scm.com/', description: 'Happens when two changes affect the same part of code.', tags: ['Error', 'Fix'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 190 },
-  { id: 47, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Docker Container Not Starting', url: 'https://www.docker.com/', description: 'Usually due to incorrect config, missing env vars, or port conflicts.', tags: ['Error', 'Fix'], type: 'error', difficulty: 'Advanced', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 160 },
-  { id: 48, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'npm Install Fail', url: 'https://www.npmjs.com/', description: 'Usually caused by corrupted cache, version conflicts, or missing permissions.', tags: ['Error', 'Fix'], type: 'error', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.1, votes: 140 },
+  { id: 41, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Most Common Beginner Mistake', url: 'https://developer.mozilla.org/', description: 'Not understanding basic concepts before jumping into frameworks.', tags: ['Issue'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 410 },
+  { id: 42, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Code Not Running', url: 'https://developer.mozilla.org/', description: 'Usually due to syntax errors, missing dependencies, or wrong file.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 380 },
+  { id: 43, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Fixing CORS Errors', url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS', description: 'Understanding and resolving Cross-Origin Resource Sharing errors.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: true, isNew: false, rating: 4.4, votes: 410 },
+  { id: 44, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'JavaScript Null vs Undefined', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null', description: 'Guide to understanding the difference between null and undefined.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 280 },
+  { id: 45, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'API Not Working', url: 'https://www.postman.com/', description: 'Common causes: wrong endpoint, missing auth, or incorrect request format.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 220 },
+  { id: 46, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Git Merge Conflict', url: 'https://git-scm.com/', description: 'Happens when two changes affect the same part of code.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 190 },
+  { id: 47, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'Docker Container Not Starting', url: 'https://www.docker.com/', description: 'Usually due to incorrect config, missing env vars, or port conflicts.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Advanced', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 160 },
+  { id: 48, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'npm Install Fail', url: 'https://www.npmjs.com/', description: 'Usually caused by corrupted cache, version conflicts, or missing permissions.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.1, votes: 140 },
 
   // ==================== UI/UX DESIGN ====================
   { id: 49, category: 'UI/UX Design', subcategory: 'Guides and Tutorials', title: 'Interaction Design', url: 'https://www.interaction-design.org/literature', description: 'In-depth UX articles and learning resources from industry experts.', tags: ['Free'], type: 'tutorial', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 420 },
@@ -134,8 +134,8 @@ export const resources: Resource[] = [
   { id: 64, category: 'UI/UX Design', subcategory: 'Plugins and Extensions', title: 'Unsplash Plugin', url: 'https://www.figma.com/community/plugin/738454987945972471/unsplash', description: 'Insert high-quality images into designs.', tags: ['Extension'], type: 'plugin', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 160 },
   { id: 65, category: 'UI/UX Design', subcategory: 'FAQs and Basics', title: 'UI vs UX', url: 'https://www.interaction-design.org/', description: 'UI focuses on visuals, while UX focuses on user experience.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 290 },
   { id: 66, category: 'UI/UX Design', subcategory: 'FAQs and Basics', title: 'What is a wireframe?', url: 'https://www.figma.com/', description: 'Basic layout showing structure without detailed design.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 220 },
-  { id: 67, category: 'UI/UX Design', subcategory: 'Common Mistakes/Issues', title: 'Inconsistent Design', url: 'https://www.figma.com/', description: 'Inconsistent spacing, colors, or typography choices.', tags: ['Error'], type: 'error', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 180 },
-  { id: 68, category: 'UI/UX Design', subcategory: 'Common Mistakes/Issues', title: 'Confusing UI for Users', url: 'https://www.nngroup.com/', description: 'Too many elements, unclear hierarchy, or poor navigation.', tags: ['Error'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 150 },
+  { id: 67, category: 'UI/UX Design', subcategory: 'Common Mistakes/Issues', title: 'Inconsistent Design', url: 'https://www.figma.com/', description: 'Inconsistent spacing, colors, or typography choices.', tags: ['Issue'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 180 },
+  { id: 68, category: 'UI/UX Design', subcategory: 'Common Mistakes/Issues', title: 'Confusing UI for Users', url: 'https://www.nngroup.com/', description: 'Too many elements, unclear hierarchy, or poor navigation.', tags: ['Issue'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 150 },
 
   // ==================== MARKETING ====================
   { id: 69, category: 'Marketing', subcategory: 'Guides and Tutorials', title: 'HubSpot Blog', url: 'https://blog.hubspot.com/marketing', description: 'Complete blog with guides on digital marketing strategies.', tags: ['Free'], type: 'tutorial', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 580 },
@@ -151,7 +151,7 @@ export const resources: Resource[] = [
   { id: 79, category: 'Marketing', subcategory: 'Tools and Softwares', title: 'SEMrush', url: 'https://www.semrush.com/', description: 'All-in-one toolkit for digital marketing and SEO.', tags: ['SEO', 'Paid'], type: 'tool', difficulty: 'Intermediate', isPremium: true, isTrending: true, isNew: false, rating: 4.7, votes: 620 },
   { id: 80, category: 'Marketing', subcategory: 'FAQs and Basics', title: 'What is Digital Marketing?', url: 'https://blog.hubspot.com/', description: 'Promoting products or services using online channels.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 280 },
   { id: 81, category: 'Marketing', subcategory: 'FAQs and Basics', title: 'What is SEO?', url: 'https://moz.com/', description: 'Optimizing content to rank higher in search engines.', tags: ['SEO'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 260 },
-  { id: 82, category: 'Marketing', subcategory: 'Common Mistakes/Issues', title: 'SEO Not Improving', url: 'https://moz.com/', description: 'Lack of keywords, poor content quality, or weak backlinks.', tags: ['Error'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 180 },
+  { id: 82, category: 'Marketing', subcategory: 'Common Mistakes/Issues', title: 'SEO Not Improving', url: 'https://moz.com/', description: 'Lack of keywords, poor content quality, or weak backlinks.', tags: ['Issue'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 180 },
 
   // ==================== PRODUCT AND PROJECT MANAGEMENT ====================
   { id: 83, category: 'Product and Project Management', subcategory: 'Guides and Tutorials', title: 'Atlassian Agile', url: 'https://www.atlassian.com/agile', description: 'Official guide to Agile methodology and workflows.', tags: ['Free'], type: 'tutorial', difficulty: 'Intermediate', isPremium: false, isTrending: true, isNew: false, rating: 4.7, votes: 680 },
@@ -167,7 +167,7 @@ export const resources: Resource[] = [
   { id: 93, category: 'Product and Project Management', subcategory: 'Tools and Softwares', title: 'ClickUp', url: 'https://app.clickup.com/', description: 'All-in-one tool for tasks, docs, and goals.', tags: ['All-in-One'], type: 'tool', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 420 },
   { id: 94, category: 'Product and Project Management', subcategory: 'FAQs and Basics', title: 'What is Agile?', url: 'https://www.atlassian.com/agile', description: 'Flexible project management approach focused on iteration.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 380 },
   { id: 95, category: 'Product and Project Management', subcategory: 'FAQs and Basics', title: 'What is Scrum?', url: 'https://www.scrum.org/', description: 'Framework using sprints and roles.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 320 },
-  { id: 96, category: 'Product and Project Management', subcategory: 'Common Mistakes/Issues', title: 'Scope Creep', url: 'https://www.projectmanager.com/', description: 'Project keeps expanding beyond original plan.', tags: ['Error'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 190 },
+  { id: 96, category: 'Product and Project Management', subcategory: 'Common Mistakes/Issues', title: 'Scope Creep', url: 'https://www.projectmanager.com/', description: 'Project keeps expanding beyond original plan.', tags: ['Issue'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 190 },
 
   // ==================== BUSINESS AND FINANCE ====================
   { id: 97, category: 'Business and Finance', subcategory: 'Guides and Tutorials', title: 'Investopedia', url: 'https://www.investopedia.com/', description: 'Clear explanations of finance and business concepts.', tags: ['Free'], type: 'tutorial', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.7, votes: 480 },
@@ -179,7 +179,7 @@ export const resources: Resource[] = [
   { id: 103, category: 'Business and Finance', subcategory: 'Tools and Softwares', title: 'PayPal', url: 'https://www.paypal.com/', description: 'Platform for sending and receiving money.', tags: ['Free'], type: 'tool', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 580 },
   { id: 104, category: 'Business and Finance', subcategory: 'Tools and Softwares', title: 'Wave', url: 'https://www.waveapps.com/', description: 'Free tools for invoicing and financial tracking.', tags: ['Free'], type: 'tool', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 420 },
   { id: 105, category: 'Business and Finance', subcategory: 'FAQs and Basics', title: 'Revenue vs Profit', url: 'https://www.investopedia.com/', description: 'Revenue is total income, profit is what remains after expenses.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 320 },
-  { id: 106, category: 'Business and Finance', subcategory: 'Common Mistakes/Issues', title: 'Startup Financial Failure', url: 'https://www.ycombinator.com/', description: 'Poor cash flow management or running out of funding.', tags: ['Error'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 180 },
+  { id: 106, category: 'Business and Finance', subcategory: 'Common Mistakes/Issues', title: 'Startup Financial Failure', url: 'https://www.ycombinator.com/', description: 'Poor cash flow management or running out of funding.', tags: ['Issue'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 180 },
 
   // ==================== SALES AND GROWTH ====================
   { id: 107, category: 'Sales and Growth', subcategory: 'Guides and Tutorials', title: 'HubSpot Sales', url: 'https://blog.hubspot.com/sales', description: 'Sales strategies and CRM guides.', tags: ['Free'], type: 'tutorial', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 480 },
@@ -194,7 +194,7 @@ export const resources: Resource[] = [
   { id: 116, category: 'Sales and Growth', subcategory: 'Tools and Softwares', title: 'Intercom', url: 'https://www.intercom.com/', description: 'Live chat with customers.', tags: ['Paid'], type: 'tool', difficulty: 'Intermediate', isPremium: true, isTrending: false, isNew: false, rating: 4.5, votes: 380 },
   { id: 117, category: 'Sales and Growth', subcategory: 'FAQs and Basics', title: 'What is a Sales Funnel?', url: 'https://blog.hubspot.com/', description: 'Journey from awareness to purchase.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 340 },
   { id: 118, category: 'Sales and Growth', subcategory: 'FAQs and Basics', title: 'What is CRM?', url: 'https://www.salesforce.com/', description: 'Systems tracking customer interactions.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 280 },
-  { id: 119, category: 'Sales and Growth', subcategory: 'Common Mistakes/Issues', title: 'Sales Strategy Failure', url: 'https://blog.hubspot.com/', description: 'Poor targeting or weak messaging.', tags: ['Error'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 160 },
+  { id: 119, category: 'Sales and Growth', subcategory: 'Common Mistakes/Issues', title: 'Sales Strategy Failure', url: 'https://blog.hubspot.com/', description: 'Poor targeting or weak messaging.', tags: ['Issue'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 160 },
 
   // ==================== EVENTS AND COMMUNITY ====================
   { id: 120, category: 'Events and Community', subcategory: 'Guides and Tutorials', title: 'Eventbrite Blog', url: 'https://www.eventbrite.com/blog/', description: 'Event planning and promotion strategies.', tags: ['Free'], type: 'tutorial', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 420 },
@@ -211,7 +211,7 @@ export const resources: Resource[] = [
   { id: 131, category: 'Events and Community', subcategory: 'Plugins and Extensions', title: 'StreamYard', url: 'https://streamyard.com/', description: 'Stream to multiple platforms.', tags: ['Extension'], type: 'plugin', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 280 },
   { id: 132, category: 'Events and Community', subcategory: 'FAQs and Basics', title: 'What is Event Management?', url: 'https://www.eventbrite.com/', description: 'Planning and organizing events.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.4, votes: 220 },
   { id: 133, category: 'Events and Community', subcategory: 'FAQs and Basics', title: 'What is Community Building?', url: 'https://www.meetup.com/', description: 'Creating engaged groups.', tags: ['Beginner'], type: 'faq', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 180 },
-  { id: 134, category: 'Events and Community', subcategory: 'Common Mistakes/Issues', title: 'Events Fail', url: 'https://www.eventbrite.com/', description: 'Poor planning or weak promotion.', tags: ['Error'], type: 'error', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 150 },
+  { id: 134, category: 'Events and Community', subcategory: 'Common Mistakes/Issues', title: 'Events Fail', url: 'https://www.eventbrite.com/', description: 'Poor planning or weak promotion.', tags: ['Issue'], type: 'issue', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.2, votes: 150 },
 
   // ==================== PAID RESOURCES - WEB AND APP BUILDING ====================
   { id: 135, category: 'Web and App Building', subcategory: 'Tools and Softwares', title: 'Webflow', url: 'https://www.webflow.com/', description: 'Visual website builder without code.', tags: ['Paid'], type: 'tool', difficulty: 'Beginner', isPremium: true, isTrending: true, isNew: false, rating: 4.7, votes: 520 },
@@ -288,7 +288,7 @@ export const typeLabels = {
   tutorial: 'Tutorial',
   tool: 'Tool',
   faq: 'FAQ',
-  error: 'Issue',
+  issue: 'Issue',
   video: 'Video',
   plugin: 'Plugin'
 }
@@ -297,7 +297,7 @@ export const typeColors = {
   tutorial: '#22D3EE',
   tool: '#34D399',
   faq: '#A855F7',
-  error: '#F87171',
+  issue: '#F87171',
   video: '#F59E0B',
   plugin: '#EC4899'
 }
@@ -345,7 +345,7 @@ export function filterResources(options: {
     const matchesTrending = !trending || resource.isTrending
     const matchesNew = !newResources || resource.isNew
     
-    // Handle content type filter (tutorial, tool, faq, error, video, plugin)
+    // Handle content type filter (tutorial, tool, faq, issue, video, plugin)
     const matchesTypeFilter = !filter || filter === 'all' || filter === undefined || resource.type === filter
     
     // Handle free/paid filter

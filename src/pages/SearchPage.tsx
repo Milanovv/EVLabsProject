@@ -12,7 +12,7 @@ export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('q') || ''
   const [searchQuery, setSearchQuery] = useState(query)
-  const [activeFilter, setActiveFilter] = useState('all') // all, free, paid, tutorial, tool, faq, error, video, plugin
+  const [activeFilter, setActiveFilter] = useState('all') // all, free, paid, tutorial, tool, faq, issue, video, plugin
   const [showPremium, setShowPremium] = useState(true)
   const { isPremium } = useUser()
 
@@ -54,7 +54,7 @@ export default function SearchPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search tutorials, tools, plugins, errors..."
+                placeholder="Search tutorials, tools, plugins, issues..."
                 className="w-full rounded-xl border border-border bg-background-secondary py-4 pl-12 pr-4 text-text-primary placeholder:text-text-muted focus:border-accent-indigo focus:outline-none focus:ring-2 focus:ring-accent-indigo/20"
               />
             </form>
@@ -64,7 +64,7 @@ export default function SearchPage() {
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {/* Type Filters */}
             <div className="flex flex-wrap gap-2">
-              {['all', 'tutorial', 'tool', 'faq', 'error', 'video', 'plugin'].map((filter) => (
+              {['all', 'tutorial', 'tool', 'faq', 'issue', 'video', 'plugin'].map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}

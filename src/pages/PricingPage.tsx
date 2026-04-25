@@ -21,7 +21,7 @@ export default function PricingPage() {
       ],
       notIncluded: [
         'Premium tools & tutorials',
-        'Rare error solutions',
+        'Rare issue solutions',
         'Downloadable roadmaps',
       ],
       cta: 'Get Started',
@@ -29,14 +29,14 @@ export default function PricingPage() {
     },
     {
       name: 'Premium',
-      price: isAnnual ? 29 : 3,
+      price: isAnnual ? 48  : 4.99,
       period: isAnnual ? '/year' : '/month',
       description: 'For serious learners',
       featured: true,
       features: [
         'Everything in Free',
         'Exclusive curated links',
-        'Rare error solutions',
+        'Rare issue solutions',
         'Premium toolkits',
         'Downloadable roadmaps',
         'Priority support',

@@ -154,7 +154,7 @@ export default function SubmitPage() {
                   <option value="tutorial">Tutorial</option>
                   <option value="tool">Tool</option>
                   <option value="faq">FAQ</option>
-                  <option value="error">Error Solution</option>
+                  <option value="issue">Issue Solution</option>
                 </select>
               </div>
               <div>
