@@ -1,0 +1,7 @@
+export { default as HomePage } from './HomePage'
+export { default as CategoryPage } from './CategoryPage'
+export { default as SearchPage } from './SearchPage'
+export { default as ResourcePage } from './ResourcePage'
+export { default as PricingPage } from './PricingPage'
+export { default as DashboardPage } from './DashboardPage'
+export { default as SubmitPage } from './SubmitPage'
