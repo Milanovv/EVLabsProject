@@ -6,7 +6,7 @@ import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import { filterResources } from '@/data/resources'
 import { useUser } from '@/contexts/UserContext'
-import { Search, Filter, Crown, Lock, Eye, EyeOff } from 'lucide-react'
+import { Search, Filter, Crown, Lock } from 'lucide-react'
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -77,30 +77,6 @@ export default function SearchPage() {
                   {filter === 'all' ? 'All' : filter.charAt(0).toUpperCase() + filter.slice(1)}
                 </button>
               ))}
-            </div>
-
-            {/* Premium Toggle */}
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-text-muted flex items-center gap-2">
-                {showPremium ? (
-                  <Eye className="h-4 w-4" />
-                ) : (
-                  <EyeOff className="h-4 w-4" />
-                )}
-                Premium
-              </span>
-              <button
-                onClick={() => setShowPremium(!showPremium)}
-                className={`relative h-6 w-11 rounded-full transition-colors ${
-                  showPremium ? 'bg-accent-gold' : 'bg-border'
-                }`}
-              >
-                <span
-                  className={`absolute top-1 h-4 w-4 rounded-full bg-white transition-transform ${
-                    showPremium ? 'translate-x-6' : 'translate-x-1'
-                  }`}
-                />
-              </button>
             </div>
           </div>
 
