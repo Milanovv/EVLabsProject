@@ -3,6 +3,7 @@ import { ArrowUpRight, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { Resource, getCategoryColor, typeLabels } from '@/data/resources'
+import { useUser } from '@/contexts/UserContext'
 
 interface ResourceCardProps {
   resource: Resource
@@ -11,7 +12,8 @@ interface ResourceCardProps {
 
 export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
   const categoryColor = getCategoryColor(resource.category)
-  // Always clickable - premium check only happens on detail page
+  const { isPremium: userIsPremium } = useUser()
+  const showBlur = resource.isPremium && !userIsPremium
   
   return (
     <motion.div
@@ -47,7 +49,10 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
         </div>
         
         {/* Title */}
-        <h3 className="mb-2 text-lg font-semibold text-text-primary transition-colors group-hover:text-accent-indigo">
+        <h3 className={cn(
+          "mb-2 text-lg font-semibold transition-colors group-hover:text-accent-indigo",
+          showBlur ? "blur-title" : "text-text-primary"
+        )}>
           {resource.title}
         </h3>
         
