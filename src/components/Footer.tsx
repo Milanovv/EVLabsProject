@@ -9,8 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <span className="text-2xl text-accent-indigo">◈</span>
-              <span className="text-lg font-bold text-text-primary">SkillPath</span>
+              <img src="/SkillPath.png" alt="SkillPath" className="h-8 w-auto" />
             </div>
             <p className="text-sm text-text-secondary">
               Your curated knowledge hub for professional growth.

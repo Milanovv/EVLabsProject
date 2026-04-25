@@ -1,4 +1,5 @@
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Search, ArrowRight, BookOpen, Terminal, Megaphone, Kanban, TrendingUp, Calendar, DollarSign } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
@@ -18,9 +19,18 @@ const categoryIcons: Record<string, React.ReactNode> = {
 }
 
 export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const navigate = useNavigate()
   const counts = calculateCategoryCounts()
   const trending = filterResources({ trending: true }).slice(0, 6)
   const recent = filterResources({ newResources: true }).slice(0, 6)
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+    }
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -54,14 +64,17 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative mx-auto max-w-xl"
           >
-            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-text-muted" />
-            <input
-              type="text"
-              placeholder="Search tutorials, tools, plugins, errors..."
-              className="w-full rounded-xl border border-border bg-background-secondary py-4 pl-12 pr-4 text-text-primary placeholder:text-text-muted focus:border-accent-indigo focus:outline-none focus:ring-2 focus:ring-accent-indigo/20"
-            />
+            <form onSubmit={handleSearch} className="relative mx-auto max-w-xl">
+              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-text-muted" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search tutorials, tools, plugins, errors..."
+                className="w-full rounded-xl border border-border bg-background-secondary py-4 pl-12 pr-4 text-text-primary placeholder:text-text-muted focus:border-accent-indigo focus:outline-none focus:ring-2 focus:ring-accent-indigo/20"
+              />
+            </form>
           </motion.div>
 
           {/* Stats */}
