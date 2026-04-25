@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvLabs Resources</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>EvLabs</h1>
+                <p>Resources</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Търси ресурс...">
+            </div>
+            <nav class="categories">
+                <button class="category-btn active" data-category="all">Всички</button>
+                <button class="category-btn" data-category="Programming/Development">Programming/Development</button>
+                <button class="category-btn" data-category="UI/UX Design">UI/UX Design</button>
+                <button class="category-btn" data-category="Marketing">Marketing</button>
+                <button class="category-btn" data-category="Product and Project Management">Product & Project Management</button>
+                <button class="category-btn" data-category="Business and Finance">Business and Finance</button>
+                <button class="category-btn" data-category="Sales and Growth">Sales and Growth</button>
+                <button class="category-btn" data-category="Events and Community">Events and Community</button>
+            </nav>
+        </aside>
+        
+        <main class="main-content">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Всички</button>
+                <button class="filter-btn" data-filter="guide">Tutorials/Guides</button>
+                <button class="filter-btn" data-filter="tool">Tools/Softwares</button>
+                <button class="filter-btn" data-filter="faq">FAQs/Basics</button>
+                <button class="filter-btn" data-filter="error">Common Issues</button>
+            </div>
+            
+            <div class="results-header">
+                <span id="resultsCount">64 ресурса</span>
+            </div>
+            
+            <div id="resourcesList" class="resources-list"></div>
+        </main>
+    </div>
+    
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
