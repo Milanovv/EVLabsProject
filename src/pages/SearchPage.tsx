@@ -4,9 +4,10 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
-import { filterResources } from '@/data/resources'
+import api from '@/services/api'
 import { useUser } from '@/contexts/UserContext'
-import { Search, Filter, Crown, Lock } from 'lucide-react'
+import { Search, Filter, Crown, Lock, Loader2 } from 'lucide-react'
+import type { Resource } from '@/data/resources'
 
 export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -14,17 +15,43 @@ export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState(query)
   const [activeFilter, setActiveFilter] = useState('all') // all, free, paid, tutorial, tool, faq, issue, video, plugin
   const [showPremium, setShowPremium] = useState(true)
+  const [resources, setResources] = useState<Resource[]>([])
+  const [loading, setLoading] = useState(true)
   const { isPremium } = useUser()
 
   useEffect(() => {
     setSearchQuery(query)
   }, [query])
 
-  // Pass activeFilter directly - handles 'free', 'paid', 'all', 'tutorial', etc.
-  const filtered = filterResources({ 
-    search: searchQuery,
-    filter: activeFilter,
-    includePremium: showPremium || isPremium
+  useEffect(() => {
+    async function fetchResources() {
+      setLoading(true)
+      try {
+        let data: Resource[]
+        if (searchQuery) {
+          data = await api.resources.search(searchQuery)
+        } else {
+          data = await api.resources.getAll()
+        }
+        setResources(data)
+      } catch (error) {
+        console.error('Failed to fetch resources:', error)
+        setResources([])
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchResources()
+  }, [searchQuery])
+
+  const filtered = resources.filter(r => {
+    if (activeFilter === 'all') return true
+    if (activeFilter === 'free') return !r.isPremium
+    if (activeFilter === 'paid') return r.isPremium
+    return r.type === activeFilter
+  }).filter(r => {
+    const showAllPremium = showPremium || isPremium
+    return showAllPremium || !r.isPremium
   })
 
   const handleSearch = (e: React.FormEvent) => {
@@ -113,7 +140,7 @@ export default function SearchPage() {
           {/* Results Count */}
           <div className="mb-4 flex items-center justify-between text-sm text-text-muted">
             <span>
-              <strong>{filtered.length}</strong> results found
+              <strong>{loading ? '...' : filtered.length}</strong> results found
             </span>
             {activeFilter === 'paid' && !isPremium && (
               <span className="flex items-center gap-2 text-accent-gold">
@@ -124,13 +151,19 @@ export default function SearchPage() {
           </div>
 
           {/* Results Grid */}
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((resource, index) => (
-              <ResourceCard key={resource.id} resource={resource} index={index} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center py-16">
+              <Loader2 className="h-8 w-8 animate-spin text-accent-indigo" />
+            </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {filtered.map((resource, index) => (
+                <ResourceCard key={resource.id} resource={resource} index={index} />
+              ))}
+            </div>
+          )}
 
-          {filtered.length === 0 && (
+          {!loading && filtered.length === 0 && (
             <div className="py-16 text-center">
               <div className="text-6xl mb-4">🔍</div>
               <h3 className="text-xl font-semibold text-text-primary mb-2">No results found</h3>

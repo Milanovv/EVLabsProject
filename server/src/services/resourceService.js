@@ -20,6 +20,10 @@ export async function getAllResources(filters = {}) {
     query += ' AND difficulty = ?';
     params.push(filters.difficulty);
   }
+  if (filters.exclude) {
+    query += ' AND id != ?';
+    params.push(filters.exclude);
+  }
 
   query += ' ORDER BY rating DESC, votes DESC';
 

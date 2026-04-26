@@ -1,23 +1,43 @@
 import { useSearchParams, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
-import { categories, filterResources, subcategories, getCategoryColor } from '@/data/resources'
-import { Search, Filter } from 'lucide-react'
+import api from '@/services/api'
+import { categories, subcategories, getCategoryColor } from '@/data/resources'
+import { Search, Filter, Loader2 } from 'lucide-react'
+import type { Resource } from '@/data/resources'
 
 export default function CategoryPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const categoryParam = searchParams.get('cat') || 'Programming/Development'
   const [activeSubcategory, setActiveSubcategory] = useState('all')
+  const [resources, setResources] = useState<Resource[]>([])
+  const [loading, setLoading] = useState(true)
 
   const category = categories.find(c => c.name === categoryParam) || categories[0]
   const categoryColor = getCategoryColor(category.name)
-  
-  const filtered = filterResources({ 
-    category: categoryParam,
-    subcategory: activeSubcategory === 'all' ? undefined : activeSubcategory 
+
+  useEffect(() => {
+    async function fetchCategoryResources() {
+      setLoading(true)
+      try {
+        const data = await api.resources.getAll({ category: categoryParam })
+        setResources(data)
+      } catch (error) {
+        console.error('Failed to fetch resources:', error)
+        setResources([])
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchCategoryResources()
+  }, [categoryParam])
+
+  const filtered = resources.filter(r => {
+    if (activeSubcategory === 'all') return true
+    return r.subcategory === activeSubcategory
   })
 
   return (
@@ -111,17 +131,23 @@ export default function CategoryPage() {
 
               {/* Results count */}
               <div className="mb-4 text-sm text-text-muted">
-                {filtered.length} resources
+                {loading ? '...' : filtered.length} resources
               </div>
 
               {/* Grid */}
-              <div className="grid gap-4 sm:grid-cols-2">
-                {filtered.map((resource, index) => (
-                  <ResourceCard key={resource.id} resource={resource} index={index} />
-                ))}
-              </div>
+              {loading ? (
+                <div className="flex justify-center py-16">
+                  <Loader2 className="h-8 w-8 animate-spin text-accent-indigo" />
+                </div>
+              ) : (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {filtered.map((resource, index) => (
+                    <ResourceCard key={resource.id} resource={resource} index={index} />
+                  ))}
+                </div>
+              )}
 
-              {filtered.length === 0 && (
+              {!loading && filtered.length === 0 && (
                 <div className="py-12 text-center text-text-muted">
                   No resources found in this subcategory.
                 </div>

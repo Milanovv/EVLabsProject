@@ -4,66 +4,120 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
-import { getResourceById, getRelatedResources, getCategoryColor, typeLabels, categories } from '@/data/resources'
 import { useUser } from '@/contexts/UserContext'
+import { getCategoryColor, typeLabels, categories } from '@/data/resources'
 import api from '@/services/api'
-import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle, Lock } from 'lucide-react'
+import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle, Lock, Loader2 } from 'lucide-react'
+import type { Resource } from '@/data/resources'
 
 export default function ResourcePage() {
   const [searchParams] = useSearchParams()
   const id = parseInt(searchParams.get('id') || '1')
-  const resource = getResourceById(id)
+  const [resource, setResource] = useState<Resource | null>(null)
+  const [related, setRelated] = useState<Resource[]>([])
+  const [loading, setLoading] = useState(true)
   const [saved, setSaved] = useState(false)
   const [voted, setVoted] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [notification, setNotification] = useState('')
+  const [error, setError] = useState('')
   const { isPremium: userIsPremium, user } = useUser()
+
+  // Fetch resource from API
+  useEffect(() => {
+    const fetchResource = async () => {
+      setLoading(true)
+      setError('')
+      try {
+        const data = await api.resources.getById(id)
+        setResource(data)
+        if (data) {
+          const relatedData = await api.resources.related(data.category, id)
+          setRelated(relatedData.slice(0, 4))
+        }
+      } catch (err: any) {
+        console.error('Error fetching resource:', err)
+        setResource(null)
+        setRelated([])
+        setError('Resource not found')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchResource()
+  }, [id])
 
   // Check if premium content should be locked
   const isLocked = resource?.isPremium && !userIsPremium
 
   // Load saved status
   useEffect(() => {
-    if (user) {
+    if (user && resource) {
       checkSavedStatus()
     }
-  }, [id, user])
+  }, [id, user, resource])
 
   const checkSavedStatus = async () => {
     try {
+      console.log('Checking save status for resource:', id)
       const savedResources = await api.resources.getSaved()
-      console.log('Saved resources:', savedResources)
-      // Handle case where response is an object (error) instead of array
-      if (savedResources && typeof savedResources === 'object' && !Array.isArray(savedResources)) {
+      console.log('Saved resources response:', savedResources)
+      
+      if (!savedResources || typeof savedResources !== 'object') {
+        console.log('Invalid response, setting saved to false')
         setSaved(false)
         return
       }
-      const resourcesArray = Array.isArray(savedResources) ? savedResources : []
-      const isSaved = resourcesArray.some((r: any) => r.id === id)
-      setSaved(isSaved)
+      
+      if (!Array.isArray(savedResources)) {
+        console.log('Response is not array:', savedResources)
+        setSaved(false)
+        return
+      }
+      
+      const isSaved = savedResources.some((r: any) => r.id === id)
       console.log('Is saved:', isSaved)
+      setSaved(isSaved)
     } catch (error: any) {
-      console.error('Error checking save status:', error?.message || error)
+      console.error('Error checking save status:', error?.message || error, error)
       setSaved(false)
     }
   }
 
   const handleSave = async () => {
     if (!user) {
+      setError('Please login to save resources')
       return
     }
     
     setSaving(true)
+    setError('')
+    setNotification('')
+    
     try {
-      console.log('handleSave called. id:', id, 'saved:', saved)
+      console.log('handleSave called. id:', id, 'saved:', saved, 'user:', user?.email)
+      
+      let result
       if (saved) {
-        await api.resources.unsave(id)
+        console.log('Calling unsave API with id:', id)
+        result = await api.resources.unsave(id)
         setSaved(false)
+        setNotification('Resource removed from saved')
       } else {
-        await api.resources.save(id)
+        console.log('Calling save API with id:', id)
+        result = await api.resources.save(id)
         setSaved(true)
+        setNotification('Resource saved!')
       }
+      
+      console.log('Save result:', result)
+      
+      // Clear notification after 3 seconds
+      setTimeout(() => setNotification(''), 3000)
     } catch (error: any) {
-      console.error('Error saving resource:', error?.message || error)
+      console.error('Error saving resource - full error:', error)
+      const errorMsg = error?.message || 'Failed to save resource'
+      setError(errorMsg)
     } finally {
       setSaving(false)
     }
@@ -74,13 +128,16 @@ export default function ResourcePage() {
     window.scrollTo(0, 0)
   }, [id])
 
-  if (!resource) {
+  if (!resource && !loading) {
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-text-primary mb-4">Resource not found</h2>
+            <p className="text-text-secondary mb-4">
+              This resource may not be available in the database yet.
+            </p>
             <Link to="/">
               <Button>Go Home</Button>
             </Link>
@@ -91,9 +148,21 @@ export default function ResourcePage() {
     )
   }
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-text-secondary">Loading...</div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
   const categoryColor = getCategoryColor(resource.category)
   const category = categories.find(c => c.name === resource.category)
-  const related = getRelatedResources(resource, 4)
+  const relatedResources = related
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -202,6 +271,13 @@ export default function ResourcePage() {
                   </Button>
                 </>
               )}
+              
+              {/* Notification/Error display */}
+              {(notification || error) && (
+                <div className={`w-full py-2 px-4 rounded-lg ${error ? 'bg-red-500/20 text-red-500' : 'bg-green-500/20 text-green-500'}`}>
+                  {error || notification}
+                </div>
+              )}
             </div>
           </div>
 
@@ -259,11 +335,11 @@ export default function ResourcePage() {
           </div>
 
           {/* Related */}
-          {related.length > 0 && (
+          {relatedResources.length > 0 && (
             <div>
               <h2 className="text-xl font-bold mb-4">Similar Resources</h2>
               <div className="grid gap-4 sm:grid-cols-2">
-                {related.map((res, index) => (
+                {relatedResources.map((res, index) => (
                   <ResourceCard key={res.id} resource={res} index={index} />
                 ))}
               </div>

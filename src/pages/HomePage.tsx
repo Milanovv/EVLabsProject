@@ -1,12 +1,14 @@
 import { Link, useSearchParams, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Search, ArrowRight, BookOpen, Terminal, Megaphone, Kanban, TrendingUp, Calendar, DollarSign } from 'lucide-react'
+import { Search, ArrowRight, BookOpen, Terminal, Megaphone, Kanban, TrendingUp, Calendar, DollarSign, Loader2 } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
-import { categories, filterResources, calculateCategoryCounts } from '@/data/resources'
+import api from '@/services/api'
+import { categories, calculateCategoryCounts } from '@/data/resources'
+import type { Resource } from '@/data/resources'
 
 const categoryIcons: Record<string, React.ReactNode> = {
   'Programming/Development': <Terminal className="h-6 w-6" />,
@@ -22,8 +24,27 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
   const counts = calculateCategoryCounts()
-  const trending = filterResources({ trending: true }).slice(0, 6)
-  const recent = filterResources({ newResources: true }).slice(0, 6)
+  const [trending, setTrending] = useState<Resource[]>([])
+  const [recent, setRecent] = useState<Resource[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchHomeData() {
+      try {
+        const [trendingData, recentData] = await Promise.all([
+          api.resources.trending(),
+          api.resources.new()
+        ])
+        setTrending(trendingData.slice(0, 6))
+        setRecent(recentData.slice(0, 6))
+      } catch (error) {
+        console.error('Failed to fetch home data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchHomeData()
+  }, [])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -152,11 +173,17 @@ export default function HomePage() {
             </Link>
           </div>
           
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {trending.map((resource, index) => (
-              <ResourceCard key={resource.id} resource={resource} index={index} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="h-8 w-8 animate-spin text-accent-indigo" />
+            </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {trending.map((resource, index) => (
+                <ResourceCard key={resource.id} resource={resource} index={index} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -170,11 +197,17 @@ export default function HomePage() {
             </Link>
           </div>
           
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {recent.map((resource, index) => (
-              <ResourceCard key={resource.id} resource={resource} index={index} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="h-8 w-8 animate-spin text-accent-indigo" />
+            </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {recent.map((resource, index) => (
+                <ResourceCard key={resource.id} resource={resource} index={index} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

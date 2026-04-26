@@ -107,8 +107,15 @@ export function Navbar() {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search..."
               className="h-9 w-48 rounded-full border border-border bg-background-secondary pl-9 pr-4 text-sm text-text-primary placeholder:text-text-muted focus:border-accent-indigo focus:outline-none lg:w-64"
-            />
-</form>
+/>
+          </form>
+          
+          <Link
+            to="/submit"
+            className="px-4 py-2 text-sm font-medium rounded-md transition-colors bg-accent-indigo text-white hover:bg-accent-indigo/90"
+          >
+            Submit Resource
+          </Link>
           
           {user ? (
             <div className="relative">
@@ -177,6 +184,7 @@ export function Navbar() {
             <Link to="/" className="px-3 py-2 text-sm font-medium">Home</Link>
             <Link to="/category" className="px-3 py-2 text-sm font-medium">Categories</Link>
             <Link to="/search" className="px-3 py-2 text-sm font-medium">Search</Link>
+            <Link to="/submit" className="px-3 py-2 text-sm font-medium text-accent-indigo">Submit Resource</Link>
             <Link to="/pricing" className="px-3 py-2 text-sm font-medium">Pricing</Link>
             {user ? (
               <div className="flex flex-col gap-2 pt-2">

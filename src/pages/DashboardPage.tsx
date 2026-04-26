@@ -1,16 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
-import { filterResources } from '@/data/resources'
-import { Bookmark, Clock, Settings, LogOut, Star, TrendingUp } from 'lucide-react'
+import api from '@/services/api'
+import { Bookmark, Clock, Settings, LogOut, Star, TrendingUp, Loader2 } from 'lucide-react'
+import type { Resource } from '@/data/resources'
 
 export default function DashboardPage() {
   const [saved] = useState<number[]>([])
+  const [recommended, setRecommended] = useState<Resource[]>([])
+  const [loading, setLoading] = useState(true)
   
-  const recommended = filterResources().slice(0, 4)
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await api.resources.getAll()
+        setRecommended(data.slice(0, 4))
+      } catch (error) {
+        console.error('Failed to fetch recommended:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
   const recent = [
     { id: 1, category: 'Programming/Development', title: 'MDN JavaScript Guide', time: '2 hours ago' },
     { id: 4, category: 'Programming/Development', title: 'VS Code', time: 'Yesterday' },
@@ -121,11 +136,17 @@ export default function DashboardPage() {
               {/* Recommended */}
               <div className="rounded-lg border border-border bg-gradient-to-b from-accent-indigo/10 to-transparent p-6">
                 <h3 className="font-semibold text-text-primary mb-4">Recommended for You</h3>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {recommended.map((resource, index) => (
-                    <ResourceCard key={resource.id} resource={resource} index={index} />
-                  ))}
-                </div>
+                {loading ? (
+                  <div className="flex justify-center py-8">
+                    <Loader2 className="h-6 w-6 animate-spin text-accent-indigo" />
+                  </div>
+                ) : (
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {recommended.map((resource, index) => (
+                      <ResourceCard key={resource.id} resource={resource} index={index} />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
