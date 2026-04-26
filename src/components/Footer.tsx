@@ -41,23 +41,15 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold text-text-primary">Company</h4>
             <nav className="flex flex-col gap-2">
-              <Link to="#" className="text-sm text-text-secondary hover:text-text-primary">About</Link>
-              <Link to="#" className="text-sm text-text-secondary hover:text-text-primary">Contact</Link>
-              <Link to="#" className="text-sm text-text-secondary hover:text-text-primary">Privacy Policy</Link>
-              <Link to="#" className="text-sm text-text-secondary hover:text-text-primary">Terms of Service</Link>
+              <Link to="/privacy" className="text-sm text-text-secondary hover:text-text-primary">Privacy Policy</Link>
+              <Link to="/terms" className="text-sm text-text-secondary hover:text-text-primary">Terms of Service</Link>
             </nav>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
-          <p className="text-sm text-text-muted">© 2024 SkillPath. All rights reserved.</p>
+          <p className="text-sm text-text-muted">© 2026 SkillPath. All rights reserved.</p>
           <div className="flex gap-4">
-            <Link to="#" className="text-text-muted hover:text-text-primary">
-              <Twitter className="h-5 w-5" />
-            </Link>
-            <Link to="#" className="text-text-muted hover:text-text-primary">
-              <Github className="h-5 w-5" />
-            </Link>
           </div>
         </div>
       </div>
