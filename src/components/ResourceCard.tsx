@@ -87,7 +87,7 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
         </div>
         
         {/* Badges */}
-        <div className="absolute right-3 top-3 flex flex-wrap gap-1 z-10">
+        <div className="absolute right-3 bottom-12 flex flex-wrap gap-1 z-10">
           {resource.isTrending && (
             <span className="rounded bg-accent-pink/20 px-1.5 py-0.5 text-[10px] font-semibold text-accent-pink">
               Trending
