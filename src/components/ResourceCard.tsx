@@ -62,11 +62,11 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
         </p>
         
         {/* Tags */}
-        <div className="mb-3 flex flex-wrap gap-1.5">
+        <div className="mb-3 flex min-h-[24px] flex-wrap items-center gap-1.5 overflow-hidden">
           {resource.tags.slice(0, 3).map((tag) => (
             <span 
               key={tag}
-              className="rounded-full bg-background-elevated px-2 py-0.5 text-xs text-text-secondary"
+              className="max-w-[120px] truncate rounded-full bg-background-elevated px-2 py-0.5 text-xs text-text-secondary"
             >
               {tag}
             </span>
