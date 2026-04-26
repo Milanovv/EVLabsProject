@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Search, ChevronDown, Menu, X, User, LogOut } from 'lucide-react'
+import { Search, ChevronDown, Menu, X, User, LogOut, Bookmark } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { categories } from '@/data/resources'
 import { useUser } from '@/contexts/UserContext'
@@ -123,7 +123,14 @@ export function Navbar() {
                 )}
               </button>
               {showUserMenu && (
-                <div className="absolute right-0 top-full mt-2 w-40 rounded-lg border border-border bg-background-tertiary py-2 shadow-xl">
+                <div className="absolute right-0 top-full mt-2 w-40 rounded-lg border border-border bg-background-tertiary py-2 shadow-xl z-50">
+                  <Link
+                    to="/saved"
+                    className="flex items-center gap-2 px-4 py-2 text-sm text-text-secondary hover:bg-background-elevated hover:text-text-primary"
+                  >
+                    <Bookmark className="h-4 w-4" />
+                    Saved
+                  </Link>
                   <button
                     onClick={() => {
                       logout()
@@ -180,6 +187,13 @@ export function Navbar() {
                     <span className="px-1.5 py-0.5 text-xs font-medium bg-accent-gold text-background rounded">Admin</span>
                   )}
                 </div>
+                <Link
+                  to="/saved"
+                  className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary bg-background-secondary rounded-md"
+                >
+                  <Bookmark className="h-4 w-4" />
+                  Saved
+                </Link>
                 <button
                   onClick={() => {
                     logout()

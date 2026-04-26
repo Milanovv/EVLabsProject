@@ -66,6 +66,18 @@ export async function initDatabase() {
     )
   `);
 
+  await connection.query(`
+    CREATE TABLE IF NOT EXISTS user_saved_resources (
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      user_id INT NOT NULL,
+      resource_id INT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (resource_id) REFERENCES resources(id) ON DELETE CASCADE,
+      UNIQUE KEY unique_save (user_id, resource_id)
+    )
+  `);
+
   await connection.end();
   console.log('Database initialized successfully');
 }

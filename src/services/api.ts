@@ -69,6 +69,22 @@ export const resources = {
   async new() {
     return request('/resources/new');
   },
+
+  async save(id) {
+    return request(`/resources/${id}/save`, {
+      method: 'POST',
+    });
+  },
+
+  async unsave(id) {
+    return request(`/resources/${id}/save`, {
+      method: 'DELETE',
+    });
+  },
+
+  async getSaved() {
+    return request('/resources/saved');
+  },
 };
 
 export default { auth, resources };

@@ -6,6 +6,7 @@ import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import { getResourceById, getRelatedResources, getCategoryColor, typeLabels, categories } from '@/data/resources'
 import { useUser } from '@/contexts/UserContext'
+import api from '@/services/api'
 import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle, Lock } from 'lucide-react'
 
 export default function ResourcePage() {
@@ -14,10 +15,59 @@ export default function ResourcePage() {
   const resource = getResourceById(id)
   const [saved, setSaved] = useState(false)
   const [voted, setVoted] = useState(false)
-  const { isPremium: userIsPremium } = useUser()
+  const [saving, setSaving] = useState(false)
+  const { isPremium: userIsPremium, user } = useUser()
 
   // Check if premium content should be locked
   const isLocked = resource?.isPremium && !userIsPremium
+
+  // Load saved status
+  useEffect(() => {
+    if (user) {
+      checkSavedStatus()
+    }
+  }, [id, user])
+
+  const checkSavedStatus = async () => {
+    try {
+      const savedResources = await api.resources.getSaved()
+      console.log('Saved resources:', savedResources)
+      // Handle case where response is an object (error) instead of array
+      if (savedResources && typeof savedResources === 'object' && !Array.isArray(savedResources)) {
+        setSaved(false)
+        return
+      }
+      const resourcesArray = Array.isArray(savedResources) ? savedResources : []
+      const isSaved = resourcesArray.some((r: any) => r.id === id)
+      setSaved(isSaved)
+      console.log('Is saved:', isSaved)
+    } catch (error: any) {
+      console.error('Error checking save status:', error?.message || error)
+      setSaved(false)
+    }
+  }
+
+  const handleSave = async () => {
+    if (!user) {
+      return
+    }
+    
+    setSaving(true)
+    try {
+      console.log('handleSave called. id:', id, 'saved:', saved)
+      if (saved) {
+        await api.resources.unsave(id)
+        setSaved(false)
+      } else {
+        await api.resources.save(id)
+        setSaved(true)
+      }
+    } catch (error: any) {
+      console.error('Error saving resource:', error?.message || error)
+    } finally {
+      setSaving(false)
+    }
+  }
 
   // Scroll to top when the resource ID changes
   useEffect(() => {
@@ -132,10 +182,20 @@ export default function ResourcePage() {
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </Button>
-                  <Button variant="secondary" size="lg" onClick={() => setSaved(!saved)}>
-                    <Bookmark className={`h-4 w-4 ${saved ? 'fill-current' : ''}`} />
-                    {saved ? 'Saved' : 'Save'}
-                  </Button>
+                  {user && (
+                    <Button variant="secondary" size="lg" onClick={handleSave} disabled={saving}>
+                      <Bookmark className={`h-4 w-4 ${saved ? 'fill-current' : ''}`} />
+                      {saving ? 'Saving...' : saved ? 'Saved' : 'Save'}
+                    </Button>
+                  )}
+                  {!user && (
+                    <Link to="/login">
+                      <Button variant="secondary" size="lg">
+                        <Bookmark className="h-4 w-4" />
+                        Save
+                      </Button>
+                    </Link>
+                  )}
                   <Button variant="ghost" size="lg">
                     <Share2 className="h-4 w-4" />
                     Share
