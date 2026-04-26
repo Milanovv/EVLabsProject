@@ -7,6 +7,8 @@ import PricingPage from '@/pages/PricingPage'
 import DashboardPage from '@/pages/DashboardPage'
 import SubmitPage from '@/pages/SubmitPage'
 import UpgradePage from '@/pages/UpgradePage'
+import LoginPage from '@/pages/LoginPage'
+import SignupPage from '@/pages/SignupPage'
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/submit" element={<SubmitPage />} />
       <Route path="/upgrade" element={<UpgradePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </Routes>
   )
 }

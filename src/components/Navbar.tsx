@@ -1,16 +1,19 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Search, ChevronDown, Menu, X } from 'lucide-react'
+import { Search, ChevronDown, Menu, X, User, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { categories } from '@/data/resources'
+import { useUser } from '@/contexts/UserContext'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [showCategories, setShowCategories] = useState(false)
+  const [showUserMenu, setShowUserMenu] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const location = useLocation()
   const navigate = useNavigate()
+  const { user, isPremium, logout } = useUser()
 
   const isActive = (path: string) => location.pathname === path
 
@@ -105,10 +108,41 @@ export function Navbar() {
               placeholder="Search..."
               className="h-9 w-48 rounded-full border border-border bg-background-secondary pl-9 pr-4 text-sm text-text-primary placeholder:text-text-muted focus:border-accent-indigo focus:outline-none lg:w-64"
             />
-          </form>
+</form>
           
-          <Button variant="ghost" size="sm">Login</Button>
-          <Button size="sm">Sign Up</Button>
+          {user ? (
+            <div className="relative">
+              <button
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-text-secondary hover:text-text-primary bg-background-secondary rounded-md"
+              >
+                <User className="h-4 w-4" />
+                {user.name}
+                {isPremium && (
+                  <span className="px-1.5 py-0.5 text-xs font-medium bg-accent-gold text-background rounded">Admin</span>
+                )}
+              </button>
+              {showUserMenu && (
+                <div className="absolute right-0 top-full mt-2 w-40 rounded-lg border border-border bg-background-tertiary py-2 shadow-xl">
+                  <button
+                    onClick={() => {
+                      logout()
+                      navigate('/')
+                    }}
+                    className="flex w-full items-center gap-2 px-4 py-2 text-sm text-text-secondary hover:bg-background-elevated hover:text-text-primary"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <Link to="/login" className="px-3 py-1.5 text-sm font-medium text-text-secondary hover:text-text-primary">Login</Link>
+              <Link to="/signup" className="px-3 py-1.5 text-sm font-medium bg-accent-indigo text-white rounded-md hover:bg-accent-indigo/90">Sign Up</Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -137,10 +171,32 @@ export function Navbar() {
             <Link to="/category" className="px-3 py-2 text-sm font-medium">Categories</Link>
             <Link to="/search" className="px-3 py-2 text-sm font-medium">Search</Link>
             <Link to="/pricing" className="px-3 py-2 text-sm font-medium">Pricing</Link>
-            <div className="flex gap-2 pt-2">
-              <Button variant="ghost" size="sm" className="flex-1">Login</Button>
-              <Button size="sm" className="flex-1">Sign Up</Button>
-            </div>
+            {user ? (
+              <div className="flex flex-col gap-2 pt-2">
+                <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium bg-background-secondary rounded-md">
+                  <User className="h-4 w-4" />
+                  {user.name}
+                  {isPremium && (
+                    <span className="px-1.5 py-0.5 text-xs font-medium bg-accent-gold text-background rounded">Admin</span>
+                  )}
+                </div>
+                <button
+                  onClick={() => {
+                    logout()
+                    navigate('/')
+                  }}
+                  className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary bg-background-secondary rounded-md"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex gap-2 pt-2">
+                <Link to="/login" className="flex-1 px-3 py-2 text-sm font-medium text-center text-text-secondary hover:text-text-primary bg-background-secondary rounded-md">Login</Link>
+                <Link to="/signup" className="flex-1 px-3 py-2 text-sm font-medium text-center text-white bg-accent-indigo rounded-md hover:bg-accent-indigo/90">Sign Up</Link>
+              </div>
+            )}
           </div>
         </div>
       )}
