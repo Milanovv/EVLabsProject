@@ -1,11 +1,11 @@
 import { useSearchParams, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import api from '@/services/api'
-import { categories, subcategories, getCategoryColor } from '@/data/resources'
+import { categories, getCategoryColor } from '@/data/resources'
 import { Search, Filter, Loader2 } from 'lucide-react'
 import type { Resource } from '@/data/resources'
 
@@ -13,11 +13,21 @@ export default function CategoryPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const categoryParam = searchParams.get('cat') || 'Programming/Development'
   const [activeSubcategory, setActiveSubcategory] = useState('all')
+  const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'premium'>('all')
   const [resources, setResources] = useState<Resource[]>([])
   const [loading, setLoading] = useState(true)
 
   const category = categories.find(c => c.name === categoryParam) || categories[0]
   const categoryColor = getCategoryColor(category.name)
+
+  const dynamicSubcategories = useMemo(() => {
+    const subs = new Set(resources.map(r => r.subcategory))
+    return ['all', ...Array.from(subs)]
+  }, [resources])
+
+  useEffect(() => {
+    setActiveSubcategory('all')
+  }, [categoryParam])
 
   useEffect(() => {
     async function fetchCategoryResources() {
@@ -36,8 +46,10 @@ export default function CategoryPage() {
   }, [categoryParam])
 
   const filtered = resources.filter(r => {
-    if (activeSubcategory === 'all') return true
-    return r.subcategory === activeSubcategory
+    if (activeSubcategory !== 'all' && r.subcategory !== activeSubcategory) return false
+    if (activeFilter === 'free' && r.isPremium) return false
+    if (activeFilter === 'premium' && !r.isPremium) return false
+    return true
   })
 
   return (
@@ -77,17 +89,17 @@ export default function CategoryPage() {
                 <div>
                   <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">Subcategories</h3>
                   <div className="space-y-1">
-                    {subcategories.map((sub) => (
+                    {dynamicSubcategories.map((sub) => (
                       <button
                         key={sub}
                         onClick={() => setActiveSubcategory(sub)}
                         className={`w-full px-3 py-2 text-left text-sm rounded-md transition-colors ${
-                          activeSubcategory === sub || (activeSubcategory === 'all' && sub === 'all')
+                          activeSubcategory === sub
                             ? 'bg-accent-indigo/20 text-accent-indigo'
                             : 'text-text-secondary hover:bg-background-tertiary hover:text-text-primary'
                         }`}
                       >
-                        {sub}
+                        {sub === 'all' ? 'All' : sub}
                       </button>
                     ))}
                   </div>
@@ -96,13 +108,18 @@ export default function CategoryPage() {
                 {/* Filters */}
                 <div>
                   <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">Filters</h3>
-                  <div className="space-y-2">
-                    {['All', 'Free', 'Premium'].map((filter) => (
+                  <div className="space-y-1">
+                    {(['all', 'free', 'premium'] as const).map((filter) => (
                       <button
                         key={filter}
-                        className="w-full px-3 py-2 text-sm text-left rounded-md text-text-secondary hover:bg-background-tertiary hover:text-text-primary"
+                        onClick={() => setActiveFilter(filter)}
+                        className={`w-full px-3 py-2 text-left text-sm rounded-md transition-colors ${
+                          activeFilter === filter
+                            ? 'bg-accent-indigo/20 text-accent-indigo'
+                            : 'text-text-secondary hover:bg-background-tertiary hover:text-text-primary'
+                        }`}
                       >
-                        {filter}
+                        {filter === 'all' ? 'All' : filter === 'free' ? 'Free' : 'Premium'}
                       </button>
                     ))}
                   </div>
@@ -114,17 +131,17 @@ export default function CategoryPage() {
             <div className="lg:col-span-3">
               {/* Tabs */}
               <div className="mb-6 flex gap-2 border-b border-border overflow-x-auto">
-                {subcategories.map((sub) => (
+                {dynamicSubcategories.map((sub) => (
                   <button
                     key={sub}
                     onClick={() => setActiveSubcategory(sub)}
-                    className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
+                    className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${
                       activeSubcategory === sub
                         ? 'border-accent-indigo text-accent-indigo'
                         : 'border-transparent text-text-secondary hover:text-text-primary'
                     }`}
                   >
-                    {sub}
+                    {sub === 'all' ? 'All' : sub}
                   </button>
                 ))}
               </div>
