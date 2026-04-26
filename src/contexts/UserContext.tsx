@@ -16,6 +16,7 @@ interface UserContextType {
   register: (email: string, password: string, name: string) => Promise<boolean>
   logout: () => void
   upgrade: () => Promise<boolean>
+  cancelPremium: () => Promise<boolean>
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined)
@@ -89,8 +90,24 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  const cancelPremium = async (): Promise<boolean> => {
+    console.log('CancelPremium called');
+    try {
+      const result = await api.auth.cancel()
+      console.log('CancelPremium result:', result);
+      setIsPremium(false)
+      if (user) {
+        setUser({ ...user, isPremium: false })
+      }
+      return true
+    } catch (error) {
+      console.error('CancelPremium error:', error);
+      return false
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ user, isPremium, isLoading, login, register, logout, upgrade }}>
+    <UserContext.Provider value={{ user, isPremium, isLoading, login, register, logout, upgrade, cancelPremium }}>
       {children}
     </UserContext.Provider>
   )

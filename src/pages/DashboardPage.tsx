@@ -6,15 +6,17 @@ import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import api from '@/services/api'
 import { useUser } from '@/contexts/UserContext'
-import { Bookmark, Clock, Settings, LogOut, Star, TrendingUp, Loader2 } from 'lucide-react'
+import { Bookmark, Clock, Settings, LogOut, Star, TrendingUp, Loader2, AlertCircle } from 'lucide-react'
 import type { Resource } from '@/data/resources'
 
 export default function DashboardPage() {
   const navigate = useNavigate()
-  const { user, isPremium, logout } = useUser()
+  const { user, isPremium, logout, cancelPremium } = useUser()
   const [savedResources, setSavedResources] = useState<Resource[]>([])
   const [recommended, setRecommended] = useState<Resource[]>([])
   const [loading, setLoading] = useState(true)
+  const [showCancelModal, setShowCancelModal] = useState(false)
+  const [cancelling, setCancelling] = useState(false)
   
   useEffect(() => {
     async function fetchData() {
@@ -88,8 +90,71 @@ fetchData()
                   <h3 className="font-semibold text-text-primary">{isPremium ? 'Premium Plan' : 'Free Plan'}</h3>
                   <p className="text-sm text-text-secondary">{isPremium ? 'Full access to all resources and features' : 'Access to basic resources and community support'}</p>
                 </div>
-                <span className="rounded-full bg-background-elevated px-3 py-1 text-sm font-medium text-text-muted">{isPremium ? 'Premium' : 'Free'}</span>
+                <div className="flex items-center gap-3">
+                  <span className="rounded-full bg-background-elevated px-3 py-1 text-sm font-medium text-text-muted">{isPremium ? 'Premium' : 'Free'}</span>
+                  {isPremium && (
+                    <button
+                      onClick={() => setShowCancelModal(true)}
+                      className="text-sm text-red-500 hover:text-red-400"
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
               </div>
+
+              {/* Cancel Confirmation Modal */}
+              {showCancelModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/60" onClick={() => setShowCancelModal(false)} />
+                  <div className="relative z-10 mx-4 w-full max-w-md rounded-xl border border-border bg-background-tertiary p-6 shadow-xl">
+                    <div className="text-center">
+                      <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-500/20">
+                        <AlertCircle className="h-6 w-6 text-red-500" />
+                      </div>
+                      <h3 className="text-xl font-bold text-text-primary">Cancel Subscription?</h3>
+                      <p className="mt-2 text-sm text-text-secondary">
+                        You will lose access to premium features. Are you sure?
+                      </p>
+                    </div>
+                    
+                    <div className="mt-6 flex flex-col gap-3">
+<Button
+        className="w-full bg-red-500 text-white hover:bg-red-600"
+        disabled={cancelling}
+        onClick={async () => {
+          setCancelling(true)
+          try {
+            await cancelPremium()
+            // Force component refresh
+            setLoading(true)
+            const [saved, allResources] = await Promise.all([
+              user ? api.resources.getSaved() : Promise.resolve([]),
+              api.resources.getAll()
+            ])
+            setSavedResources(saved)
+            setRecommended(allResources.slice(0, 4))
+            setShowCancelModal(false)
+          } catch (error) {
+            console.error('Failed to cancel:', error)
+          } finally {
+            setLoading(false)
+          }
+        }}
+      >
+                        {cancelling ? 'Cancelling...' : 'Yes, Cancel Subscription'}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        onClick={() => setShowCancelModal(false)}
+                      >
+                        No, Keep Premium
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Saved Resources */}
               <div className="rounded-lg border border-border bg-background-tertiary/50 p-6">

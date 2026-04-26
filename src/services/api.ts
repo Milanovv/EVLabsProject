@@ -53,6 +53,14 @@ export const auth = {
       method: 'POST',
     });
   },
+
+  async cancel() {
+    const token = localStorage.getItem('token');
+    console.log('CANCEL: token present:', !!token);
+    return request('/auth/cancel', {
+      method: 'POST',
+    });
+  },
 };
 
 export const resources = {

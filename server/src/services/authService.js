@@ -65,3 +65,11 @@ export async function upgradeToPremium(userId) {
   );
   return result.affectedRows > 0;
 }
+
+export async function cancelPremium(userId) {
+  const [result] = await pool.query(
+    'UPDATE users SET is_premium = FALSE WHERE id = ?',
+    [userId]
+  );
+  return result.affectedRows > 0;
+}

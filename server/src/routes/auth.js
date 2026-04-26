@@ -52,4 +52,17 @@ router.post('/premium', authenticateToken, async (req, res) => {
   }
 });
 
+router.post('/cancel', authenticateToken, async (req, res) => {
+  try {
+    const success = await authService.cancelPremium(req.user.id);
+    if (success) {
+      res.json({ message: 'Cancelled premium', isPremium: false });
+    } else {
+      res.status(400).json({ error: 'Cancel failed' });
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 export default router;

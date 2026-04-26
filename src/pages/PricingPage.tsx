@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
-import { Check, X } from 'lucide-react'
+import { Check, X, Star, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import api from '@/services/api'
+import { useUser } from '@/contexts/UserContext'
 
 export default function PricingPage() {
   const [isAnnual, setIsAnnual] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [upgrading, setUpgrading] = useState(false)
+  const { upgrade } = useUser()
 
   const plans = [
     {
@@ -29,7 +34,7 @@ export default function PricingPage() {
     },
     {
       name: 'Premium',
-      price: isAnnual ? 48  : 4.99,
+      price: isAnnual ? 47.99  : 4.99,
       period: isAnnual ? '/year' : '/month',
       description: 'For serious learners',
       featured: true,
@@ -146,17 +151,27 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
-                <Button
-                  variant={plan.variant}
-                  className="w-full"
-                  asChild={plan.name !== 'Support Us'}
-                >
-                  {plan.name === 'Support Us' ? (
-                    <span>{plan.cta}</span>
-                  ) : (
-                    <Link to={plan.price === 0 ? '/' : '/dashboard'}>{plan.cta}</Link>
-                  )}
-                </Button>
+                {plan.name === 'Premium' ? (
+                  <Button
+                    variant={plan.variant}
+                    className="w-full"
+                    onClick={() => setShowModal(true)}
+                  >
+                    {plan.cta}
+                  </Button>
+                ) : (
+                  <Button
+                    variant={plan.variant}
+                    className="w-full"
+                    asChild={plan.name !== 'Support Us'}
+                  >
+                    {plan.name === 'Support Us' ? (
+                      <span>{plan.cta}</span>
+                    ) : (
+                      <Link to={plan.price === 0 ? '/' : '/dashboard'}>{plan.cta}</Link>
+                    )}
+                  </Button>
+                )}
               </div>
             ))}
           </div>
@@ -192,6 +207,51 @@ export default function PricingPage() {
           </div>
         </div>
       </main>
+
+      {/* Premium Confirmation Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setShowModal(false)} />
+          <div className="relative z-10 mx-4 w-full max-w-md rounded-xl border border-border bg-background-tertiary p-6 shadow-xl">
+            <div className="text-center">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent-gold/20">
+                <Star className="h-6 w-6 text-accent-gold" />
+              </div>
+              <h3 className="text-xl font-bold text-text-primary">Get Premium?</h3>
+              <p className="mt-2 text-sm text-text-secondary">
+                Unlock exclusive curated links, rare issue solutions, premium toolkits, and priority support.
+              </p>
+            </div>
+            
+            <div className="mt-6 flex flex-col gap-3">
+              <Button
+                className="w-full bg-accent-gold text-background hover:bg-accent-gold/90"
+                disabled={upgrading}
+                onClick={async () => {
+                  setUpgrading(true)
+                  try {
+                    await upgrade()
+                    setShowModal(false)
+                  } catch (error) {
+                    console.error('Failed to upgrade:', error)
+                  } finally {
+                    setUpgrading(false)
+                  }
+                }}
+              >
+                {upgrading ? 'Upgrading...' : 'Buy Premium Subscription'}
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => setShowModal(false)}
+              >
+                Go Back
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
