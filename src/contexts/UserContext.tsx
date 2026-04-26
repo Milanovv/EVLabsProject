@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import api from '../services/api'
 
 interface User {
   id: number
@@ -10,17 +11,11 @@ interface User {
 interface UserContextType {
   user: User | null
   isPremium: boolean
+  isLoading: boolean
   login: (email: string, password: string) => Promise<boolean>
+  register: (email: string, password: string, name: string) => Promise<boolean>
   logout: () => void
-  upgrade: () => void
-  togglePremium: () => void // For testing purposes
-}
-
-const defaultUser: User = {
-  id: 1,
-  email: 'demo@skillpath.com',
-  name: 'Demo User',
-  isPremium: false
+  upgrade: () => Promise<boolean>
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined)
@@ -28,52 +23,74 @@ const UserContext = createContext<UserContextType | undefined>(undefined)
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [isPremium, setIsPremium] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const storedPremium = localStorage.getItem('isPremium')
-    if (storedPremium === 'true') {
-      setIsPremium(true)
-      setUser({ ...defaultUser, isPremium: true })
-    }
+    checkAuth()
   }, [])
 
-  const login = async (email: string, password: string): Promise<boolean> => {
-    // Mock login - accept any credentials
-    if (email && password) {
-      setUser({ ...defaultUser, email })
-      return true
+  const checkAuth = async () => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      setIsLoading(false)
+      return
     }
-    return false
+
+    try {
+      const userData = await api.auth.me()
+      setUser(userData)
+      setIsPremium(userData.isPremium)
+    } catch {
+      localStorage.removeItem('token')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const login = async (email: string, password: string): Promise<boolean> => {
+    try {
+      const data = await api.auth.login(email, password)
+      localStorage.setItem('token', data.token)
+      setUser({ id: data.id, email: data.email, name: data.name, isPremium: data.isPremium })
+      setIsPremium(data.isPremium)
+      return true
+    } catch {
+      return false
+    }
+  }
+
+  const register = async (email: string, password: string, name: string): Promise<boolean> => {
+    try {
+      const data = await api.auth.register(email, password, name)
+      localStorage.setItem('token', data.token)
+      setUser({ id: data.id, email: data.email, name: data.name, isPremium: false })
+      return true
+    } catch {
+      return false
+    }
   }
 
   const logout = () => {
+    localStorage.removeItem('token')
     setUser(null)
     setIsPremium(false)
-    localStorage.removeItem('isPremium')
   }
 
-  const upgrade = () => {
-    setIsPremium(true)
-    localStorage.setItem('isPremium', 'true')
-    if (user) {
-      setUser({ ...user, isPremium: true })
-    }
-  }
-
-  const togglePremium = () => {
-    if (isPremium) {
-      setIsPremium(false)
-      localStorage.setItem('isPremium', 'false')
+  const upgrade = async (): Promise<boolean> => {
+    try {
+      await api.auth.upgrade()
+      setIsPremium(true)
       if (user) {
-        setUser({ ...user, isPremium: false })
+        setUser({ ...user, isPremium: true })
       }
-    } else {
-      upgrade()
+      return true
+    } catch {
+      return false
     }
   }
 
   return (
-    <UserContext.Provider value={{ user, isPremium, login, logout, upgrade, togglePremium }}>
+    <UserContext.Provider value={{ user, isPremium, isLoading, login, register, logout, upgrade }}>
       {children}
     </UserContext.Provider>
   )
