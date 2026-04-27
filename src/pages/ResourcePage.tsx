@@ -237,7 +237,7 @@ export default function ResourcePage() {
                     <Lock className="h-4 w-4 mr-2" />
                     Premium Content
                   </Button>
-                  <Link to="/upgrade">
+                  <Link to="/pricing">
                     <Button size="lg" className="bg-accent-gold hover:bg-accent-gold/90">
                       Upgrade to Access
                     </Button>

@@ -10,6 +10,7 @@ export function Footer() {
           <div>
             <div className="mb-4 flex items-center gap-2">
               <img src="/SkillPath.png" alt="SkillPath" className="h-8 w-auto" />
+              <span className="text-lg font-bold text-text-primary">SkillPath</span>
             </div>
             <p className="text-sm text-text-secondary">
               Your curated knowledge hub for professional growth.

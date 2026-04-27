@@ -128,7 +128,7 @@ export default function SearchPage() {
             
             {!isPremium && (
               <Link
-                to="/upgrade"
+                to="/pricing"
                 className="flex items-center gap-2 px-4 py-2 text-sm rounded-full border border-accent-gold/50 bg-accent-gold/10 text-accent-gold hover:bg-accent-gold/20 transition-colors"
               >
                 <Lock className="h-4 w-4" />

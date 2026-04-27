@@ -54,7 +54,7 @@ fetchData()
               <p className="text-text-secondary">Here's your learning dashboard</p>
             </div>
             {!isPremium && (
-              <Link to="/upgrade">
+              <Link to="/pricing">
                 <Button>Upgrade to Premium</Button>
               </Link>
             )}

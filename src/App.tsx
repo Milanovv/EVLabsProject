@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from '@/pages/HomePage'
 import CategoryPage from '@/pages/CategoryPage'
 import SearchPage from '@/pages/SearchPage'
@@ -6,7 +6,6 @@ import ResourcePage from '@/pages/ResourcePage'
 import PricingPage from '@/pages/PricingPage'
 import DashboardPage from '@/pages/DashboardPage'
 import SubmitPage from '@/pages/SubmitPage'
-import UpgradePage from '@/pages/UpgradePage'
 import LoginPage from '@/pages/LoginPage'
 import SignupPage from '@/pages/SignupPage'
 import TermsPage from '@/pages/TermsPage'
@@ -23,7 +22,7 @@ export default function App() {
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/submit" element={<SubmitPage />} />
-      <Route path="/upgrade" element={<UpgradePage />} />
+      <Route path="*" element={<Navigate to="/pricing" replace />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/terms" element={<TermsPage />} />

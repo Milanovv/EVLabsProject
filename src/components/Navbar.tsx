@@ -30,6 +30,7 @@ export function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img src="/SkillPath.png" alt="SkillPath" className="h-8 w-auto" />
+          <span className="text-lg font-bold text-text-primary">SkillPath</span>
         </Link>
 
         {/* Desktop Nav */}
