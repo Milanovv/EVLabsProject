@@ -18,6 +18,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   'Business and Finance': <DollarSign className="h-6 w-6" />,
   'Sales and Growth': <TrendingUp className="h-6 w-6" />,
   'Events and Community': <Calendar className="h-6 w-6" />,
+  'Unsafe Sites': <TrendingUp className="h-6 w-6" />,
 }
 
 export default function HomePage() {
@@ -110,7 +111,7 @@ export default function HomePage() {
               <div className="text-sm text-text-muted">Resources</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-accent-indigo">7</div>
+              <div className="text-2xl font-bold text-accent-indigo">16</div>
               <div className="text-sm text-text-muted">Categories</div>
             </div>
             <div className="text-center">
@@ -136,7 +137,7 @@ export default function HomePage() {
               >
                 <Link
                   to={`/category?cat=${encodeURIComponent(category.name)}`}
-                  className="group relative block rounded-lg border border-border bg-background-tertiary/50 p-6 transition-all hover:border-transparent hover:shadow-lg"
+                  className="group relative flex flex-col rounded-lg border border-border bg-background-tertiary/50 p-6 transition-all hover:border-transparent hover:shadow-lg h-full"
                   style={{
                     '--accent': category.color,
                   } as React.CSSProperties}
@@ -150,7 +151,7 @@ export default function HomePage() {
                   <h3 className="mb-2 text-lg font-semibold text-text-primary group-hover:text-accent-indigo">
                     {category.name}
                   </h3>
-                  <p className="mb-2 text-sm text-text-secondary line-clamp-2">
+                  <p className="flex-1 mb-2 text-sm text-text-secondary line-clamp-2">
                     {category.description}
                   </p>
                   <span className="text-sm text-text-muted">
