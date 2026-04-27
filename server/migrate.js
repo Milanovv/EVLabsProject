@@ -24,6 +24,7 @@ const categories = [
   { name: 'API and Backend', slug: 'api-backend', icon: '⚙️', color: '#14B8A6', description: 'Backend services and API tools' },
   { name: 'Knowledge and Learning', slug: 'knowledge-learning', icon: '📚', color: '#6366F1', description: 'Learning platforms and education' },
   { name: 'Security and Privacy', slug: 'security-privacy', icon: '🔒', color: '#10B981', description: 'Security tools and privacy awareness' },
+  { name: 'Unsafe Sites', slug: 'unsafe-sites', icon: '⚠️', color: '#EF4444', description: 'Resources about unsafe websites, scams, and phishing' },
 ];
 
 const resources = [
@@ -306,6 +307,18 @@ const resources = [
   ['Security and Privacy', 'Tools and Softwares', 'EFF Tools', 'https://www.eff.org/pages/tools', 'Privacy tools collection.', '["Free"]', 'tool', 'Beginner', 0, 0, 0, 4.6, 280],
   ['Security and Privacy', 'Tools and Softwares', 'GRC DNS Testing', 'https://www.grc.com/dns/dns.htm', 'DNS security testing.', '["Free"]', 'tool', 'Advanced', 0, 0, 0, 4.5, 220],
   ['Security and Privacy', 'Tools and Softwares', 'Firefox Privacy', 'https://www.mozilla.org/en-US/firefox/privacy/products/', 'Privacy-focused browser.', '["Free"]', 'tool', 'Beginner', 0, 0, 0, 4.6, 260],
+
+  // Unsafe Sites - FAQs and Basics
+  ['Unsafe Sites', 'FAQs and Basics', 'FMHY Unsafe Sites List', 'https://fmhy.net/unsafesites', 'A community-maintained reference list highlighting websites and sources commonly flagged as risky, malicious, or unsafe to help users avoid security threats.', '["Security","Community","Free"]', 'faq', 'Beginner', 0, 1, 1, 4.7, 320],
+  ['Unsafe Sites', 'FAQs and Basics', 'Unsafe Sites Megathread', 'https://rentry.co/megathread-unsafe-sites', 'A compiled megathread of reported unsafe or high-risk websites used as a cautionary reference for identifying potentially dangerous online sources.', '["Security","Scam","Free"]', 'faq', 'Beginner', 0, 1, 1, 4.6, 280],
+  ['Unsafe Sites', 'FAQs and Basics', 'How to Report Unsafe Sites', 'https://www.google.com/safetycenter/', 'Step-by-step guide on reporting unsafe websites to Google and other authorities.', '["Guide","Security"]', 'faq', 'Beginner', 0, 0, 0, 4.6, 220],
+
+  // Unsafe Sites - Tools and Softwares
+  ['Unsafe Sites', 'Tools and Softwares', 'Google Safe Browsing', 'https://safebrowsing.google.com/', 'Check if a website is safe before visiting. Google maintains a list of unsafe sites.', '["Security","Free"]', 'tool', 'Beginner', 0, 1, 0, 4.8, 420],
+
+  // Unsafe Sites - Common Mistakes/Issues
+  ['Unsafe Sites', 'Common Mistakes/Issues', 'Phishing Alert Signs', 'https://www.phishing.org/', 'Learn to identify common signs of phishing websites that steal your personal information.', '["Security","Phishing"]', 'issue', 'Beginner', 0, 0, 0, 4.5, 180],
+  ['Unsafe Sites', 'Common Mistakes/Issues', 'Scam Detector', 'https://scam-detector.com/', 'Database of known scams and fraudulent websites to help you avoid them.', '["Scam","Security"]', 'issue', 'Beginner', 0, 0, 0, 4.3, 95],
 ];
 
 async function migrate() {
