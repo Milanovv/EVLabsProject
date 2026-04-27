@@ -1,7 +1,7 @@
 import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Search, ArrowRight, BookOpen, Terminal, Megaphone, Kanban, TrendingUp, Calendar, DollarSign, Loader2 } from 'lucide-react'
+import { Search, ArrowRight, BookOpen, Terminal, Megaphone, Kanban, TrendingUp, Calendar, DollarSign, Loader2, Globe, Palette, Video, Bot, BarChart, Server, GraduationCap, Shield, AlertTriangle } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
@@ -18,7 +18,15 @@ const categoryIcons: Record<string, React.ReactNode> = {
   'Business and Finance': <DollarSign className="h-6 w-6" />,
   'Sales and Growth': <TrendingUp className="h-6 w-6" />,
   'Events and Community': <Calendar className="h-6 w-6" />,
-  'Unsafe Sites': <TrendingUp className="h-6 w-6" />,
+  'Unsafe Sites': <AlertTriangle className="h-6 w-6" />,
+  'Web and App Building': <Globe className="h-6 w-6" />,
+  'UI Assets and Creative': <Palette className="h-6 w-6" />,
+  'Content Creation': <Video className="h-6 w-6" />,
+  'AI and Automation': <Bot className="h-6 w-6" />,
+  'Business Growth': <BarChart className="h-6 w-6" />,
+  'API and Backend': <Server className="h-6 w-6" />,
+  'Knowledge and Learning': <GraduationCap className="h-6 w-6" />,
+  'Security and Privacy': <Shield className="h-6 w-6" />,
 }
 
 export default function HomePage() {
@@ -222,7 +230,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link to="/pricing">
-                <Button size="lg">Get Started Free</Button>
+                <Button size="lg">Get Started</Button>
               </Link>
               <Link to="/submit">
                 <Button variant="outline" size="lg">Submit a Resource</Button>
