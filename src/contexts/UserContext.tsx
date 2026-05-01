@@ -91,10 +91,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
   }
 
   const cancelPremium = async (): Promise<boolean> => {
-    console.log('CancelPremium called');
     try {
       const result = await api.auth.cancel()
-      console.log('CancelPremium result:', result);
       setIsPremium(false)
       if (user) {
         setUser({ ...user, isPremium: false })

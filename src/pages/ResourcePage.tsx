@@ -59,24 +59,19 @@ export default function ResourcePage() {
 
   const checkSavedStatus = async () => {
     try {
-      console.log('Checking save status for resource:', id)
       const savedResources = await api.resources.getSaved()
-      console.log('Saved resources response:', savedResources)
       
       if (!savedResources || typeof savedResources !== 'object') {
-        console.log('Invalid response, setting saved to false')
         setSaved(false)
         return
       }
       
       if (!Array.isArray(savedResources)) {
-        console.log('Response is not array:', savedResources)
         setSaved(false)
         return
       }
       
       const isSaved = savedResources.some((r: any) => r.id === id)
-      console.log('Is saved:', isSaved)
       setSaved(isSaved)
     } catch (error: any) {
       console.error('Error checking save status:', error?.message || error, error)
@@ -95,27 +90,21 @@ export default function ResourcePage() {
     setNotification('')
     
     try {
-      console.log('handleSave called. id:', id, 'saved:', saved, 'user:', user?.email)
-      
       let result
       if (saved) {
-        console.log('Calling unsave API with id:', id)
         result = await api.resources.unsave(id)
         setSaved(false)
         setNotification('Resource removed from saved')
       } else {
-        console.log('Calling save API with id:', id)
         result = await api.resources.save(id)
         setSaved(true)
         setNotification('Resource saved!')
       }
       
-      console.log('Save result:', result)
-      
       // Clear notification after 3 seconds
       setTimeout(() => setNotification(''), 3000)
     } catch (error: any) {
-      console.error('Error saving resource - full error:', error)
+      console.error('Error saving resource:', error?.message || error)
       const errorMsg = error?.message || 'Failed to save resource'
       setError(errorMsg)
     } finally {

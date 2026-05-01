@@ -3,8 +3,6 @@ const API_BASE = '/api';
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem('token');
   
-  console.log('API Request:', endpoint, { token: token ? 'present' : 'missing' });
-  
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -16,16 +14,12 @@ async function request(endpoint, options = {}) {
 
   const response = await fetch(`${API_BASE}${endpoint}`, config);
   
-  console.log('API Response:', response.status, response.statusText);
-  
   if (!response.ok) {
     const error = await response.json().catch(() => ({ error: 'Request failed' }));
-    console.log('API Error:', error);
     throw new Error(error.error || `Request failed: ${response.status}`);
   }
 
   const data = await response.json();
-  console.log('API Data:', data);
   return data;
 }
 
@@ -55,8 +49,6 @@ export const auth = {
   },
 
   async cancel() {
-    const token = localStorage.getItem('token');
-    console.log('CANCEL: token present:', !!token);
     return request('/auth/cancel', {
       method: 'POST',
     });
