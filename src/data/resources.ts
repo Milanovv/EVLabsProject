@@ -116,7 +116,7 @@ export const resources: Resource[] = [
   { id: 83, category: 'Programming/Development', subcategory: 'Common Mistakes/Issues', title: 'npm Install Fail', url: 'https://www.npmjs.com/', description: 'Usually caused by corrupted cache, version conflicts, or missing permissions.', tags: ['Error', 'Fix'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.1, votes: 140 },
   { id: 84, category: 'UI/UX Design', subcategory: 'Guides and Tutorials', title: 'Interaction Design', url: 'https://www.interaction-design.org/literature', description: 'In-depth UX articles and learning resources from industry experts.', tags: ['Free'], type: 'tutorial', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 420 },
   { id: 85, category: 'UI/UX Design', subcategory: 'Guides and Tutorials', title: 'NN Group', url: 'https://www.nngroup.com/articles/', description: 'Research-based UX design principles.', tags: ['Free'], type: 'tutorial', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.7, votes: 380 },
-  { id: 87, category: 'UI/UX Design', subcategory: 'Guides and Tutorials', title: 'Google Material Design', url: 'https://m3.material.io/', description: 'Google's design system with guidelines and components.', tags: ['Free'], type: 'tutorial', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.7, votes: 680 },
+  { id: 87, category: 'UI/UX Design', subcategory: 'Guides and Tutorials', title: 'Google Material Design', url: 'https://m3.material.io/', description: 'Google\'s design system with guidelines and components.', tags: ['Free'], type: 'tutorial', difficulty: 'Intermediate', isPremium: false, isTrending: false, isNew: false, rating: 4.7, votes: 680 },
   { id: 88, category: 'UI/UX Design', subcategory: 'Video Tutorials', title: 'Figma Crash Course', url: 'https://www.youtube.com/watch?v=FTFaQWZBqQ8', description: 'Complete Figma UI/UX design crash course for beginners.', tags: ['Video'], type: 'video', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.7, votes: 290 },
   { id: 89, category: 'UI/UX Design', subcategory: 'Video Tutorials', title: 'UI Design Principles', url: 'https://www.youtube.com/watch?v=JKx8k2rX5Jw', description: 'UI design principles explained with real interface examples.', tags: ['Video'], type: 'video', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.6, votes: 250 },
   { id: 90, category: 'UI/UX Design', subcategory: 'Video Tutorials', title: 'UX Basics', url: 'https://www.youtube.com/watch?v=c9Wg6Cb_YlU', description: 'UX basics: how users think and how to design for them.', tags: ['Video'], type: 'video', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 220 },
@@ -250,3 +250,25 @@ export const resources: Resource[] = [
   { id: 416, category: 'Unsafe Sites', subcategory: 'Common Mistakes/Issues', title: 'Phishing Alert Signs', url: 'https://www.phishing.org/', description: 'Learn to identify common signs of phishing websites that steal your personal information.', tags: ['Security', 'Phishing'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.5, votes: 180 },
   { id: 417, category: 'Unsafe Sites', subcategory: 'Common Mistakes/Issues', title: 'Scam Detector', url: 'https://scam-detector.com/', description: 'Database of known scams and fraudulent websites to help you avoid them.', tags: ['Scam', 'Security'], type: 'issue', difficulty: 'Beginner', isPremium: false, isTrending: false, isNew: false, rating: 4.3, votes: 95 }
 ]
+
+export const typeLabels: Record<ResourceType, string> = {
+  tutorial: 'Tutorial',
+  tool: 'Tool',
+  faq: 'FAQ',
+  issue: 'Issue',
+  video: 'Video',
+  plugin: 'Plugin'
+}
+
+export function getCategoryColor(categoryName: string): string {
+  const category = categories.find(c => c.name === categoryName)
+  return category?.color || '#6B7280'
+}
+
+export function calculateCategoryCounts(): Record<string, number> {
+  const counts: Record<string, number> = {}
+  resources.forEach(r => {
+    counts[r.category] = (counts[r.category] || 0) + 1
+  })
+  return counts
+}
