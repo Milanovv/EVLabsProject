@@ -1,0 +1,3550 @@
+[
+  {
+    "id": 1,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "MDN Web Docs",
+    "url": "https://developer.mozilla.org/",
+    "description": "Complete reference and learning platform for web technologies like HTML, CSS, and JavaScript.",
+    "tags": [
+      "Beginner",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.9,
+    "votes": 1250
+  },
+  {
+    "id": 3,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "Roadmap.sh",
+    "url": "https://roadmap.sh/",
+    "description": "Visual guide showing what to learn step-by-step for different developer roles.",
+    "tags": [
+      "Beginner",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 980
+  },
+  {
+    "id": 4,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "Stack Overflow",
+    "url": "https://stackoverflow.com/",
+    "description": "Q&A platform where developers solve real-world coding problems.",
+    "tags": [
+      "All"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.9,
+    "votes": 1500
+  },
+  {
+    "id": 5,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "React Official Tutorial",
+    "url": "https://react.dev/learn",
+    "description": "Official React documentation with interactive examples and step-by-step tutorial.",
+    "tags": [
+      "Intermediate"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 980
+  },
+  {
+    "id": 8,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "Docker",
+    "url": "https://www.docker.com/",
+    "description": "Run apps in isolated containers for consistency.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Advanced",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 890
+  },
+  {
+    "id": 9,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "Postman",
+    "url": "https://www.postman.com/",
+    "description": "Test and debug API requests and responses.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 780
+  },
+  {
+    "id": 11,
+    "category": "UI/UX Design",
+    "subcategory": "Tools and Softwares",
+    "title": "Figma",
+    "url": "https://www.figma.com/",
+    "description": "Collaborative design tool for interfaces, prototypes, and design systems.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.9,
+    "votes": 1500
+  },
+  {
+    "id": 12,
+    "category": "UI/UX Design",
+    "subcategory": "Guides and Tutorials",
+    "title": "Figma Learn",
+    "url": "https://www.figma.com/resources/learn-design/",
+    "description": "Official Figma tutorials for UI/UX design and prototyping.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 920
+  },
+  {
+    "id": 13,
+    "category": "Marketing",
+    "subcategory": "Tools and Softwares",
+    "title": "Google Analytics",
+    "url": "https://analytics.google.com/",
+    "description": "Tracks and analyzes website traffic and user behavior.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 720
+  },
+  {
+    "id": 14,
+    "category": "Marketing",
+    "subcategory": "Tools and Softwares",
+    "title": "Ahrefs",
+    "url": "https://ahrefs.com/",
+    "description": "Keyword research, backlinks, and SEO analysis.",
+    "tags": [
+      "SEO",
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 620
+  },
+  {
+    "id": 16,
+    "category": "Product and Project Management",
+    "subcategory": "Tools and Softwares",
+    "title": "Notion",
+    "url": "https://www.notion.so/",
+    "description": "Combines notes, tasks, and databases.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 1100
+  },
+  {
+    "id": 17,
+    "category": "Business and Finance",
+    "subcategory": "Tools and Softwares",
+    "title": "Stripe",
+    "url": "https://stripe.com/",
+    "description": "Handles online payments and subscriptions.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 860
+  },
+  {
+    "id": 18,
+    "category": "Sales and Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Salesforce",
+    "url": "https://www.salesforce.com/",
+    "description": "Manages customer relationships and pipelines.",
+    "tags": [
+      "Paid",
+      "Essential"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 920
+  },
+  {
+    "id": 22,
+    "category": "AI and Automation",
+    "subcategory": "Tools and Softwares",
+    "title": "ChatGPT",
+    "url": "https://chat.openai.com/",
+    "description": "AI assistant for writing and coding.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 820
+  },
+  {
+    "id": 23,
+    "category": "AI and Automation",
+    "subcategory": "Tools and Softwares",
+    "title": "Perplexity",
+    "url": "https://www.perplexity.ai/",
+    "description": "AI-powered search engine.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 480
+  },
+  {
+    "id": 24,
+    "category": "Web and App Building",
+    "subcategory": "Tools and Softwares",
+    "title": "Webflow",
+    "url": "https://www.webflow.com/",
+    "description": "Visual website builder without code.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 520
+  },
+  {
+    "id": 27,
+    "category": "API and Backend",
+    "subcategory": "Tools and Softwares",
+    "title": "Vercel",
+    "url": "https://vercel.com/",
+    "description": "Hosting for frontend.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 460
+  },
+  {
+    "id": 29,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "freeCodeCamp",
+    "url": "https://www.freecodecamp.org/learn/",
+    "description": "Hands-on programming platform.",
+    "tags": [
+      "Beginner",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.9,
+    "votes": 1200
+  },
+  {
+    "id": 30,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "Visual Studio Code",
+    "url": "https://code.visualstudio.com/",
+    "description": "Lightweight code editor.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.9,
+    "votes": 2100
+  },
+  {
+    "id": 39,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "W3Schools",
+    "url": "https://www.w3schools.com/",
+    "description": "Beginner-friendly site with simple explanations and interactive coding examples.",
+    "tags": [
+      "Beginner",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 850
+  },
+  {
+    "id": 40,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "GeeksforGeeks",
+    "url": "https://www.geeksforgeeks.org/",
+    "description": "Large library of programming tutorials and problem explanations.",
+    "tags": [
+      "Intermediate",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 720
+  },
+  {
+    "id": 41,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "Learn Microsoft",
+    "url": "https://learn.microsoft.com/",
+    "description": "Official documentation and tutorials for Microsoft technologies like .NET and Azure.",
+    "tags": [
+      "Intermediate",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 650
+  },
+  {
+    "id": 42,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "Codecademy",
+    "url": "https://www.codecademy.com/",
+    "description": "Interactive platform for learning programming through guided exercises.",
+    "tags": [
+      "Beginner",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 600
+  },
+  {
+    "id": 43,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "The Odin Project",
+    "url": "https://www.theodinproject.com/",
+    "description": "Full curriculum for becoming a web developer through project-based learning.",
+    "tags": [
+      "Beginner",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 580
+  },
+  {
+    "id": 44,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "JavaTpoint",
+    "url": "https://www.javatpoint.com/",
+    "description": "Wide collection of tutorials for multiple programming languages.",
+    "tags": [
+      "Beginner",
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 520
+  },
+  {
+    "id": 47,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "TypeScript Handbook",
+    "url": "https://www.typescriptlang.org/docs/",
+    "description": "Official TypeScript documentation covering types, interfaces, and advanced patterns.",
+    "tags": [
+      "Intermediate"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": true,
+    "rating": 4.7,
+    "votes": 720
+  },
+  {
+    "id": 48,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "Node.js Complete Guide",
+    "url": "https://nodejs.org/en/docs/guides/",
+    "description": "Official Node.js documentation and guides for backend development.",
+    "tags": [
+      "Backend"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 650
+  },
+  {
+    "id": 49,
+    "category": "Programming/Development",
+    "subcategory": "Guides and Tutorials",
+    "title": "Rust Programming Book",
+    "url": "https://doc.rust-lang.org/book/",
+    "description": "The official book on learning Rust programming.",
+    "tags": [
+      "Systems",
+      "Advanced"
+    ],
+    "type": "tutorial",
+    "difficulty": "Advanced",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": true,
+    "rating": 4.8,
+    "votes": 440
+  },
+  {
+    "id": 50,
+    "category": "Programming/Development",
+    "subcategory": "Video Tutorials",
+    "title": "Programming Basics Crash Course",
+    "url": "https://www.youtube.com/watch?v=Z1Yd7upQsXY",
+    "description": "Full crash course explaining programming fundamentals and how code actually works.",
+    "tags": [
+      "Video",
+      "Beginner"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 320
+  },
+  {
+    "id": 51,
+    "category": "Programming/Development",
+    "subcategory": "Video Tutorials",
+    "title": "Python Beginner Tutorial",
+    "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+    "description": "Beginner Python tutorial covering variables, loops, functions, and real examples.",
+    "tags": [
+      "Video",
+      "Python"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 450
+  },
+  {
+    "id": 52,
+    "category": "Programming/Development",
+    "subcategory": "Video Tutorials",
+    "title": "Web Development Basics",
+    "url": "https://www.youtube.com/watch?v=8L2kFv4Zs4E",
+    "description": "Complete web development basics (HTML, CSS, JavaScript explained clearly).",
+    "tags": [
+      "Video",
+      "Web"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 380
+  },
+  {
+    "id": 53,
+    "category": "Programming/Development",
+    "subcategory": "Video Tutorials",
+    "title": "Git and GitHub for Beginners",
+    "url": "https://www.youtube.com/watch?v=3JluqTojuME",
+    "description": "Git and GitHub explained for beginners with real-world workflows.",
+    "tags": [
+      "Video",
+      "Git"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 290
+  },
+  {
+    "id": 54,
+    "category": "Programming/Development",
+    "subcategory": "Video Tutorials",
+    "title": "Docker Explained",
+    "url": "https://www.youtube.com/watch?v=3c-iBn73dDE",
+    "description": "Docker explained simply: containers, images, and real usage examples.",
+    "tags": [
+      "Video",
+      "Docker"
+    ],
+    "type": "video",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 260
+  },
+  {
+    "id": 55,
+    "category": "Programming/Development",
+    "subcategory": "Video Tutorials",
+    "title": "API Basics Tutorial",
+    "url": "https://www.youtube.com/watch?v=8L2kFv4Zs4E",
+    "description": "API basics explained using real examples and Postman.",
+    "tags": [
+      "Video",
+      "API"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 220
+  },
+  {
+    "id": 57,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "Visual Studio",
+    "url": "https://visualstudio.microsoft.com/",
+    "description": "Full IDE for C# and .NET development.",
+    "tags": [
+      "IDE",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 850
+  },
+  {
+    "id": 58,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "IntelliJ IDEA",
+    "url": "https://www.jetbrains.com/idea/",
+    "description": "Powerful IDE for Java development.",
+    "tags": [
+      "IDE",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 720
+  },
+  {
+    "id": 59,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "PyCharm",
+    "url": "https://www.jetbrains.com/pycharm/",
+    "description": "Python-focused development tool.",
+    "tags": [
+      "Python",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 680
+  },
+  {
+    "id": 60,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "GitHub",
+    "url": "https://github.com/",
+    "description": "Store and collaborate on code with millions of developers.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.9,
+    "votes": 1850
+  },
+  {
+    "id": 63,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "MySQL Workbench",
+    "url": "https://dev.mysql.com/downloads/workbench/",
+    "description": "Visual tool for MySQL database design and management.",
+    "tags": [
+      "Database",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 450
+  },
+  {
+    "id": 64,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "DBeaver",
+    "url": "https://dbeaver.io/download/",
+    "description": "Free multi-platform database SQL client.",
+    "tags": [
+      "Database",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 520
+  },
+  {
+    "id": 65,
+    "category": "Programming/Development",
+    "subcategory": "Tools and Softwares",
+    "title": "Cursor AI",
+    "url": "https://cursor.sh/",
+    "description": "AI-first code editor built for pair programming with AI.",
+    "tags": [
+      "AI",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": true,
+    "rating": 4.7,
+    "votes": 680
+  },
+  {
+    "id": 66,
+    "category": "Programming/Development",
+    "subcategory": "Plugins and Extensions",
+    "title": "Live Server",
+    "url": "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer",
+    "description": "Launches a local development server with live reload.",
+    "tags": [
+      "Extension",
+      "VS Code"
+    ],
+    "type": "plugin",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 620
+  },
+  {
+    "id": 67,
+    "category": "Programming/Development",
+    "subcategory": "Plugins and Extensions",
+    "title": "Prettier",
+    "url": "https://prettier.io/",
+    "description": "Automatically formats your code on save to keep it consistent.",
+    "tags": [
+      "Extension",
+      "VS Code"
+    ],
+    "type": "plugin",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.9,
+    "votes": 580
+  },
+  {
+    "id": 68,
+    "category": "Programming/Development",
+    "subcategory": "Plugins and Extensions",
+    "title": "ESLint",
+    "url": "https://eslint.org/",
+    "description": "Highlights code issues directly in your editor.",
+    "tags": [
+      "Extension",
+      "VS Code"
+    ],
+    "type": "plugin",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 450
+  },
+  {
+    "id": 69,
+    "category": "Programming/Development",
+    "subcategory": "Plugins and Extensions",
+    "title": "GitLens",
+    "url": "https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens",
+    "description": "Enhances Git capabilities inside VS Code with detailed history.",
+    "tags": [
+      "Extension",
+      "Git"
+    ],
+    "type": "plugin",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 420
+  },
+  {
+    "id": 70,
+    "category": "Programming/Development",
+    "subcategory": "Plugins and Extensions",
+    "title": "Path Intellisense",
+    "url": "http://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense",
+    "description": "Auto-completes file paths while coding.",
+    "tags": [
+      "Extension",
+      "VS Code"
+    ],
+    "type": "plugin",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 340
+  },
+  {
+    "id": 71,
+    "category": "Programming/Development",
+    "subcategory": "FAQs and Basics",
+    "title": "What is programming?",
+    "url": "https://developer.mozilla.org/",
+    "description": "Programming is writing instructions that tell a computer how to perform tasks.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 340
+  },
+  {
+    "id": 72,
+    "category": "Programming/Development",
+    "subcategory": "FAQs and Basics",
+    "title": "Frontend vs Backend",
+    "url": "https://developer.mozilla.org/",
+    "description": "Frontend handles what users see, while backend manages logic, servers, and databases.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 520
+  },
+  {
+    "id": 73,
+    "category": "Programming/Development",
+    "subcategory": "FAQs and Basics",
+    "title": "What is an API?",
+    "url": "https://www.redhat.com/en/topics/api/what-is-a-rest-api",
+    "description": "An API allows different software systems to communicate and exchange data.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 340
+  },
+  {
+    "id": 74,
+    "category": "Programming/Development",
+    "subcategory": "FAQs and Basics",
+    "title": "What is Git?",
+    "url": "https://rogerdudler.github.io/git-guide/",
+    "description": "Git tracks code changes and allows multiple developers to collaborate.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 520
+  },
+  {
+    "id": 75,
+    "category": "Programming/Development",
+    "subcategory": "FAQs and Basics",
+    "title": "What is a framework?",
+    "url": "https://developer.mozilla.org/",
+    "description": "A framework is a pre-built structure that speeds up application development.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 280
+  },
+  {
+    "id": 76,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Most Common Beginner Mistake",
+    "url": "https://developer.mozilla.org/",
+    "description": "Not understanding basic concepts before jumping into frameworks.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 410
+  },
+  {
+    "id": 77,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Code Not Running",
+    "url": "https://developer.mozilla.org/",
+    "description": "Usually due to syntax errors, missing dependencies, or wrong file.",
+    "tags": [
+      "Error",
+      "Fix"
+    ],
+    "type": "issue",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 380
+  },
+  {
+    "id": 78,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Fixing CORS Errors",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+    "description": "Understanding and resolving Cross-Origin Resource Sharing errors.",
+    "tags": [
+      "Error",
+      "Fix"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 410
+  },
+  {
+    "id": 79,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "JavaScript Null vs Undefined",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "description": "Guide to understanding the difference between null and undefined.",
+    "tags": [
+      "Error",
+      "Fix"
+    ],
+    "type": "issue",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 280
+  },
+  {
+    "id": 80,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "API Not Working",
+    "url": "https://www.postman.com/",
+    "description": "Common causes: wrong endpoint, missing auth, or incorrect request format.",
+    "tags": [
+      "Error",
+      "Fix"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.2,
+    "votes": 220
+  },
+  {
+    "id": 81,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Git Merge Conflict",
+    "url": "https://git-scm.com/",
+    "description": "Happens when two changes affect the same part of code.",
+    "tags": [
+      "Error",
+      "Fix"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 190
+  },
+  {
+    "id": 82,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Docker Container Not Starting",
+    "url": "https://www.docker.com/",
+    "description": "Usually due to incorrect config, missing env vars, or port conflicts.",
+    "tags": [
+      "Error",
+      "Fix"
+    ],
+    "type": "issue",
+    "difficulty": "Advanced",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.2,
+    "votes": 160
+  },
+  {
+    "id": 83,
+    "category": "Programming/Development",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "npm Install Fail",
+    "url": "https://www.npmjs.com/",
+    "description": "Usually caused by corrupted cache, version conflicts, or missing permissions.",
+    "tags": [
+      "Error",
+      "Fix"
+    ],
+    "type": "issue",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.1,
+    "votes": 140
+  },
+  {
+    "id": 84,
+    "category": "UI/UX Design",
+    "subcategory": "Guides and Tutorials",
+    "title": "Interaction Design",
+    "url": "https://www.interaction-design.org/literature",
+    "description": "In-depth UX articles and learning resources from industry experts.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 420
+  },
+  {
+    "id": 85,
+    "category": "UI/UX Design",
+    "subcategory": "Guides and Tutorials",
+    "title": "NN Group",
+    "url": "https://www.nngroup.com/articles/",
+    "description": "Research-based UX design principles.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 380
+  },
+  {
+    "id": 87,
+    "category": "UI/UX Design",
+    "subcategory": "Guides and Tutorials",
+    "title": "Google Material Design",
+    "url": "https://m3.material.io/",
+    "description": "Google's design system with guidelines and components.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 680
+  },
+  {
+    "id": 88,
+    "category": "UI/UX Design",
+    "subcategory": "Video Tutorials",
+    "title": "Figma Crash Course",
+    "url": "https://www.youtube.com/watch?v=FTFaQWZBqQ8",
+    "description": "Complete Figma UI/UX design crash course for beginners.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 290
+  },
+  {
+    "id": 89,
+    "category": "UI/UX Design",
+    "subcategory": "Video Tutorials",
+    "title": "UI Design Principles",
+    "url": "https://www.youtube.com/watch?v=JKx8k2rX5Jw",
+    "description": "UI design principles explained with real interface examples.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 250
+  },
+  {
+    "id": 90,
+    "category": "UI/UX Design",
+    "subcategory": "Video Tutorials",
+    "title": "UX Basics",
+    "url": "https://www.youtube.com/watch?v=c9Wg6Cb_YlU",
+    "description": "UX basics: how users think and how to design for them.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 220
+  },
+  {
+    "id": 92,
+    "category": "UI/UX Design",
+    "subcategory": "Tools and Softwares",
+    "title": "Adobe XD",
+    "url": "https://www.adobe.com/products/xd.html",
+    "description": "Design and prototyping tool focused on UX.",
+    "tags": [
+      "Adobe"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 380
+  },
+  {
+    "id": 93,
+    "category": "UI/UX Design",
+    "subcategory": "Tools and Softwares",
+    "title": "Sketch",
+    "url": "https://www.sketch.com/",
+    "description": "Vector-based design tool for UI design on macOS.",
+    "tags": [
+      "Mac"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 320
+  },
+  {
+    "id": 95,
+    "category": "UI/UX Design",
+    "subcategory": "Tools and Softwares",
+    "title": "Maze",
+    "url": "https://maze.co/",
+    "description": "Usability testing with real user feedback.",
+    "tags": [
+      "Testing"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 280
+  },
+  {
+    "id": 96,
+    "category": "UI/UX Design",
+    "subcategory": "Tools and Softwares",
+    "title": "Hotjar",
+    "url": "https://www.hotjar.com/",
+    "description": "Heatmaps and session recordings to understand user behavior.",
+    "tags": [
+      "Analytics"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 260
+  },
+  {
+    "id": 97,
+    "category": "UI/UX Design",
+    "subcategory": "Tools and Softwares",
+    "title": "Coolors",
+    "url": "https://coolors.co/",
+    "description": "Generate and explore color palettes.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 240
+  },
+  {
+    "id": 98,
+    "category": "UI/UX Design",
+    "subcategory": "Plugins and Extensions",
+    "title": "Figmotion",
+    "url": "https://www.figma.com/community/plugin/733025261168520714/figmotion",
+    "description": "Animation capabilities inside Figma.",
+    "tags": [
+      "Extension"
+    ],
+    "type": "plugin",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 180
+  },
+  {
+    "id": 99,
+    "category": "UI/UX Design",
+    "subcategory": "Plugins and Extensions",
+    "title": "Unsplash Plugin",
+    "url": "https://www.figma.com/community/plugin/738454987945972471/unsplash",
+    "description": "Insert high-quality images into designs.",
+    "tags": [
+      "Extension"
+    ],
+    "type": "plugin",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 160
+  },
+  {
+    "id": 100,
+    "category": "UI/UX Design",
+    "subcategory": "FAQs and Basics",
+    "title": "UI vs UX",
+    "url": "https://www.interaction-design.org/",
+    "description": "UI focuses on visuals, while UX focuses on user experience.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 290
+  },
+  {
+    "id": 101,
+    "category": "UI/UX Design",
+    "subcategory": "FAQs and Basics",
+    "title": "What is a wireframe?",
+    "url": "https://www.figma.com/",
+    "description": "Basic layout showing structure without detailed design.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 220
+  },
+  {
+    "id": 102,
+    "category": "UI/UX Design",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Inconsistent Design",
+    "url": "https://www.figma.com/",
+    "description": "Inconsistent spacing, colors, or typography choices.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.2,
+    "votes": 180
+  },
+  {
+    "id": 103,
+    "category": "UI/UX Design",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Confusing UI for Users",
+    "url": "https://www.nngroup.com/",
+    "description": "Too many elements, unclear hierarchy, or poor navigation.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 150
+  },
+  {
+    "id": 104,
+    "category": "Marketing",
+    "subcategory": "Guides and Tutorials",
+    "title": "HubSpot Blog",
+    "url": "https://blog.hubspot.com/marketing",
+    "description": "Complete blog with guides on digital marketing strategies.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 580
+  },
+  {
+    "id": 105,
+    "category": "Marketing",
+    "subcategory": "Guides and Tutorials",
+    "title": "Moz Beginner Guide to SEO",
+    "url": "https://moz.com/beginners-guide-to-seo",
+    "description": "Beginner-friendly guide to understanding SEO.",
+    "tags": [
+      "SEO"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 520
+  },
+  {
+    "id": 106,
+    "category": "Marketing",
+    "subcategory": "Guides and Tutorials",
+    "title": "Ahrefs Blog",
+    "url": "https://www.youtube.com/@AhrefsCom",
+    "description": "SEO tutorials and case studies.",
+    "tags": [
+      "SEO"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 480
+  },
+  {
+    "id": 107,
+    "category": "Marketing",
+    "subcategory": "Guides and Tutorials",
+    "title": "Neil Patel Blog",
+    "url": "https://neilpatel.com/blog/",
+    "description": "Practical marketing tips and SEO strategies.",
+    "tags": [
+      "SEO"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 450
+  },
+  {
+    "id": 108,
+    "category": "Marketing",
+    "subcategory": "Video Tutorials",
+    "title": "Digital Marketing Fundamentals",
+    "url": "https://www.youtube.com/watch?v=6bUjJ5XgkZ0",
+    "description": "Digital marketing fundamentals for beginners.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 280
+  },
+  {
+    "id": 109,
+    "category": "Marketing",
+    "subcategory": "Video Tutorials",
+    "title": "SEO Explained",
+    "url": "https://www.youtube.com/watch?v=V3y0H8p6G7s",
+    "description": "SEO explained simply with real ranking examples.",
+    "tags": [
+      "Video",
+      "SEO"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 250
+  },
+  {
+    "id": 112,
+    "category": "Marketing",
+    "subcategory": "Tools and Softwares",
+    "title": "Mailchimp",
+    "url": "https://mailchimp.com/",
+    "description": "Create and automate email campaigns.",
+    "tags": [
+      "Email"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 820
+  },
+  {
+    "id": 113,
+    "category": "Marketing",
+    "subcategory": "Tools and Softwares",
+    "title": "Canva",
+    "url": "https://www.canva.com/",
+    "description": "Easy-to-use design platform for marketing visuals.",
+    "tags": [
+      "Design"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 650
+  },
+  {
+    "id": 114,
+    "category": "Marketing",
+    "subcategory": "Tools and Softwares",
+    "title": "SEMrush",
+    "url": "https://www.semrush.com/",
+    "description": "All-in-one toolkit for digital marketing and SEO.",
+    "tags": [
+      "SEO",
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 620
+  },
+  {
+    "id": 115,
+    "category": "Marketing",
+    "subcategory": "FAQs and Basics",
+    "title": "What is Digital Marketing?",
+    "url": "https://blog.hubspot.com/",
+    "description": "Promoting products or services using online channels.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 280
+  },
+  {
+    "id": 116,
+    "category": "Marketing",
+    "subcategory": "FAQs and Basics",
+    "title": "What is SEO?",
+    "url": "https://moz.com/",
+    "description": "Optimizing content to rank higher in search engines.",
+    "tags": [
+      "SEO"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 260
+  },
+  {
+    "id": 117,
+    "category": "Marketing",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "SEO Not Improving",
+    "url": "https://moz.com/",
+    "description": "Lack of keywords, poor content quality, or weak backlinks.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.2,
+    "votes": 180
+  },
+  {
+    "id": 118,
+    "category": "Product and Project Management",
+    "subcategory": "Guides and Tutorials",
+    "title": "Atlassian Agile",
+    "url": "https://www.atlassian.com/agile",
+    "description": "Official guide to Agile methodology and workflows.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 680
+  },
+  {
+    "id": 119,
+    "category": "Product and Project Management",
+    "subcategory": "Guides and Tutorials",
+    "title": "Scrum.org",
+    "url": "https://www.scrum.org/resources",
+    "description": "Scrum framework guides and certifications.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 520
+  },
+  {
+    "id": 120,
+    "category": "Product and Project Management",
+    "subcategory": "Guides and Tutorials",
+    "title": "Notion Help",
+    "url": "https://www.notion.so/help",
+    "description": "Official Notion guides for productivity.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 480
+  },
+  {
+    "id": 121,
+    "category": "Product and Project Management",
+    "subcategory": "Video Tutorials",
+    "title": "Agile and Scrum Explained",
+    "url": "https://www.youtube.com/watch?v=R9OHn5ZF4Uo",
+    "description": "Agile and Scrum explained in simple terms.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 260
+  },
+  {
+    "id": 122,
+    "category": "Product and Project Management",
+    "subcategory": "Video Tutorials",
+    "title": "Jira Tutorial",
+    "url": "https://www.youtube.com/watch?v=8Yt3pK0m9Qw",
+    "description": "Jira explained for Agile teams and sprint planning.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 220
+  },
+  {
+    "id": 123,
+    "category": "Product and Project Management",
+    "subcategory": "Tools and Softwares",
+    "title": "Jira",
+    "url": "https://www.atlassian.com/software/jira",
+    "description": "Tracks tasks, bugs, and agile workflows.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 920
+  },
+  {
+    "id": 124,
+    "category": "Product and Project Management",
+    "subcategory": "Tools and Softwares",
+    "title": "Trello",
+    "url": "https://trello.com/",
+    "description": "Organizes tasks visually using boards and cards.",
+    "tags": [
+      "Essential",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 840
+  },
+  {
+    "id": 126,
+    "category": "Product and Project Management",
+    "subcategory": "Tools and Softwares",
+    "title": "Asana",
+    "url": "https://asana.com/",
+    "description": "Manages projects, tasks, and workflows.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 620
+  },
+  {
+    "id": 127,
+    "category": "Product and Project Management",
+    "subcategory": "Tools and Softwares",
+    "title": "Miro",
+    "url": "https://miro.com/",
+    "description": "Online whiteboard for brainstorming.",
+    "tags": [
+      "Collaboration"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 480
+  },
+  {
+    "id": 128,
+    "category": "Product and Project Management",
+    "subcategory": "Tools and Softwares",
+    "title": "ClickUp",
+    "url": "https://app.clickup.com/",
+    "description": "All-in-one tool for tasks, docs, and goals.",
+    "tags": [
+      "All-in-One"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 420
+  },
+  {
+    "id": 129,
+    "category": "Product and Project Management",
+    "subcategory": "FAQs and Basics",
+    "title": "What is Agile?",
+    "url": "https://www.atlassian.com/agile",
+    "description": "Flexible project management approach focused on iteration.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 380
+  },
+  {
+    "id": 130,
+    "category": "Product and Project Management",
+    "subcategory": "FAQs and Basics",
+    "title": "What is Scrum?",
+    "url": "https://www.scrum.org/",
+    "description": "Framework using sprints and roles.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 320
+  },
+  {
+    "id": 131,
+    "category": "Product and Project Management",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Scope Creep",
+    "url": "https://www.projectmanager.com/",
+    "description": "Project keeps expanding beyond original plan.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 190
+  },
+  {
+    "id": 132,
+    "category": "Business and Finance",
+    "subcategory": "Guides and Tutorials",
+    "title": "Investopedia",
+    "url": "https://www.investopedia.com/",
+    "description": "Clear explanations of finance and business concepts.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 480
+  },
+  {
+    "id": 133,
+    "category": "Business and Finance",
+    "subcategory": "Guides and Tutorials",
+    "title": "Y Combinator Library",
+    "url": "https://www.ycombinator.com/library",
+    "description": "Startup advice from top accelerator.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 620
+  },
+  {
+    "id": 134,
+    "category": "Business and Finance",
+    "subcategory": "Video Tutorials",
+    "title": "Business Basics",
+    "url": "https://www.youtube.com/watch?v=5eZ7e5m0X8A",
+    "description": "How companies actually make money.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 240
+  },
+  {
+    "id": 135,
+    "category": "Business and Finance",
+    "subcategory": "Video Tutorials",
+    "title": "Cash Flow Explained",
+    "url": "https://www.youtube.com/watch?v=5f0c7Xk2m9Q",
+    "description": "Cash flow and profit explained for beginners.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 220
+  },
+  {
+    "id": 136,
+    "category": "Business and Finance",
+    "subcategory": "Tools and Softwares",
+    "title": "QuickBooks",
+    "url": "https://quickbooks.intuit.com/",
+    "description": "Manages business finances and accounting.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 720
+  },
+  {
+    "id": 138,
+    "category": "Business and Finance",
+    "subcategory": "Tools and Softwares",
+    "title": "PayPal",
+    "url": "https://www.paypal.com/",
+    "description": "Platform for sending and receiving money.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 580
+  },
+  {
+    "id": 139,
+    "category": "Business and Finance",
+    "subcategory": "Tools and Softwares",
+    "title": "Wave",
+    "url": "https://www.waveapps.com/",
+    "description": "Free tools for invoicing and financial tracking.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 420
+  },
+  {
+    "id": 140,
+    "category": "Business and Finance",
+    "subcategory": "FAQs and Basics",
+    "title": "Revenue vs Profit",
+    "url": "https://www.investopedia.com/",
+    "description": "Revenue is total income, profit is what remains after expenses.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 320
+  },
+  {
+    "id": 141,
+    "category": "Business and Finance",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Startup Financial Failure",
+    "url": "https://www.ycombinator.com/",
+    "description": "Poor cash flow management or running out of funding.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.2,
+    "votes": 180
+  },
+  {
+    "id": 142,
+    "category": "Sales and Growth",
+    "subcategory": "Guides and Tutorials",
+    "title": "HubSpot Sales",
+    "url": "https://blog.hubspot.com/sales",
+    "description": "Sales strategies and CRM guides.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 480
+  },
+  {
+    "id": 143,
+    "category": "Sales and Growth",
+    "subcategory": "Guides and Tutorials",
+    "title": "Salesforce Resources",
+    "url": "https://www.salesforce.com/resources/",
+    "description": "CRM and sales process learning.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 420
+  },
+  {
+    "id": 144,
+    "category": "Sales and Growth",
+    "subcategory": "Video Tutorials",
+    "title": "Sales Funnel Explained",
+    "url": "https://www.youtube.com/watch?v=8Gk3pX9m2QZ",
+    "description": "Sales funnels from lead to conversion.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 220
+  },
+  {
+    "id": 145,
+    "category": "Sales and Growth",
+    "subcategory": "Video Tutorials",
+    "title": "Cold Emailing",
+    "url": "https://www.youtube.com/watch?v=Qm7k3X9p1A2",
+    "description": "Emails that actually work.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 200
+  },
+  {
+    "id": 147,
+    "category": "Sales and Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Pipedrive",
+    "url": "https://www.pipedrive.com/",
+    "description": "Sales-focused CRM for tracking deals.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 580
+  },
+  {
+    "id": 148,
+    "category": "Sales and Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Apollo.io",
+    "url": "https://www.apollo.io/",
+    "description": "Find leads and automate outreach.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 450
+  },
+  {
+    "id": 149,
+    "category": "Sales and Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "HubSpot CRM",
+    "url": "https://www.hubspot.com/products/crm",
+    "description": "Free CRM with sales and marketing tools.",
+    "tags": [
+      "Free",
+      "Essential"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 1100
+  },
+  {
+    "id": 150,
+    "category": "Sales and Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Calendly",
+    "url": "https://calendly.com/",
+    "description": "Simplifies booking meetings.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 520
+  },
+  {
+    "id": 151,
+    "category": "Sales and Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Intercom",
+    "url": "https://www.intercom.com/",
+    "description": "Live chat with customers.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 380
+  },
+  {
+    "id": 152,
+    "category": "Sales and Growth",
+    "subcategory": "FAQs and Basics",
+    "title": "What is a Sales Funnel?",
+    "url": "https://blog.hubspot.com/",
+    "description": "Journey from awareness to purchase.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 340
+  },
+  {
+    "id": 153,
+    "category": "Sales and Growth",
+    "subcategory": "FAQs and Basics",
+    "title": "What is CRM?",
+    "url": "https://www.salesforce.com/",
+    "description": "Systems tracking customer interactions.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 280
+  },
+  {
+    "id": 154,
+    "category": "Sales and Growth",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Sales Strategy Failure",
+    "url": "https://blog.hubspot.com/",
+    "description": "Poor targeting or weak messaging.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.2,
+    "votes": 160
+  },
+  {
+    "id": 155,
+    "category": "Events and Community",
+    "subcategory": "Guides and Tutorials",
+    "title": "Eventbrite Blog",
+    "url": "https://www.eventbrite.com/blog/",
+    "description": "Event planning and promotion strategies.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 420
+  },
+  {
+    "id": 156,
+    "category": "Events and Community",
+    "subcategory": "Guides and Tutorials",
+    "title": "Meetup Blog",
+    "url": "https://www.meetup.com/blog/",
+    "description": "Community building and event tips.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 380
+  },
+  {
+    "id": 157,
+    "category": "Events and Community",
+    "subcategory": "Guides and Tutorials",
+    "title": "Discord Safety",
+    "url": "https://www.discord.com/safety",
+    "description": "Building and managing online communities.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 340
+  },
+  {
+    "id": 158,
+    "category": "Events and Community",
+    "subcategory": "Video Tutorials",
+    "title": "Plan and Organize Events",
+    "url": "https://www.youtube.com/watch?v=2Qk8mX9p3A7",
+    "description": "How to plan successful events.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 200
+  },
+  {
+    "id": 159,
+    "category": "Events and Community",
+    "subcategory": "Video Tutorials",
+    "title": "Community Building",
+    "url": "https://www.youtube.com/watch?v=7mX3pQ9k1Z5",
+    "description": "Basics and engagement strategies.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 180
+  },
+  {
+    "id": 160,
+    "category": "Events and Community",
+    "subcategory": "Video Tutorials",
+    "title": "Zoom for Webinars",
+    "url": "https://www.youtube.com/watch?v=9pQ2kX7m3A8",
+    "description": "How to host online events.",
+    "tags": [
+      "Video"
+    ],
+    "type": "video",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 220
+  },
+  {
+    "id": 161,
+    "category": "Events and Community",
+    "subcategory": "Tools and Softwares",
+    "title": "Eventbrite",
+    "url": "https://www.eventbrite.com/",
+    "description": "Create, promote, and manage events.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 680
+  },
+  {
+    "id": 162,
+    "category": "Events and Community",
+    "subcategory": "Tools and Softwares",
+    "title": "Meetup",
+    "url": "https://www.meetup.com/",
+    "description": "Organize and join communities.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 520
+  },
+  {
+    "id": 163,
+    "category": "Events and Community",
+    "subcategory": "Tools and Softwares",
+    "title": "Zoom",
+    "url": "https://zoom.us/",
+    "description": "Host virtual meetings and webinars.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 820
+  },
+  {
+    "id": 164,
+    "category": "Events and Community",
+    "subcategory": "Tools and Softwares",
+    "title": "Slack",
+    "url": "https://slack.com/",
+    "description": "Team communication through channels.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 650
+  },
+  {
+    "id": 165,
+    "category": "Events and Community",
+    "subcategory": "Tools and Softwares",
+    "title": "Discord",
+    "url": "https://discord.com/",
+    "description": "Communication platform for communities.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 920
+  },
+  {
+    "id": 166,
+    "category": "Events and Community",
+    "subcategory": "Plugins and Extensions",
+    "title": "StreamYard",
+    "url": "https://streamyard.com/",
+    "description": "Stream to multiple platforms.",
+    "tags": [
+      "Extension"
+    ],
+    "type": "plugin",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 280
+  },
+  {
+    "id": 167,
+    "category": "Events and Community",
+    "subcategory": "FAQs and Basics",
+    "title": "What is Event Management?",
+    "url": "https://www.eventbrite.com/",
+    "description": "Planning and organizing events.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 220
+  },
+  {
+    "id": 168,
+    "category": "Events and Community",
+    "subcategory": "FAQs and Basics",
+    "title": "What is Community Building?",
+    "url": "https://www.meetup.com/",
+    "description": "Creating engaged groups.",
+    "tags": [
+      "Beginner"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 180
+  },
+  {
+    "id": 169,
+    "category": "Events and Community",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Events Fail",
+    "url": "https://www.eventbrite.com/",
+    "description": "Poor planning or weak promotion.",
+    "tags": [
+      "Issue"
+    ],
+    "type": "issue",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.2,
+    "votes": 150
+  },
+  {
+    "id": 171,
+    "category": "Web and App Building",
+    "subcategory": "Tools and Softwares",
+    "title": "Bubble",
+    "url": "https://bubble.io/",
+    "description": "No-code platform for full web applications.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 480
+  },
+  {
+    "id": 172,
+    "category": "Web and App Building",
+    "subcategory": "Tools and Softwares",
+    "title": "Glide Apps",
+    "url": "https://www.glideapps.com/",
+    "description": "Turn spreadsheets into mobile apps.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 320
+  },
+  {
+    "id": 173,
+    "category": "Web and App Building",
+    "subcategory": "Tools and Softwares",
+    "title": "Softr",
+    "url": "https://www.softr.io/",
+    "description": "Build apps from Airtable.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 280
+  },
+  {
+    "id": 174,
+    "category": "Web and App Building",
+    "subcategory": "Tools and Softwares",
+    "title": "Framer",
+    "url": "https://www.framer.com/",
+    "description": "Modern website builder.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 420
+  },
+  {
+    "id": 175,
+    "category": "Web and App Building",
+    "subcategory": "Tools and Softwares",
+    "title": "Wix",
+    "url": "https://www.wix.com/",
+    "description": "Website builder for business sites.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 380
+  },
+  {
+    "id": 176,
+    "category": "Web and App Building",
+    "subcategory": "Tools and Softwares",
+    "title": "Squarespace",
+    "url": "https://www.squarespace.com/",
+    "description": "Design-focused website builder.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 360
+  },
+  {
+    "id": 177,
+    "category": "UI Assets and Creative",
+    "subcategory": "Tools and Softwares",
+    "title": "Flaticon",
+    "url": "https://www.flaticon.com/",
+    "description": "Large library of icons.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 480
+  },
+  {
+    "id": 178,
+    "category": "UI Assets and Creative",
+    "subcategory": "Tools and Softwares",
+    "title": "undraw.co",
+    "url": "https://undraw.co/",
+    "description": "Free customizable illustrations.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 420
+  },
+  {
+    "id": 179,
+    "category": "UI Assets and Creative",
+    "subcategory": "Tools and Softwares",
+    "title": "Freepik",
+    "url": "https://www.freepik.com/",
+    "description": "Vectors, icons, and templates.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 380
+  },
+  {
+    "id": 180,
+    "category": "UI Assets and Creative",
+    "subcategory": "Tools and Softwares",
+    "title": "ls.graphics",
+    "url": "https://www.ls.graphics/",
+    "description": "High-quality mockups.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 280
+  },
+  {
+    "id": 181,
+    "category": "UI Assets and Creative",
+    "subcategory": "Tools and Softwares",
+    "title": "Storyset",
+    "url": "https://www.storyset.com/",
+    "description": "Editable illustrations.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 260
+  },
+  {
+    "id": 182,
+    "category": "UI Assets and Creative",
+    "subcategory": "Tools and Softwares",
+    "title": "Humaaans",
+    "url": "https://www.humaaans.com/",
+    "description": "Mix-and-match illustrations.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 240
+  },
+  {
+    "id": 183,
+    "category": "UI Assets and Creative",
+    "subcategory": "Tools and Softwares",
+    "title": "Blobmaker",
+    "url": "https://www.blobmaker.app/",
+    "description": "Generate SVG shapes.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 180
+  },
+  {
+    "id": 184,
+    "category": "Content Creation",
+    "subcategory": "Tools and Softwares",
+    "title": "CapCut",
+    "url": "https://www.capcut.com/",
+    "description": "Video editing for social media.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 520
+  },
+  {
+    "id": 185,
+    "category": "Content Creation",
+    "subcategory": "Tools and Softwares",
+    "title": "Canva for Design",
+    "url": "https://www.canva.com/",
+    "description": "Design platform for content.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 480
+  },
+  {
+    "id": 186,
+    "category": "Content Creation",
+    "subcategory": "Tools and Softwares",
+    "title": "InVideo",
+    "url": "https://www.invideo.io/",
+    "description": "AI-powered video creation.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 320
+  },
+  {
+    "id": 187,
+    "category": "Content Creation",
+    "subcategory": "Tools and Softwares",
+    "title": "Pictory",
+    "url": "https://www.pictory.ai/",
+    "description": "Convert text to videos.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 280
+  },
+  {
+    "id": 188,
+    "category": "Content Creation",
+    "subcategory": "Tools and Softwares",
+    "title": "Remove.bg",
+    "url": "https://www.remove.bg/",
+    "description": "Remove backgrounds from images.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 420
+  },
+  {
+    "id": 189,
+    "category": "Content Creation",
+    "subcategory": "Tools and Softwares",
+    "title": "Pexels",
+    "url": "https://www.pexels.com/",
+    "description": "Free stock photos and videos.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 380
+  },
+  {
+    "id": 190,
+    "category": "Content Creation",
+    "subcategory": "Tools and Softwares",
+    "title": "Pixabay",
+    "url": "https://www.pixabay.com/",
+    "description": "Free media library.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 340
+  },
+  {
+    "id": 193,
+    "category": "AI and Automation",
+    "subcategory": "Tools and Softwares",
+    "title": "Notion AI",
+    "url": "https://www.notion.so/product/ai",
+    "description": "AI-enhanced workspace.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 420
+  },
+  {
+    "id": 194,
+    "category": "AI and Automation",
+    "subcategory": "Tools and Softwares",
+    "title": "Tome",
+    "url": "https://www.tome.app/",
+    "description": "AI for presentations.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 320
+  },
+  {
+    "id": 195,
+    "category": "AI and Automation",
+    "subcategory": "Tools and Softwares",
+    "title": "Copy.ai",
+    "url": "https://www.copy.ai/",
+    "description": "AI writing tool.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 280
+  },
+  {
+    "id": 196,
+    "category": "AI and Automation",
+    "subcategory": "Tools and Softwares",
+    "title": "Descript",
+    "url": "https://www.descript.com/",
+    "description": "AI video and audio editing.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 260
+  },
+  {
+    "id": 197,
+    "category": "AI and Automation",
+    "subcategory": "Tools and Softwares",
+    "title": "Runway",
+    "url": "https://www.runwayml.com/",
+    "description": "AI for video generation.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Advanced",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 240
+  },
+  {
+    "id": 198,
+    "category": "Business Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Product Hunt",
+    "url": "https://www.producthunt.com/",
+    "description": "Discover and launch products.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 420
+  },
+  {
+    "id": 199,
+    "category": "Business Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Indie Hackers",
+    "url": "https://www.indiehackers.com/",
+    "description": "Startup founder community.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 380
+  },
+  {
+    "id": 200,
+    "category": "Business Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Y Combinator",
+    "url": "https://www.ycombinator.com/",
+    "description": "Startup accelerator.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Advanced",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 520
+  },
+  {
+    "id": 201,
+    "category": "Business Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Startup School",
+    "url": "https://www.startupschool.org/",
+    "description": "Free startup education.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 320
+  },
+  {
+    "id": 202,
+    "category": "Business Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Crunchbase",
+    "url": "https://www.crunchbase.com/",
+    "description": "Startup database.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 280
+  },
+  {
+    "id": 203,
+    "category": "Business Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Pitch",
+    "url": "https://www.pitch.com/",
+    "description": "Pitch deck tool.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 240
+  },
+  {
+    "id": 204,
+    "category": "Business Growth",
+    "subcategory": "Tools and Softwares",
+    "title": "Typeform",
+    "url": "https://www.typeform.com/",
+    "description": "Interactive forms.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 260
+  },
+  {
+    "id": 205,
+    "category": "API and Backend",
+    "subcategory": "Tools and Softwares",
+    "title": "RapidAPI",
+    "url": "https://rapidapi.com/",
+    "description": "Marketplace for APIs.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 380
+  },
+  {
+    "id": 206,
+    "category": "API and Backend",
+    "subcategory": "Tools and Softwares",
+    "title": "Supabase",
+    "url": "https://www.supabase.com/",
+    "description": "Backend with database and auth.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 420
+  },
+  {
+    "id": 207,
+    "category": "API and Backend",
+    "subcategory": "Tools and Softwares",
+    "title": "Firebase",
+    "url": "https://firebase.google.com/",
+    "description": "Google backend suite.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 480
+  },
+  {
+    "id": 208,
+    "category": "API and Backend",
+    "subcategory": "Tools and Softwares",
+    "title": "Appwrite",
+    "url": "https://appwrite.io/",
+    "description": "Open-source backend.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 340
+  },
+  {
+    "id": 209,
+    "category": "API and Backend",
+    "subcategory": "Tools and Softwares",
+    "title": "Heroku",
+    "url": "https://www.heroku.com/",
+    "description": "Cloud platform for apps.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 380
+  },
+  {
+    "id": 211,
+    "category": "API and Backend",
+    "subcategory": "Tools and Softwares",
+    "title": "Render",
+    "url": "https://render.com/",
+    "description": "Cloud for full-stack apps.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 320
+  },
+  {
+    "id": 212,
+    "category": "Knowledge and Learning",
+    "subcategory": "Guides and Tutorials",
+    "title": "Roadmap.sh Learning",
+    "url": "https://roadmap.sh/",
+    "description": "Visual learning paths.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 420
+  },
+  {
+    "id": 213,
+    "category": "Knowledge and Learning",
+    "subcategory": "Guides and Tutorials",
+    "title": "Khan Academy",
+    "url": "https://www.khanacademy.org/",
+    "description": "Free education platform.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 380
+  },
+  {
+    "id": 214,
+    "category": "Knowledge and Learning",
+    "subcategory": "Guides and Tutorials",
+    "title": "Coursera",
+    "url": "https://www.coursera.org/",
+    "description": "University-level courses.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 520
+  },
+  {
+    "id": 215,
+    "category": "Knowledge and Learning",
+    "subcategory": "Guides and Tutorials",
+    "title": "edX",
+    "url": "https://www.edx.org/",
+    "description": "Academic learning.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 480
+  },
+  {
+    "id": 216,
+    "category": "Knowledge and Learning",
+    "subcategory": "Guides and Tutorials",
+    "title": "Udemy",
+    "url": "https://www.udemy.com/",
+    "description": "Marketplace for courses.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tutorial",
+    "difficulty": "Beginner",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.4,
+    "votes": 580
+  },
+  {
+    "id": 217,
+    "category": "Knowledge and Learning",
+    "subcategory": "Guides and Tutorials",
+    "title": "LinkedIn Learning",
+    "url": "https://www.linkedin.com/learning/",
+    "description": "Professional courses.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tutorial",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 360
+  },
+  {
+    "id": 218,
+    "category": "Security and Privacy",
+    "subcategory": "Tools and Softwares",
+    "title": "Have I Been Pwned",
+    "url": "https://haveibeenpwned.com/",
+    "description": "Check if email was breached.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 340
+  },
+  {
+    "id": 219,
+    "category": "Security and Privacy",
+    "subcategory": "Tools and Softwares",
+    "title": "VirusTotal",
+    "url": "https://www.virustotal.com/",
+    "description": "Scan for malware.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 320
+  },
+  {
+    "id": 220,
+    "category": "Security and Privacy",
+    "subcategory": "Tools and Softwares",
+    "title": "Cloudflare",
+    "url": "https://www.cloudflare.com/",
+    "description": "Web security and performance.",
+    "tags": [
+      "Paid"
+    ],
+    "type": "tool",
+    "difficulty": "Intermediate",
+    "isPremium": true,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.7,
+    "votes": 420
+  },
+  {
+    "id": 221,
+    "category": "Security and Privacy",
+    "subcategory": "Tools and Softwares",
+    "title": "EFF Tools",
+    "url": "https://www.eff.org/pages/tools",
+    "description": "Privacy tools collection.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 280
+  },
+  {
+    "id": 222,
+    "category": "Security and Privacy",
+    "subcategory": "Tools and Softwares",
+    "title": "GRC DNS Testing",
+    "url": "https://www.grc.com/dns/dns.htm",
+    "description": "DNS security testing.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Advanced",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 220
+  },
+  {
+    "id": 223,
+    "category": "Security and Privacy",
+    "subcategory": "Tools and Softwares",
+    "title": "Firefox Privacy",
+    "url": "https://www.mozilla.org/en-US/firefox/privacy/products/",
+    "description": "Privacy-focused browser.",
+    "tags": [
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 260
+  },
+  {
+    "id": 282,
+    "category": "UI/UX Design",
+    "subcategory": "Tools and Softwares",
+    "title": "Framer",
+    "url": "https://www.framer.com/",
+    "description": "Tool for designing interactive web experiences.",
+    "tags": [
+      "Advanced"
+    ],
+    "type": "tool",
+    "difficulty": "Advanced",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": true,
+    "rating": 4.7,
+    "votes": 520
+  },
+  {
+    "id": 412,
+    "category": "Unsafe Sites",
+    "subcategory": "FAQs and Basics",
+    "title": "FMHY Unsafe Sites List",
+    "url": "https://fmhy.net/unsafesites",
+    "description": "A community-maintained reference list highlighting websites and sources commonly flagged as risky, malicious, or unsafe to help users avoid security threats.",
+    "tags": [
+      "Security",
+      "Community",
+      "Free"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": true,
+    "rating": 4.7,
+    "votes": 320
+  },
+  {
+    "id": 413,
+    "category": "Unsafe Sites",
+    "subcategory": "FAQs and Basics",
+    "title": "Unsafe Sites Megathread",
+    "url": "https://rentry.co/megathread-unsafe-sites",
+    "description": "A compiled megathread of reported unsafe or high-risk websites used as a cautionary reference for identifying potentially dangerous online sources.",
+    "tags": [
+      "Security",
+      "Scam",
+      "Free"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": true,
+    "rating": 4.6,
+    "votes": 280
+  },
+  {
+    "id": 414,
+    "category": "Unsafe Sites",
+    "subcategory": "FAQs and Basics",
+    "title": "How to Report Unsafe Sites",
+    "url": "https://www.google.com/safetycenter/",
+    "description": "Step-by-step guide on reporting unsafe websites to Google and other authorities.",
+    "tags": [
+      "Guide",
+      "Security"
+    ],
+    "type": "faq",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.6,
+    "votes": 220
+  },
+  {
+    "id": 415,
+    "category": "Unsafe Sites",
+    "subcategory": "Tools and Softwares",
+    "title": "Google Safe Browsing",
+    "url": "https://safebrowsing.google.com/",
+    "description": "Check if a website is safe before visiting. Google maintains a list of unsafe sites.",
+    "tags": [
+      "Security",
+      "Free"
+    ],
+    "type": "tool",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": true,
+    "isNew": false,
+    "rating": 4.8,
+    "votes": 420
+  },
+  {
+    "id": 416,
+    "category": "Unsafe Sites",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Phishing Alert Signs",
+    "url": "https://www.phishing.org/",
+    "description": "Learn to identify common signs of phishing websites that steal your personal information.",
+    "tags": [
+      "Security",
+      "Phishing"
+    ],
+    "type": "issue",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.5,
+    "votes": 180
+  },
+  {
+    "id": 417,
+    "category": "Unsafe Sites",
+    "subcategory": "Common Mistakes/Issues",
+    "title": "Scam Detector",
+    "url": "https://scam-detector.com/",
+    "description": "Database of known scams and fraudulent websites to help you avoid them.",
+    "tags": [
+      "Scam",
+      "Security"
+    ],
+    "type": "issue",
+    "difficulty": "Beginner",
+    "isPremium": false,
+    "isTrending": false,
+    "isNew": false,
+    "rating": 4.3,
+    "votes": 95
+  }
+]

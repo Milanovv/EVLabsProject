@@ -84,54 +84,164 @@ ADD UNIQUE INDEX idx_unique_resource (title, category)
 
 ## Files Modified
 
-No application code was modified. Only database changes were made:
+### 1. **`src/data/resources.ts`** (Cleaned)
+- **Before:** 381 resources (with 187 duplicates)
+- **After:** 194 unique resources
+- Removed duplicate entries keeping lowest ID for each `(title, category)` pair
 
-1. **Database: `resources` table**
-   - Removed 187 duplicate rows
-   - Added unique index: `idx_unique_resource (title, category)`
+### 2. **`server/src/config/db.js`** (Updated)
+- Added unique constraint to `resources` table creation:
+  ```sql
+  UNIQUE KEY idx_unique_resource (title, category)
+  ```
+- Future `initDatabase()` calls will prevent duplicates
 
-2. **Database: `resources_backup` table**
-   - Created as safety backup before deletion
-   - Contains original 381 records
+### 3. **`server/seed-data.json`** (New)
+- Exported clean resource data from database (194 entries)
+- Used by seed script to populate fresh databases
+
+### 4. **`server/scripts/seed.js`** (New)
+- Seeds database with resources from `seed-data.json`
+- Uses `INSERT IGNORE` to skip duplicates (works with unique constraint)
+- Safe to run multiple times
+
+### 5. **Database Changes** (Applied Locally)
+- Removed 187 duplicate rows from `resources` table
+- Added unique index: `idx_unique_resource (title, category)`
+- Backup table `resources_backup` created (381 original records)
+
+---
+
+## For New Developers (Clone & Setup)
+
+### Prerequisites
+- MySQL installed and running
+- Node.js v16+
+
+### Setup Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Milanovv/EVLabsProject.git
+   cd EVLabsProject
+   ```
+
+2. **Configure environment**
+   ```bash
+   cp server/.env.example server/.env
+   # Edit server/.env with your MySQL credentials
+   ```
+
+3. **Install dependencies**
+   ```bash
+   cd server && npm install
+   cd .. && npm install
+   ```
+
+4. **Initialize database**
+   ```bash
+   cd server
+   node ../seed-data.json # (data is embedded in seed.js)
+   node scripts/seed.js
+   ```
+   Or simply start the server (triggers `initDatabase()`):
+   ```bash
+   npm start
+   ```
+
+5. **Seed the resources**
+   ```bash
+   node scripts/seed.js
+   ```
+   - Inserts 194 resources using `INSERT IGNORE`
+   - Safe to run multiple times (unique constraint prevents duplicates)
+
+6. **Start the application**
+   ```bash
+   # Terminal 1: Start backend
+   cd server && npm start
+   
+   # Terminal 2: Start frontend
+   cd .. && npm run dev
+   ```
+
+### What Gets Created
+
+| Item | Source | Description |
+|------|--------|-------------|
+| `users` table | `db.js` | Empty (users register via app) |
+| `resources` table | `seed.js` + `seed-data.json` | 194 unique resources |
+| `categories` table | `db.js` | 16 categories |
+| `user_saved_resources` table | `db.js` | Empty (users save via app) |
 
 ---
 
 ## Testing Recommendations
 
-After deploying this fix:
+After cloning and setting up:
 
-1. Visit `/search` page - verify resources appear only once
-2. Visit `/category?cat=Programming/Development` - check for duplicates
-3. Visit HomePage - verify Trending and Recently Added sections
-4. Test saving resources - ensure no duplicate saved entries
-5. Try adding a duplicate resource via admin/seed - should fail with constraint error
+1. ✅ Visit `/search` page - verify resources appear only once
+2. ✅ Visit `/category?cat=Programming/Development` - check for duplicates
+3. ✅ Visit HomePage - verify Trending and Recently Added sections
+4. ✅ Register/login - test saving resources (no duplicate saved entries)
+5. ✅ Try running `seed.js` twice - should skip duplicates (unique constraint working)
 
 ---
 
 ## Prevention
 
-The new unique constraint on `(title, category)` ensures:
-- No two resources can have the same title in the same category
-- Seed scripts will fail if attempting to insert duplicates
-- Application logic errors won't create silent duplicates
+The unique constraint on `(title, category)` ensures:
+
+- ✅ No two resources can have the same title in the same category
+- ✅ Seed scripts fail gracefully if attempting to insert duplicates (`INSERT IGNORE`)
+- ✅ Application logic errors won't create silent duplicates
+- ✅ `initDatabase()` now creates tables with the constraint
 
 ---
 
 ## Rollback Plan
 
-If needed, restore from backup:
+If needed, restore database from backup:
 
 ```sql
 DROP TABLE resources;
 RENAME TABLE resources_backup TO resources;
 ```
 
-**Note:** The backup table `resources_backup` still exists in the database. Drop it after verifying the fix works in production.
+**Note:** The backup table `resources_backup` exists in the original database. Drop it after verifying the fix works:
+```sql
+DROP TABLE resources_backup;
+```
 
 ---
 
-## Git Commit
+## Git Commit History
 
-This change is ready to be committed and pushed to:
-- Repository: `https://github.com/Milanovv/EVLabsProject/commits/main/`
-- Recommended commit message: `fix: remove 187 duplicate resources from database`
+| Commit | Description |
+|--------|-------------|
+| `2664fb5` | `docs: add database cleanup documentation` |
+| *Pending* | `fix: remove 187 duplicate resources and add unique constraint` |
+| *Pending* | `feat: add seed script for database initialization` |
+
+---
+
+## Repository Structure (After Push)
+
+```
+EVLabsProject/
+├── src/
+│   ├── data/
+│   │   └── resources.ts          # 194 clean resources (was 381)
+│   └── ...
+├── server/
+│   ├── src/
+│   │   └── config/
+│   │       └── db.js              # Has unique constraint now
+│   ├── scripts/
+│   │   └── seed.js               # NEW: Seeds database
+│   ├── seed-data.json             # NEW: Clean resource data
+│   └── .env                      # NOT in git (use .env.example)
+├── docs/
+│   └── database-cleanup-2026-04-27.md
+└── README.md                      # Update with setup instructions
+```

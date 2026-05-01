@@ -62,7 +62,8 @@ export async function initDatabase() {
       rating DECIMAL(3,2) DEFAULT 0,
       votes INT DEFAULT 0,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      UNIQUE KEY idx_unique_resource (title, category)
     )
   `);
 
