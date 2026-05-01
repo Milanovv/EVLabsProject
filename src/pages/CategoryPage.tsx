@@ -129,23 +129,6 @@ export default function CategoryPage() {
 
             {/* Content */}
             <div className="lg:col-span-3">
-              {/* Tabs */}
-              <div className="mb-6 flex gap-2 border-b border-border overflow-x-auto">
-                {dynamicSubcategories.map((sub) => (
-                  <button
-                    key={sub}
-                    onClick={() => setActiveSubcategory(sub)}
-                    className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${
-                      activeSubcategory === sub
-                        ? 'border-accent-indigo text-accent-indigo'
-                        : 'border-transparent text-text-secondary hover:text-text-primary'
-                    }`}
-                  >
-                    {sub === 'all' ? 'All' : sub}
-                  </button>
-                ))}
-              </div>
-
               {/* Results count */}
               <div className="mb-4 text-sm text-text-muted">
                 {loading ? '...' : filtered.length} resources

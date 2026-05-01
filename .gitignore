@@ -1,1 +1,12 @@
-node_modules
+node_modules/
+.env
+.DS_Store
+*.log
+dist/
+coverage/
+*.local
+server/node_modules/
+server/.env
+*.zip
+*.cjs
+*.js.map
