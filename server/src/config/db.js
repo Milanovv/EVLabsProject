@@ -1,26 +1,32 @@
 import mysql from 'mysql2/promise';
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'skillpath',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
+const pool = process.env.DATABASE_URL
+  ? mysql.createPool(process.env.DATABASE_URL)
+  : mysql.createPool({
+      host: process.env.DB_HOST || 'localhost',
+      user: process.env.DB_USER || 'root',
+      password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_NAME || 'skillpath',
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0
+    });
 
 export default pool;
 
 export async function initDatabase() {
-  const connection = await mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || ''
-  });
+  const connection = process.env.DATABASE_URL
+    ? await mysql.createConnection(process.env.DATABASE_URL)
+    : await mysql.createConnection({
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASSWORD || ''
+      });
 
-  await connection.query(`CREATE DATABASE IF NOT EXISTS skillpath`);
-  await connection.query(`USE skillpath`);
+  if (!process.env.DATABASE_URL) {
+    await connection.query(`CREATE DATABASE IF NOT EXISTS skillpath`);
+    await connection.query(`USE skillpath`);
+  }
 
   await connection.query(`
     CREATE TABLE IF NOT EXISTS users (
@@ -81,4 +87,9 @@ export async function initDatabase() {
 
   await connection.end();
   console.log('Database initialized successfully');
+
+  if (process.env.DATABASE_URL) {
+    const { seed } = await import('../scripts/seed.js');
+    await seed();
+  }
 }
