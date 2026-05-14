@@ -89,7 +89,7 @@ export async function initDatabase() {
   console.log('Database initialized successfully');
 
   if (process.env.DATABASE_URL) {
-    const { seed } = await import('../scripts/seed.js');
+    const { seed } = await import('../../scripts/seed.js');
     await seed();
   }
 }
