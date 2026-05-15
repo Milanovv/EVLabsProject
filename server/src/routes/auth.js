@@ -4,6 +4,19 @@ import { authenticateToken } from '../middleware/auth.js';
 
 const router = Router();
 
+router.get('/check-email', async (req, res) => {
+  try {
+    const { email } = req.query;
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' });
+    }
+    const result = await authService.checkEmailExists(email);
+    res.json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 router.post('/register', async (req, res) => {
   try {
     const { email, password, name } = req.body;
@@ -13,7 +26,15 @@ router.post('/register', async (req, res) => {
     const user = await authService.registerUser(email, password, name);
     res.status(201).json(user);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    const errorMap = {
+      'Invalid email format': 400,
+      'Email already registered': 409,
+      'Password must be at least 8 characters': 400,
+      'Password must contain an uppercase letter': 400,
+      'Password must contain a number': 400,
+    };
+    const status = errorMap[error.message] || 400;
+    res.status(status).json({ error: error.message });
   }
 });
 

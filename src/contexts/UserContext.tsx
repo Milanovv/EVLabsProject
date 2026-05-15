@@ -13,7 +13,7 @@ interface UserContextType {
   isPremium: boolean
   isLoading: boolean
   login: (email: string, password: string) => Promise<boolean>
-  register: (email: string, password: string, name: string) => Promise<boolean>
+  register: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>
   logout: () => void
   upgrade: () => Promise<boolean>
   cancelPremium: () => Promise<boolean>
@@ -60,14 +60,14 @@ export function UserProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const register = async (email: string, password: string, name: string): Promise<boolean> => {
+  const register = async (email: string, password: string, name: string): Promise<{ success: boolean; error?: string }> => {
     try {
       const data = await api.auth.register(email, password, name)
       localStorage.setItem('token', data.token)
       setUser({ id: data.id, email: data.email, name: data.name, isPremium: false })
-      return true
-    } catch {
-      return false
+      return { success: true }
+    } catch (err: any) {
+      return { success: false, error: err.message }
     }
   }
 

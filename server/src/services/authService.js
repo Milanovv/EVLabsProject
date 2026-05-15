@@ -1,8 +1,12 @@
 import bcrypt from 'bcryptjs';
 import pool from '../config/db.js';
 import { generateToken } from '../middleware/auth.js';
+import { validateEmail, validatePassword } from '../utils/validation.js';
 
 export async function registerUser(email, password, name) {
+  validateEmail(email);
+  validatePassword(password);
+
   const [existing] = await pool.query('SELECT id FROM users WHERE email = ?', [email]);
   if (existing.length > 0) {
     throw new Error('Email already registered');
@@ -16,6 +20,11 @@ export async function registerUser(email, password, name) {
 
   const token = generateToken({ id: result.insertId, email });
   return { id: result.insertId, email, name, token };
+}
+
+export async function checkEmailExists(email) {
+  const [rows] = await pool.query('SELECT id FROM users WHERE email = ?', [email]);
+  return { exists: rows.length > 0 };
 }
 
 export async function loginUser(email, password) {

@@ -24,6 +24,10 @@ async function request(endpoint, options = {}) {
 }
 
 export const auth = {
+  async checkEmail(email) {
+    return request(`/auth/check-email?email=${encodeURIComponent(email)}`);
+  },
+
   async register(email, password, name) {
     return request('/auth/register', {
       method: 'POST',
