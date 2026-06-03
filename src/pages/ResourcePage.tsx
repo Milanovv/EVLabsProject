@@ -35,7 +35,7 @@ export default function ResourcePage() {
         setResource(data)
         if (data) {
           const relatedData = await api.resources.related(data.category, id)
-          setRelated(relatedData.slice(0, 4))
+          setRelated(relatedData.data.slice(0, 4))
         }
       } catch (err: any) {
         console.error('Error fetching resource:', err)
