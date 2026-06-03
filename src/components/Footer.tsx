@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { Github, Twitter } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -50,8 +49,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-text-muted">© 2026 SkillPath. All rights reserved.</p>
-          <div className="flex gap-4">
-          </div>
+
         </div>
       </div>
     </footer>

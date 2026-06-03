@@ -3,14 +3,13 @@ import { useState, useEffect, useMemo } from 'react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
-import { Button } from '@/components/ui/button'
 import api from '@/services/api'
-import { categories, getCategoryColor } from '@/data/resources'
-import { Search, Filter, Loader2 } from 'lucide-react'
-import type { Resource } from '@/data/resources'
+import { categories, getCategoryColor } from '@/constants'
+import { Loader2 } from 'lucide-react'
+import type { Resource } from '@/types'
 
 export default function CategoryPage() {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const categoryParam = searchParams.get('cat') || 'Programming/Development'
   const [activeSubcategory, setActiveSubcategory] = useState('all')
   const [activeFilter, setActiveFilter] = useState<'all' | 'free' | 'premium'>('all')
@@ -34,7 +33,7 @@ export default function CategoryPage() {
       setLoading(true)
       try {
         const data = await api.resources.getAll({ category: categoryParam })
-        setResources(data)
+        setResources(data.data)
       } catch (error) {
         console.error('Failed to fetch resources:', error)
         setResources([])

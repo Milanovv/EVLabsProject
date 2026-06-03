@@ -5,10 +5,10 @@ import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import { useUser } from '@/contexts/UserContext'
-import { getCategoryColor, typeLabels, categories } from '@/data/resources'
+import { getCategoryColor, typeLabels } from '@/constants'
 import api from '@/services/api'
-import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle, Lock, Loader2 } from 'lucide-react'
-import type { Resource } from '@/data/resources'
+import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle, Lock } from 'lucide-react'
+import type { Resource } from '@/types'
 
 export default function ResourcePage() {
   const [searchParams] = useSearchParams()
@@ -22,6 +22,8 @@ export default function ResourcePage() {
   const [notification, setNotification] = useState('')
   const [error, setError] = useState('')
   const { isPremium: userIsPremium, user } = useUser()
+
+  useEffect(() => { document.title = resource ? `${resource.title} — SkillPath` : 'SkillPath' }, [resource])
 
   // Fetch resource from API
   useEffect(() => {
@@ -59,20 +61,8 @@ export default function ResourcePage() {
 
   const checkSavedStatus = async () => {
     try {
-      const savedResources = await api.resources.getSaved()
-      
-      if (!savedResources || typeof savedResources !== 'object') {
-        setSaved(false)
-        return
-      }
-      
-      if (!Array.isArray(savedResources)) {
-        setSaved(false)
-        return
-      }
-      
-      const isSaved = savedResources.some((r: any) => r.id === id)
-      setSaved(isSaved)
+      const result = await api.resources.isSaved(id)
+      setSaved(result.saved)
     } catch (error: any) {
       console.error('Error checking save status:', error?.message || error, error)
       setSaved(false)
@@ -90,13 +80,12 @@ export default function ResourcePage() {
     setNotification('')
     
     try {
-      let result
       if (saved) {
-        result = await api.resources.unsave(id)
+        await api.resources.unsave(id)
         setSaved(false)
         setNotification('Resource removed from saved')
       } else {
-        result = await api.resources.save(id)
+        await api.resources.save(id)
         setSaved(true)
         setNotification('Resource saved!')
       }
@@ -112,12 +101,50 @@ export default function ResourcePage() {
     }
   }
 
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+      setNotification('Link copied!')
+      setTimeout(() => setNotification(''), 3000)
+    } catch {
+      setError('Failed to copy link')
+    }
+  }
+
+  const handleVote = async () => {
+    try {
+      const result = await api.resources.vote(id)
+      if (result.voted) {
+        setVoted(true)
+        setResource(prev => prev ? { ...prev, votes: result.votes } : prev)
+        setNotification('Thanks for your feedback!')
+      } else {
+        setNotification('You already voted for this resource')
+      }
+      setTimeout(() => setNotification(''), 3000)
+    } catch (err: any) {
+      setError(err?.message || 'Failed to vote')
+    }
+  }
+
   // Scroll to top when the resource ID changes
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [id])
 
-  if (!resource && !loading) {
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-text-secondary">Loading...</div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
+  if (!resource) {
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
@@ -137,20 +164,7 @@ export default function ResourcePage() {
     )
   }
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-text-secondary">Loading...</div>
-        </main>
-        <Footer />
-      </div>
-    )
-  }
-
   const categoryColor = getCategoryColor(resource.category)
-  const category = categories.find(c => c.name === resource.category)
   const relatedResources = related
 
   return (
@@ -254,7 +268,7 @@ export default function ResourcePage() {
                       </Button>
                     </Link>
                   )}
-                  <Button variant="ghost" size="lg">
+                  <Button variant="ghost" size="lg" onClick={handleShare}>
                     <Share2 className="h-4 w-4" />
                     Share
                   </Button>
@@ -311,7 +325,7 @@ export default function ResourcePage() {
             <div className="flex gap-3">
               <Button 
                 variant={voted ? 'default' : 'secondary'} 
-                onClick={() => setVoted(!voted)}
+                onClick={handleVote}
               >
                 <ThumbsUp className="h-4 w-4" />
                 Yes, helpful!

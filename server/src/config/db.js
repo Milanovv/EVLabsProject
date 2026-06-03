@@ -9,7 +9,8 @@ const pool = process.env.DATABASE_URL
       database: process.env.DB_NAME || 'skillpath',
       waitForConnections: true,
       connectionLimit: 10,
-      queueLimit: 0
+      queueLimit: 0,
+      connectTimeout: 10000
     });
 
 export default pool;
@@ -20,7 +21,8 @@ export async function initDatabase() {
     : await mysql.createConnection({
         host: process.env.DB_HOST || 'localhost',
         user: process.env.DB_USER || 'root',
-        password: process.env.DB_PASSWORD || ''
+        password: process.env.DB_PASSWORD || '',
+        connectTimeout: 10000
       });
 
   if (!process.env.DATABASE_URL) {
@@ -35,6 +37,7 @@ export async function initDatabase() {
       password_hash VARCHAR(255) NOT NULL,
       name VARCHAR(255) NOT NULL,
       is_premium BOOLEAN DEFAULT FALSE,
+      role VARCHAR(50) DEFAULT 'user',
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )
@@ -82,6 +85,18 @@ export async function initDatabase() {
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
       FOREIGN KEY (resource_id) REFERENCES resources(id) ON DELETE CASCADE,
       UNIQUE KEY unique_save (user_id, resource_id)
+    )
+  `);
+
+  await connection.query(`
+    CREATE TABLE IF NOT EXISTS resource_votes (
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      user_id INT NOT NULL,
+      resource_id INT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (resource_id) REFERENCES resources(id) ON DELETE CASCADE,
+      UNIQUE KEY unique_vote (user_id, resource_id)
     )
   `);
 

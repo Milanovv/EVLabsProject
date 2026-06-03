@@ -18,8 +18,13 @@ export async function registerUser(email, password, name) {
     [email, passwordHash, name]
   );
 
-  const token = generateToken({ id: result.insertId, email });
-  return { id: result.insertId, email, name, token };
+  const [rows] = await pool.query(
+    'SELECT id, email, name, role FROM users WHERE id = ?',
+    [result.insertId]
+  );
+  const user = rows[0];
+  const token = generateToken({ id: user.id, email: user.email, role: user.role });
+  return { id: user.id, email: user.email, name: user.name, role: user.role, token };
 }
 
 export async function checkEmailExists(email) {
@@ -39,19 +44,20 @@ export async function loginUser(email, password) {
     throw new Error('Invalid email or password');
   }
 
-  const token = generateToken(user);
+  const token = generateToken({ id: user.id, email: user.email, role: user.role });
   return {
     id: user.id,
     email: user.email,
     name: user.name,
     isPremium: Boolean(user.is_premium),
+    role: user.role,
     token
   };
 }
 
 export async function getUserProfile(userId) {
   const [users] = await pool.query(
-    'SELECT id, email, name, is_premium, created_at FROM users WHERE id = ?',
+    'SELECT id, email, name, is_premium, role, created_at FROM users WHERE id = ?',
     [userId]
   );
   if (users.length === 0) {
@@ -63,6 +69,7 @@ export async function getUserProfile(userId) {
     email: user.email,
     name: user.name,
     isPremium: Boolean(user.is_premium),
+    role: user.role,
     createdAt: user.created_at
   };
 }

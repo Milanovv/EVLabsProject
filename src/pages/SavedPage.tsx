@@ -7,11 +7,13 @@ import { Button } from '@/components/ui/button'
 import { useUser } from '@/contexts/UserContext'
 import api from '@/services/api'
 import { Bookmark } from 'lucide-react'
+import type { Resource } from '@/types'
 
 export default function SavedPage() {
+  useEffect(() => { document.title = 'Saved Resources — SkillPath' }, [])
   const { user, isLoading } = useUser()
   const navigate = useNavigate()
-  const [savedResources, setSavedResources] = useState<any[]>([])
+  const [savedResources, setSavedResources] = useState<Resource[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

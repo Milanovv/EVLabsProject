@@ -1,14 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
-import { Check, X, Star, AlertCircle } from 'lucide-react'
+import { Check, X, Star } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import api from '@/services/api'
 import { useUser } from '@/contexts/UserContext'
 
 export default function PricingPage() {
+  useEffect(() => { document.title = 'Pricing — SkillPath' }, [])
   const [isAnnual, setIsAnnual] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [upgrading, setUpgrading] = useState(false)

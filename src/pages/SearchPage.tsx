@@ -3,18 +3,20 @@ import { useState, useEffect } from 'react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
-import { Button } from '@/components/ui/button'
 import api from '@/services/api'
 import { useUser } from '@/contexts/UserContext'
-import { Search, Filter, Crown, Lock, Loader2 } from 'lucide-react'
-import type { Resource } from '@/data/resources'
+import { Search, Crown, Lock, Loader2 } from 'lucide-react'
+import type { Resource } from '@/types'
 
 export default function SearchPage() {
+  useEffect(() => { document.title = 'Search — SkillPath' }, [])
   const [searchParams, setSearchParams] = useSearchParams()
   const query = searchParams.get('q') || ''
+  const trending = searchParams.get('trending') === 'true'
+  const isNew = searchParams.get('new') === 'true'
   const [searchQuery, setSearchQuery] = useState(query)
-  const [activeFilter, setActiveFilter] = useState('all') // all, free, paid, tutorial, tool, faq, issue, video, plugin
-  const [showPremium, setShowPremium] = useState(true)
+  const [priceFilter, setPriceFilter] = useState('all') // all, free, paid
+  const [typeFilter, setTypeFilter] = useState('all') // all, tutorial, tool, faq, issue, video, plugin
   const [resources, setResources] = useState<Resource[]>([])
   const [loading, setLoading] = useState(true)
   const { isPremium } = useUser()
@@ -28,10 +30,14 @@ export default function SearchPage() {
       setLoading(true)
       try {
         let data: Resource[]
-        if (searchQuery) {
-          data = await api.resources.search(searchQuery)
+        if (trending) {
+          data = (await api.resources.trending()).data
+        } else if (isNew) {
+          data = (await api.resources.new()).data
+        } else if (searchQuery) {
+          data = (await api.resources.search(searchQuery)).data
         } else {
-          data = await api.resources.getAll()
+          data = (await api.resources.getAll()).data
         }
         setResources(data)
       } catch (error) {
@@ -42,16 +48,15 @@ export default function SearchPage() {
       }
     }
     fetchResources()
-  }, [searchQuery])
+  }, [searchQuery, trending, isNew])
 
   const filtered = resources.filter(r => {
-    if (activeFilter === 'all') return true
-    if (activeFilter === 'free') return !r.isPremium
-    if (activeFilter === 'paid') return r.isPremium
-    return r.type === activeFilter
+    if (priceFilter === 'free') return !r.isPremium
+    if (priceFilter === 'paid') return r.isPremium
+    return true
   }).filter(r => {
-    const showAllPremium = showPremium || isPremium
-    return showAllPremium || !r.isPremium
+    if (typeFilter === 'all') return true
+    return r.type === typeFilter
   })
 
   const handleSearch = (e: React.FormEvent) => {
@@ -94,9 +99,9 @@ export default function SearchPage() {
               {['all', 'tutorial', 'tool', 'faq', 'issue', 'video', 'plugin'].map((filter) => (
                 <button
                   key={filter}
-                  onClick={() => setActiveFilter(filter)}
+                  onClick={() => setTypeFilter(filter)}
                   className={`px-4 py-2 text-sm rounded-full border transition-colors ${
-                    activeFilter === filter
+                    typeFilter === filter
                       ? 'bg-accent-indigo border-accent-indigo text-white'
                       : 'border-border text-text-secondary hover:border-text-muted'
                   }`}
@@ -112,9 +117,9 @@ export default function SearchPage() {
             {filterOptions.map((option) => (
               <button
                 key={option.value}
-                onClick={() => setActiveFilter(option.value)}
+                onClick={() => setPriceFilter(option.value)}
                 className={`flex items-center gap-2 px-4 py-2 text-sm rounded-full border transition-colors ${
-                  activeFilter === option.value
+                  priceFilter === option.value
                     ? option.value === 'paid'
                       ? 'bg-accent-gold border-accent-gold text-background'
                       : 'bg-accent-indigo border-accent-indigo text-white'
@@ -142,7 +147,7 @@ export default function SearchPage() {
             <span>
               <strong>{loading ? '...' : filtered.length}</strong> results found
             </span>
-            {activeFilter === 'paid' && !isPremium && (
+            {priceFilter === 'paid' && !isPremium && (
               <span className="flex items-center gap-2 text-accent-gold">
                 <Lock className="h-4 w-4" />
                 Premium links are blurred until you upgrade

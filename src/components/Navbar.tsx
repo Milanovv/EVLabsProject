@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
-import { Search, ChevronDown, Menu, X, User, LogOut, Star } from 'lucide-react'
+import { Search, ChevronDown, Menu, X, User, LogOut, Star, Bookmark } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { categories } from '@/data/resources'
+import { categories } from '@/constants'
 import { useUser } from '@/contexts/UserContext'
 
 export function Navbar() {
@@ -13,7 +12,7 @@ export function Navbar() {
   const [searchQuery, setSearchQuery] = useState('')
   const location = useLocation()
   const navigate = useNavigate()
-  const { user, isPremium, logout } = useUser()
+  const { user, logout } = useUser()
 
   const isActive = (path: string) => location.pathname === path
 
@@ -126,7 +125,7 @@ export function Navbar() {
               >
                 <User className="h-4 w-4" />
                 {user.name}
-                {user.email === 'admin@evlabs.com' && (
+                {user.role === 'admin' && (
                   <span className="px-1.5 py-0.5 text-xs font-medium bg-accent-gold text-background rounded">Admin</span>
                 )}
               </button>
@@ -138,6 +137,13 @@ export function Navbar() {
                   >
                     <Star className="h-4 w-4" />
                     Dashboard
+                  </Link>
+                  <Link
+                    to="/saved"
+                    className="flex items-center gap-2 px-4 py-2 text-sm text-text-secondary hover:bg-background-elevated hover:text-text-primary"
+                  >
+                    <Bookmark className="h-4 w-4" />
+                    Saved
                   </Link>
                   <button
                     onClick={() => {
@@ -192,7 +198,7 @@ export function Navbar() {
                 <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium bg-background-secondary rounded-md">
                   <User className="h-4 w-4" />
                   {user.name}
-                  {user.email === 'admin@evlabs.com' && (
+                  {user.role === 'admin' && (
                     <span className="px-1.5 py-0.5 text-xs font-medium bg-accent-gold text-background rounded">Admin</span>
                   )}
                 </div>

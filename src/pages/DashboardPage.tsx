@@ -6,10 +6,11 @@ import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import api from '@/services/api'
 import { useUser } from '@/contexts/UserContext'
-import { Bookmark, Clock, Settings, LogOut, Star, TrendingUp, Loader2, AlertCircle } from 'lucide-react'
-import type { Resource } from '@/data/resources'
+import { Bookmark, Clock, LogOut, Star, TrendingUp, Loader2, AlertCircle } from 'lucide-react'
+import type { Resource } from '@/types'
 
 export default function DashboardPage() {
+  useEffect(() => { document.title = 'Dashboard — SkillPath' }, [])
   const navigate = useNavigate()
   const { user, isPremium, logout, cancelPremium } = useUser()
   const [savedResources, setSavedResources] = useState<Resource[]>([])
@@ -26,7 +27,7 @@ export default function DashboardPage() {
           api.resources.getAll()
         ])
         setSavedResources(saved)
-        setRecommended(allResources.slice(0, 4))
+        setRecommended(allResources.data.slice(0, 4))
       } catch (error) {
         console.error('Failed to fetch dashboard data:', error)
       } finally {
@@ -133,7 +134,7 @@ fetchData()
               api.resources.getAll()
             ])
             setSavedResources(saved)
-            setRecommended(allResources.slice(0, 4))
+            setRecommended(allResources.data.slice(0, 4))
             setShowCancelModal(false)
           } catch (error) {
             console.error('Failed to cancel:', error)

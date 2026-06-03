@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
-import { categories, subcategories } from '@/data/resources'
-import { Info } from 'lucide-react'
+import { categories, subcategories } from '@/constants'
+import api from '@/services/api'
+import { Info, Loader2 } from 'lucide-react'
 
 export default function SubmitPage() {
-  const navigate = useNavigate()
   const [form, setForm] = useState({
     url: '',
     name: '',
@@ -21,10 +21,31 @@ export default function SubmitPage() {
   const [tags, setTags] = useState<string[]>([])
   const [tagInput, setTagInput] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError('')
+    try {
+      await api.resources.create({
+        title: form.name,
+        url: form.url,
+        description: form.description,
+        category: form.category,
+        subcategory: form.subcategory,
+        type: form.type,
+        difficulty: form.difficulty || undefined,
+        tags,
+        email: form.email,
+      })
+      setSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit resource')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const addTag = () => {
@@ -222,12 +243,20 @@ export default function SubmitPage() {
               <p className="mt-1 text-xs text-text-muted">We'll notify you when your resource is published</p>
             </div>
 
+            {error && (
+              <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-400">
+                {error}
+              </div>
+            )}
+
             {/* Actions */}
             <div className="flex gap-3 pt-4">
               <Link to="/" className="flex-1">
                 <Button type="button" variant="secondary" className="w-full">Cancel</Button>
               </Link>
-              <Button type="submit" className="flex-1">Submit Resource</Button>
+              <Button type="submit" className="flex-1" disabled={loading}>
+                {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : 'Submit Resource'}
+              </Button>
             </div>
           </form>
         </div>

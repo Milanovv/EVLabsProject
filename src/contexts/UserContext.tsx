@@ -6,6 +6,7 @@ interface User {
   email: string
   name: string
   isPremium: boolean
+  role?: string
 }
 
 interface UserContextType {
@@ -52,7 +53,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       const data = await api.auth.login(email, password)
       localStorage.setItem('token', data.token)
-      setUser({ id: data.id, email: data.email, name: data.name, isPremium: data.isPremium })
+      setUser({ id: data.id, email: data.email, name: data.name, isPremium: data.isPremium, role: data.role })
       setIsPremium(data.isPremium)
       return true
     } catch {
@@ -64,7 +65,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
     try {
       const data = await api.auth.register(email, password, name)
       localStorage.setItem('token', data.token)
-      setUser({ id: data.id, email: data.email, name: data.name, isPremium: false })
+      setUser({ id: data.id, email: data.email, name: data.name, isPremium: false, role: data.role })
       return { success: true }
     } catch (err: any) {
       return { success: false, error: err.message }
@@ -92,7 +93,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   const cancelPremium = async (): Promise<boolean> => {
     try {
-      const result = await api.auth.cancel()
+      await api.auth.cancel()
       setIsPremium(false)
       if (user) {
         setUser({ ...user, isPremium: false })

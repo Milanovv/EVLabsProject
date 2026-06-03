@@ -32,6 +32,11 @@ app.get('/api/health', (req, res) => {
 });
 
 async function start() {
+  if (!process.env.JWT_SECRET) {
+    console.error('FATAL: JWT_SECRET environment variable is not set. Server cannot start safely.');
+    process.exit(1);
+  }
+
   try {
     await initDatabase();
     app.listen(PORT, () => {

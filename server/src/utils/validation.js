@@ -5,6 +5,20 @@ export function validateEmail(email) {
   }
 }
 
+export function validateUrl(url) {
+  if (!url) {
+    throw new Error('URL is required');
+  }
+  try {
+    const parsed = new URL(url);
+    if (!['http:', 'https:'].includes(parsed.protocol)) {
+      throw new Error();
+    }
+  } catch {
+    throw new Error('Invalid URL format. Must be a valid http or https URL');
+  }
+}
+
 export function validatePassword(password) {
   if (!password || password.length < 8) {
     throw new Error('Password must be at least 8 characters');

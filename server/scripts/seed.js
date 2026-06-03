@@ -296,6 +296,8 @@ export async function seed() {
   }
 }
 
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1])) {
-  seed();
+if (process.argv[1]) {
+  const url = decodeURIComponent(import.meta.url).replace(/\\/g, '/');
+  const argv = process.argv[1].replace(/\\/g, '/');
+  if (url.endsWith(argv)) seed();
 }

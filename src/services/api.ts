@@ -1,13 +1,15 @@
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+/// <reference types="vite/client" />
 
-async function request(endpoint, options = {}) {
+const API_BASE: string = import.meta.env.VITE_API_URL || '/api';
+
+async function request(endpoint: string, options: RequestInit = {}) {
   const token = localStorage.getItem('token');
   
-  const config = {
+  const config: RequestInit = {
     headers: {
       'Content-Type': 'application/json',
       ...(token && { Authorization: `Bearer ${token}` }),
-      ...options.headers,
+      ...(options.headers as Record<string, string> || {}),
     },
     ...options,
   };
@@ -24,18 +26,18 @@ async function request(endpoint, options = {}) {
 }
 
 export const auth = {
-  async checkEmail(email) {
+  async checkEmail(email: string) {
     return request(`/auth/check-email?email=${encodeURIComponent(email)}`);
   },
 
-  async register(email, password, name) {
+  async register(email: string, password: string, name: string) {
     return request('/auth/register', {
       method: 'POST',
       body: JSON.stringify({ email, password, name }),
     });
   },
 
-  async login(email, password) {
+  async login(email: string, password: string) {
     return request('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -60,16 +62,16 @@ export const auth = {
 };
 
 export const resources = {
-  async getAll(filters = {}) {
+  async getAll(filters: Record<string, string> = {}) {
     const params = new URLSearchParams(filters).toString();
     return request(`/resources${params ? `?${params}` : ''}`);
   },
 
-  async getById(id) {
+  async getById(id: number) {
     return request(`/resources/${id}`);
   },
 
-  async search(query) {
+  async search(query: string) {
     return request(`/resources/search?q=${encodeURIComponent(query)}`);
   },
 
@@ -81,17 +83,17 @@ export const resources = {
     return request('/resources/new');
   },
 
-  async related(category, excludeId) {
+  async related(category: string, excludeId: number) {
     return request(`/resources?category=${encodeURIComponent(category)}&exclude=${excludeId}`);
   },
 
-  async save(id) {
+  async save(id: number) {
     return request(`/resources/${id}/save`, {
       method: 'POST',
     });
   },
 
-  async unsave(id) {
+  async unsave(id: number) {
     return request(`/resources/${id}/save`, {
       method: 'DELETE',
     });
@@ -99,6 +101,23 @@ export const resources = {
 
   async getSaved() {
     return request('/resources/saved');
+  },
+
+  async isSaved(id: number) {
+    return request(`/resources/${id}/saved`);
+  },
+
+  async vote(id: number) {
+    return request(`/resources/${id}/vote`, {
+      method: 'POST',
+    });
+  },
+
+  async create(data: Record<string, unknown>) {
+    return request('/resources', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
   },
 };
 

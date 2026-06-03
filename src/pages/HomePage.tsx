@@ -1,14 +1,15 @@
-import { Link, useSearchParams, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Search, ArrowRight, BookOpen, Terminal, Megaphone, Kanban, TrendingUp, Calendar, DollarSign, Loader2, Globe, Palette, Video, Bot, BarChart, Server, GraduationCap, Shield, AlertTriangle } from 'lucide-react'
+import { Search, BookOpen, Terminal, Megaphone, Kanban, TrendingUp, Calendar, DollarSign, Loader2, Globe, Palette, Video, Bot, BarChart, Server, GraduationCap, Shield, AlertTriangle } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ResourceCard } from '@/components/ResourceCard'
 import { Button } from '@/components/ui/button'
 import api from '@/services/api'
-import { categories, calculateCategoryCounts } from '@/data/resources'
-import type { Resource } from '@/data/resources'
+import { categories } from '@/constants'
+import { resources as staticResources, calculateCategoryCounts } from '@/data/resources'
+import type { Resource } from '@/types'
 
 const categoryIcons: Record<string, React.ReactNode> = {
   'Programming/Development': <Terminal className="h-6 w-6" />,
@@ -38,14 +39,18 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    document.title = 'SkillPath — Curated Learning Resources'
+  }, [])
+
+  useEffect(() => {
     async function fetchHomeData() {
       try {
         const [trendingData, recentData] = await Promise.all([
           api.resources.trending(),
           api.resources.new()
         ])
-        setTrending(trendingData.slice(0, 6))
-        setRecent(recentData.slice(0, 6))
+        setTrending(trendingData.data.slice(0, 6))
+        setRecent(recentData.data.slice(0, 6))
       } catch (error) {
         console.error('Failed to fetch home data:', error)
       } finally {
@@ -115,7 +120,7 @@ export default function HomePage() {
             className="mt-12 flex justify-center gap-12"
           >
             <div className="text-center">
-              <div className="text-2xl font-bold text-accent-indigo">100+</div>
+              <div className="text-2xl font-bold text-accent-indigo">{staticResources.length}+</div>
               <div className="text-sm text-text-muted">Resources</div>
             </div>
             <div className="text-center">

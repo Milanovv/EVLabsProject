@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { useUser } from '@/contexts/UserContext'
@@ -20,13 +20,16 @@ function validatePasswordStrength(password: string): string | null {
 }
 
 export default function SignupPage() {
+  useEffect(() => { document.title = 'Sign Up — SkillPath' }, [])
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [fieldErrors, setFieldErrors] = useState<{ email: string | null; password: string | null; server: string | null }>({
+  const [fieldErrors, setFieldErrors] = useState<{ email: string | null; password: string | null; confirm: string | null; server: string | null }>({
     email: null,
     password: null,
+    confirm: null,
     server: null,
   })
   const [emailTaken, setEmailTaken] = useState(false)
@@ -70,6 +73,12 @@ export default function SignupPage() {
     setFieldErrors(prev => ({ ...prev, password: strengthError }))
   }
 
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setConfirmPassword(value)
+    setFieldErrors(prev => ({ ...prev, server: null, confirm: value !== password ? 'Passwords do not match' : null }))
+  }
+
   const handleEmailBlur = async () => {
     if (!email || fieldErrors.email) return
     try {
@@ -89,11 +98,14 @@ export default function SignupPage() {
 
     const emailErr = validateEmailFormat(email)
     const passwordErr = validatePasswordStrength(password)
+    const confirmErr = confirmPassword !== password ? 'Passwords do not match' : null
 
-    if (emailErr || passwordErr || emailTaken) {
+    if (emailErr || passwordErr || confirmErr || emailTaken) {
       setFieldErrors(prev => ({
+        ...prev,
         email: emailErr || (emailTaken ? 'This email is already registered' : null),
         password: passwordErr,
+        confirm: confirmErr,
         server: null,
       }))
       return
@@ -118,7 +130,7 @@ export default function SignupPage() {
     }
   }
 
-  const hasErrors = fieldErrors.email || fieldErrors.password || emailTaken
+  const hasErrors = fieldErrors.email || fieldErrors.password || fieldErrors.confirm || emailTaken
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
@@ -183,6 +195,26 @@ export default function SignupPage() {
               />
               {fieldErrors.password && (
                 <p className="text-sm text-red-500 mt-1">{fieldErrors.password}</p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-text-primary">
+                Confirm Password
+              </label>
+              <input
+                id="confirmPassword"
+                type="password"
+                required
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                className={`mt-1 block w-full rounded-lg border px-4 py-2 text-text-primary placeholder:text-text-muted focus:outline-none bg-background-secondary ${
+                  fieldErrors.confirm ? 'border-red-500' : 'border-border focus:border-accent-indigo'
+                }`}
+                placeholder="••••••••"
+              />
+              {fieldErrors.confirm && (
+                <p className="text-sm text-red-500 mt-1">{fieldErrors.confirm}</p>
               )}
             </div>
           </div>

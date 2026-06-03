@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Star } from 'lucide-react'
+import { Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
-import { Resource, getCategoryColor, typeLabels } from '@/data/resources'
+import { getCategoryColor, typeLabels } from '@/constants'
+import type { Resource } from '@/types'
 import { useUser } from '@/contexts/UserContext'
 
 interface ResourceCardProps {

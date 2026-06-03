@@ -1,4 +1,5 @@
 import pool from '../config/db.js';
+import { formatResource } from '../utils/formatResource.js';
 
 export async function saveResource(userId, resourceId) {
   const [existing] = await pool.query(
@@ -48,21 +49,3 @@ export async function isResourceSaved(userId, resourceId) {
   return existing.length > 0;
 }
 
-function formatResource(row) {
-  return {
-    id: row.id,
-    category: row.category,
-    subcategory: row.subcategory,
-    title: row.title,
-    url: row.url,
-    description: row.description,
-    tags: typeof row.tags === 'string' ? JSON.parse(row.tags) : row.tags || [],
-    type: row.type,
-    difficulty: row.difficulty,
-    isPremium: Boolean(row.is_premium),
-    isTrending: Boolean(row.is_trending),
-    isNew: Boolean(row.is_new),
-    rating: Number(row.rating),
-    votes: row.votes
-  };
-}
