@@ -19,6 +19,14 @@ export function validateUrl(url) {
   }
 }
 
+export function validateVoteType(type) {
+  const num = Number(type);
+  if (num !== 1 && num !== -1) {
+    throw new Error('Vote type must be 1 (helpful) or -1 (not really)');
+  }
+  return num;
+}
+
 export function validatePassword(password) {
   if (!password || password.length < 8) {
     throw new Error('Password must be at least 8 characters');

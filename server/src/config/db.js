@@ -93,12 +93,19 @@ export async function initDatabase() {
       id INT PRIMARY KEY AUTO_INCREMENT,
       user_id INT NOT NULL,
       resource_id INT NOT NULL,
+      vote_type TINYINT DEFAULT 1,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
       FOREIGN KEY (resource_id) REFERENCES resources(id) ON DELETE CASCADE,
       UNIQUE KEY unique_vote (user_id, resource_id)
     )
   `);
+
+  try {
+    await connection.query('ALTER TABLE resource_votes ADD COLUMN vote_type TINYINT DEFAULT 1');
+  } catch {
+    // Column already exists
+  }
 
   await connection.end();
   console.log('Database initialized successfully');

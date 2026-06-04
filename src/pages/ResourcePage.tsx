@@ -17,9 +17,10 @@ export default function ResourcePage() {
   const [related, setRelated] = useState<Resource[]>([])
   const [loading, setLoading] = useState(true)
   const [saved, setSaved] = useState(false)
-  const [voted, setVoted] = useState(false)
+  const [voteType, setVoteType] = useState<number | null>(null)
   const [saving, setSaving] = useState(false)
   const [notification, setNotification] = useState('')
+  const [notificationType, setNotificationType] = useState<'success' | 'error' | null>(null)
   const [error, setError] = useState('')
   const { isPremium: userIsPremium, user } = useUser()
 
@@ -52,22 +53,33 @@ export default function ResourcePage() {
   // Check if premium content should be locked
   const isLocked = resource?.isPremium && !userIsPremium
 
-  // Load saved status
+  // Load saved and vote status
   useEffect(() => {
-    if (user && resource) {
-      checkSavedStatus()
-    }
-  }, [id, user, resource])
+    if (!user || !resource) return
 
-  const checkSavedStatus = async () => {
-    try {
-      const result = await api.resources.isSaved(id)
-      setSaved(result.saved)
-    } catch (error: any) {
-      console.error('Error checking save status:', error?.message || error, error)
-      setSaved(false)
+    const checkSavedStatus = async () => {
+      try {
+        const result = await api.resources.isSaved(id)
+        setSaved(result.saved)
+      } catch (error: any) {
+        console.error('Error checking save status:', error?.message || error, error)
+        setSaved(false)
+      }
     }
-  }
+
+    const checkVoteStatus = async () => {
+      try {
+        const result = await api.resources.getVoteStatus(id)
+        setVoteType(result.voteType)
+      } catch (error: any) {
+        console.error('Error checking vote status:', error?.message || error, error)
+        setVoteType(null)
+      }
+    }
+
+    checkSavedStatus()
+    checkVoteStatus()
+  }, [id, user, resource])
 
   const handleSave = async () => {
     if (!user) {
@@ -111,17 +123,29 @@ export default function ResourcePage() {
     }
   }
 
-  const handleVote = async () => {
+  const handleVote = async (type: number) => {
+    if (!user) {
+      setError('Please login to vote')
+      return
+    }
+
     try {
-      const result = await api.resources.vote(id)
+      const result = await api.resources.vote(id, type)
+      setVoteType(result.voteType)
+      setResource(prev => prev ? { ...prev, votes: result.votes } : prev)
+
       if (result.voted) {
-        setVoted(true)
-        setResource(prev => prev ? { ...prev, votes: result.votes } : prev)
-        setNotification('Thanks for your feedback!')
+        setNotification(type === 1 ? 'Marked as helpful!' : 'Marked as not helpful')
+        setNotificationType(type === 1 ? 'success' : 'error')
       } else {
-        setNotification('You already voted for this resource')
+        setNotification('')
+        setNotificationType(null)
       }
-      setTimeout(() => setNotification(''), 3000)
+
+      setTimeout(() => {
+        setNotification('')
+        setNotificationType(null)
+      }, 3000)
     } catch (err: any) {
       setError(err?.message || 'Failed to vote')
     }
@@ -276,8 +300,8 @@ export default function ResourcePage() {
               )}
               
               {/* Notification/Error display */}
-              {(notification || error) && (
-                <div className={`w-full py-2 px-4 rounded-lg ${error ? 'bg-red-500/20 text-red-500' : 'bg-green-500/20 text-green-500'}`}>
+              {(notificationType || error) && (
+                <div className={`w-full py-2 px-4 rounded-lg ${error ? 'bg-red-500/20 text-red-500' : notificationType === 'error' ? 'bg-red-500/20 text-red-500' : 'bg-green-500/20 text-green-500'}`}>
                   {error || notification}
                 </div>
               )}
@@ -324,13 +348,16 @@ export default function ResourcePage() {
             <h2 className="text-lg font-semibold mb-4">Was this resource helpful?</h2>
             <div className="flex gap-3">
               <Button 
-                variant={voted ? 'default' : 'secondary'} 
-                onClick={handleVote}
+                variant={voteType === 1 ? 'default' : 'secondary'} 
+                onClick={() => handleVote(1)}
               >
                 <ThumbsUp className="h-4 w-4" />
                 Yes, helpful!
               </Button>
-              <Button variant="secondary">
+              <Button 
+                variant={voteType === -1 ? 'default' : 'secondary'} 
+                onClick={() => handleVote(-1)}
+              >
                 <ThumbsUp className="h-4 w-4 rotate-180" />
                 Not really
               </Button>

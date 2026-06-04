@@ -107,10 +107,15 @@ export const resources = {
     return request(`/resources/${id}/saved`);
   },
 
-  async vote(id: number) {
+  async vote(id: number, type: number) {
     return request(`/resources/${id}/vote`, {
       method: 'POST',
+      body: JSON.stringify({ type }),
     });
+  },
+
+  async getVoteStatus(id: number) {
+    return request(`/resources/${id}/vote`);
   },
 
   async create(data: Record<string, unknown>) {

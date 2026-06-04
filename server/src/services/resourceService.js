@@ -119,7 +119,7 @@ export async function getNewResources(filters = {}) {
   return { data: resources.map(formatResource), total };
 }
 
-export async function voteResource(id, userId) {
+export async function voteResource(id, userId, type) {
   const [existing] = await pool.query(
     'SELECT id FROM resources WHERE id = ?',
     [id]
@@ -128,24 +128,50 @@ export async function voteResource(id, userId) {
     throw new Error('Resource not found');
   }
 
-  if (userId) {
-    const [insertResult] = await pool.query(
-      'INSERT IGNORE INTO resource_votes (user_id, resource_id) VALUES (?, ?)',
-      [userId, id]
-    );
+  const [existingVote] = await pool.query(
+    'SELECT id, vote_type FROM resource_votes WHERE user_id = ? AND resource_id = ?',
+    [userId, id]
+  );
 
-    if (insertResult.affectedRows === 0) {
-      const [rows] = await pool.query('SELECT votes FROM resources WHERE id = ?', [id]);
-      return { voted: false, votes: rows[0].votes };
+  if (existingVote.length > 0) {
+    if (existingVote[0].vote_type === type) {
+      await pool.query(
+        'DELETE FROM resource_votes WHERE id = ?',
+        [existingVote[0].id]
+      );
+    } else {
+      await pool.query(
+        'UPDATE resource_votes SET vote_type = ? WHERE id = ?',
+        [type, existingVote[0].id]
+      );
     }
+  } else {
+    await pool.query(
+      'INSERT INTO resource_votes (user_id, resource_id, vote_type) VALUES (?, ?, ?)',
+      [userId, id, type]
+    );
   }
 
-  const [result] = await pool.query(
-    'UPDATE resources SET votes = votes + 1 WHERE id = ?',
+  const [total] = await pool.query(
+    'SELECT COALESCE(SUM(vote_type), 0) as total FROM resource_votes WHERE resource_id = ?',
     [id]
   );
-  const [rows] = await pool.query('SELECT votes FROM resources WHERE id = ?', [id]);
-  return { voted: true, votes: rows[0].votes };
+
+  await pool.query('UPDATE resources SET votes = ? WHERE id = ?', [total[0].total, id]);
+
+  const sameType = existingVote.length > 0 && existingVote[0].vote_type === type;
+  const voted = existingVote.length === 0 || !sameType;
+  const voteType = sameType ? null : type;
+
+  return { voted, voteType, votes: total[0].total };
+}
+
+export async function getUserVote(resourceId, userId) {
+  const [rows] = await pool.query(
+    'SELECT vote_type FROM resource_votes WHERE user_id = ? AND resource_id = ?',
+    [userId, resourceId]
+  );
+  return { voteType: rows.length > 0 ? rows[0].vote_type : null };
 }
 
 export async function createResource(data) {

@@ -2,6 +2,7 @@ import { Router } from 'express';
 import * as resourceService from '../services/resourceService.js';
 import * as saveService from '../services/saveService.js';
 import { authenticateToken } from '../middleware/auth.js';
+import { validateVoteType } from '../utils/validation.js';
 
 const router = Router();
 
@@ -95,9 +96,19 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/:id/vote', authenticateToken, async (req, res) => {
+  try {
+    const result = await resourceService.getUserVote(parseInt(req.params.id), req.user.id);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.post('/:id/vote', authenticateToken, async (req, res) => {
   try {
-    const result = await resourceService.voteResource(req.params.id, req.user.id);
+    const type = validateVoteType(req.body.type);
+    const result = await resourceService.voteResource(req.params.id, req.user.id, type);
     res.json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });
