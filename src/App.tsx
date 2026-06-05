@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { ScrollToTop } from '@/components/ScrollToTop'
 import HomePage from '@/pages/HomePage'
 import CategoryPage from '@/pages/CategoryPage'
 import SearchPage from '@/pages/SearchPage'
@@ -15,7 +16,9 @@ import NotFoundPage from '@/pages/NotFoundPage'
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/category" element={<CategoryPage />} />
       <Route path="/search" element={<SearchPage />} />
@@ -30,5 +33,6 @@ export default function App() {
       <Route path="/saved" element={<SavedPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+    </>
   )
 }
