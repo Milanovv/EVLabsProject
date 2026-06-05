@@ -188,11 +188,11 @@ export function Navbar() {
             />
           </form>
           <div className="flex flex-col gap-2">
-            <Link to="/" className="px-3 py-2 text-sm font-medium">Home</Link>
-            <Link to="/category" className="px-3 py-2 text-sm font-medium">Categories</Link>
-            <Link to="/search" className="px-3 py-2 text-sm font-medium">Search</Link>
-            <Link to="/submit" className="px-3 py-2 text-sm font-medium text-accent-indigo">Submit Resource</Link>
-            <Link to="/pricing" className="px-3 py-2 text-sm font-medium">Pricing</Link>
+            <Link to="/" onClick={() => setIsOpen(false)} className="px-3 py-2 text-sm font-medium">Home</Link>
+            <Link to="/category" onClick={() => setIsOpen(false)} className="px-3 py-2 text-sm font-medium">Categories</Link>
+            <Link to="/search" onClick={() => setIsOpen(false)} className="px-3 py-2 text-sm font-medium">Search</Link>
+            <Link to="/submit" onClick={() => setIsOpen(false)} className="px-3 py-2 text-sm font-medium text-accent-indigo">Submit Resource</Link>
+            <Link to="/pricing" onClick={() => setIsOpen(false)} className="px-3 py-2 text-sm font-medium">Pricing</Link>
             {user ? (
               <div className="flex flex-col gap-2 pt-2">
                 <div className="flex items-center gap-2 px-3 py-2 text-sm font-medium bg-background-secondary rounded-md">
@@ -203,7 +203,16 @@ export function Navbar() {
                   )}
                 </div>
                 <Link
+                  to="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary bg-background-secondary rounded-md"
+                >
+                  <Star className="h-4 w-4" />
+                  Dashboard
+                </Link>
+                <Link
                   to="/saved"
+                  onClick={() => setIsOpen(false)}
                   className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary bg-background-secondary rounded-md"
                 >
                   <Bookmark className="h-4 w-4" />
@@ -211,6 +220,7 @@ export function Navbar() {
                 </Link>
                 <button
                   onClick={() => {
+                    setIsOpen(false)
                     logout()
                     navigate('/')
                   }}
@@ -222,8 +232,8 @@ export function Navbar() {
               </div>
             ) : (
               <div className="flex gap-2 pt-2">
-                <Link to="/login" className="flex-1 px-3 py-2 text-sm font-medium text-center text-text-secondary hover:text-text-primary bg-background-secondary rounded-md">Login</Link>
-                <Link to="/signup" className="flex-1 px-3 py-2 text-sm font-medium text-center text-white bg-accent-indigo rounded-md hover:bg-accent-indigo/90">Sign Up</Link>
+                <Link to="/login" onClick={() => setIsOpen(false)} className="flex-1 px-3 py-2 text-sm font-medium text-center text-text-secondary hover:text-text-primary bg-background-secondary rounded-md">Login</Link>
+                <Link to="/signup" onClick={() => setIsOpen(false)} className="flex-1 px-3 py-2 text-sm font-medium text-center text-white bg-accent-indigo rounded-md hover:bg-accent-indigo/90">Sign Up</Link>
               </div>
             )}
           </div>
