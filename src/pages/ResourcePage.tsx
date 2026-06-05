@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { useUser } from '@/contexts/UserContext'
 import { getCategoryColor, typeLabels } from '@/constants'
 import api from '@/services/api'
-import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, Clock, CheckCircle, Lock } from 'lucide-react'
+import { Star, ThumbsUp, Bookmark, Share2, ExternalLink, CheckCircle, Lock } from 'lucide-react'
 import type { Resource } from '@/types'
 
 export default function ResourcePage() {
@@ -243,10 +243,6 @@ export default function ResourcePage() {
                 <Star className="h-5 w-5 fill-accent-gold text-accent-gold" />
                 <span className="font-semibold">{resource.rating}</span>
                 <span className="text-text-muted">({resource.votes} votes)</span>
-              </div>
-              <div className="flex items-center gap-2 text-text-muted">
-                <Clock className="h-5 w-5" />
-                <span>Est. time varies</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 text-accent-green" />
