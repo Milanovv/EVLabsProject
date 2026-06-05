@@ -121,17 +121,21 @@ export async function getNewResources(filters = {}) {
 
 export async function voteResource(id, userId, type) {
   const [existing] = await pool.query(
-    'SELECT id FROM resources WHERE id = ?',
+    'SELECT id, votes FROM resources WHERE id = ?',
     [id]
   );
   if (existing.length === 0) {
     throw new Error('Resource not found');
   }
 
+  const currentVotes = existing[0].votes;
+
   const [existingVote] = await pool.query(
     'SELECT id, vote_type FROM resource_votes WHERE user_id = ? AND resource_id = ?',
     [userId, id]
   );
+
+  let delta = 0;
 
   if (existingVote.length > 0) {
     if (existingVote[0].vote_type === type) {
@@ -139,31 +143,30 @@ export async function voteResource(id, userId, type) {
         'DELETE FROM resource_votes WHERE id = ?',
         [existingVote[0].id]
       );
+      delta = -type;
     } else {
       await pool.query(
         'UPDATE resource_votes SET vote_type = ? WHERE id = ?',
         [type, existingVote[0].id]
       );
+      delta = 2 * type;
     }
   } else {
     await pool.query(
       'INSERT INTO resource_votes (user_id, resource_id, vote_type) VALUES (?, ?, ?)',
       [userId, id, type]
     );
+    delta = type;
   }
 
-  const [total] = await pool.query(
-    'SELECT COALESCE(SUM(vote_type), 0) as total FROM resource_votes WHERE resource_id = ?',
-    [id]
-  );
-
-  await pool.query('UPDATE resources SET votes = ? WHERE id = ?', [total[0].total, id]);
+  const newTotal = currentVotes + delta;
+  await pool.query('UPDATE resources SET votes = ? WHERE id = ?', [newTotal, id]);
 
   const sameType = existingVote.length > 0 && existingVote[0].vote_type === type;
   const voted = existingVote.length === 0 || !sameType;
   const voteType = sameType ? null : type;
 
-  return { voted, voteType, votes: total[0].total };
+  return { voted, voteType, votes: newTotal };
 }
 
 export async function getUserVote(resourceId, userId) {
